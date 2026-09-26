@@ -17,9 +17,24 @@ You listen to great podcasts, watch great talks and lectures, and forget them a 
 
 It's a free plugin for the Claude app. No API keys, no subscriptions beyond your Claude plan, no code.
 
+## The idea in 30 seconds
+
+<!-- VIDEO: the launch video goes here (GitHub user-attachments link) -->
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/video-connections.jpg" alt="Every episode becomes ideas, and ideas connect across episodes"><br><sub>Every episode becomes ideas, and ideas connect across episodes</sub></td>
+    <td width="50%"><img src="docs/images/video-disagree.jpg" alt="Cue notices when two guests disagree"><br><sub>Cue notices when two guests disagree</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/video-network.jpg" alt="Over time your podcasts and videos form one connected brain"><br><sub>Over time your podcasts and videos form one connected brain</sub></td>
+    <td width="50%"><img src="docs/images/video-two-people.jpg" alt="Same episode, two people: Cue reads your context and gives each of them a different next step"><br><sub>Same episode, two people: Cue reads your context and gives each of them a different next step</sub></td>
+  </tr>
+</table>
+
 ## See it in action
 
-**[Browse the live demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** No install needed: two Y Combinator episodes processed by cue for an example founder who is building a scheduling app for restaurants.
+These are real pages created by Cue, not mockups. **[Browse the live demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** No install needed: five Y Combinator episodes processed by Cue for an example founder who is building a scheduling app for restaurants.
 
 <table>
   <tr>
@@ -152,6 +167,7 @@ Tell Claude what happened in your own words. The row in Notion also shows the er
 - 📡 **Subscriptions**: follow a podcast or YouTube channel and new episodes arrive by themselves
 - 📬 **Weekly digest**: every Sunday, the ideas that kept coming back and 3 actions for the week
 - ⏰ **Automations**: process the inbox on a schedule
+- 🤝 **Other AI apps** (ChatGPT / Codex): today Cue runs in the Claude app. If you'd use it elsewhere, say so in [Issues](../../issues)
 
 Ideas and bug reports are welcome in [Issues](../../issues).
 

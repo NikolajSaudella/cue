@@ -21,9 +21,24 @@ Ascolti podcast bellissimi, guardi talk e lezioni, e dopo una settimana non rico
 
 È un plugin gratuito per l'app Claude. Niente chiavi API, niente abbonamenti oltre al tuo piano Claude, niente codice.
 
+## L'idea in 30 secondi
+
+<!-- VIDEO: qui va il video di lancio (link user-attachments di GitHub) -->
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/video-connections.jpg" alt="Ogni puntata diventa idee, e le idee si collegano tra puntate diverse"><br><sub>Ogni puntata diventa idee, e le idee si collegano tra puntate diverse</sub></td>
+    <td width="50%"><img src="docs/images/video-disagree.jpg" alt="Cue nota quando due ospiti non sono d'accordo"><br><sub>Cue nota quando due ospiti non sono d'accordo</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/video-network.jpg" alt="Col tempo podcast e video diventano un unico cervello collegato"><br><sub>Col tempo podcast e video diventano un unico cervello collegato</sub></td>
+    <td width="50%"><img src="docs/images/video-two-people.jpg" alt="Stessa puntata, due persone: Cue legge il tuo contesto e dà a ognuno un passo diverso"><br><sub>Stessa puntata, due persone: Cue legge il tuo contesto e dà a ognuno un passo diverso</sub></td>
+  </tr>
+</table>
+
 ## Guardalo in azione
 
-**[Sfoglia la demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** Senza installare niente: due puntate di Y Combinator elaborate da cue per un founder di esempio che costruisce un'app per i turni dei ristoranti (demo in inglese).
+Sono pagine vere create da Cue, non bozze grafiche. **[Sfoglia la demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** Senza installare niente: cinque puntate di Y Combinator elaborate da Cue per un founder di esempio che costruisce un'app per i turni dei ristoranti (demo in inglese).
 
 <table>
   <tr>
@@ -134,6 +149,7 @@ Puoi aggiungere viste, spostare pagine e aggiungere proprietà tue. Non rinomina
 - 📡 **Iscrizioni:** segui un podcast o un canale YouTube e le puntate nuove arrivano da sole.
 - 📬 **Digest della settimana:** ogni domenica le idee che sono tornate e 3 azioni.
 - ⏰ **Automazioni:** l'inbox elaborata a orari fissi.
+- 🤝 **Altre app di AI** (ChatGPT / Codex): oggi Cue funziona nell'app Claude. Se lo useresti altrove, scrivilo nelle [Issues](../../issues).
 
 ## Crediti
 
