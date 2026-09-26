@@ -35,7 +35,7 @@ Ask these in **one message** (or with the question tool, if available), and say 
 1. **Who are you?** Role and what you do day to day.
 2. **What are you building or working on?** 1-3 projects, one line each (a startup, a job, studies, a side project).
 3. **What do you want to get better at, or achieve, in the next 6-12 months?**
-4. **Which topics do you listen to podcasts for?** And is there a question you are trying to answer right now?
+4. **Which topics do you listen to podcasts or watch videos for?** And is there a question you are trying to answer right now?
 
 If an answer is vague, ask **one** follow-up at most. Don't turn it into a questionnaire.
 
@@ -45,10 +45,10 @@ Tell the user you are creating their Cue space in Notion. Then, in this order:
 **a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), icon 🎧, title "cue", lowercase like the logo (never put emoji in page titles: use the icon). Content, written in the user's language:
 ```
 <callout icon="🎧" color="blue_bg">
-	Paste a podcast link in Claude and get here: what it says, what it means for you, and what to do next.
+	Paste a podcast or video link in Claude and get here: what it says, what it means for you, and what to do next.
 </callout>
 ## How to use it
-- **In Claude:** paste the link of an episode (YouTube, Spotify, Apple Podcasts).
+- **In Claude:** paste the link of a podcast episode or a video (YouTube, Spotify, Apple Podcasts).
 - **From your phone:** add a row to the **Inbox** below with the link, then tell Claude "process my inbox".
 - **Make it yours:** keep "🧭 My context" up to date: it's what makes the notes personal.
 ---

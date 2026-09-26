@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.3
+
+- Cue is now presented for **podcasts and videos**: interviews, talks, lectures and webinars on YouTube work exactly like podcast episodes (they always did, now the product says so).
+- New repository address: github.com/NikolajSaudella/cue (the old one redirects).
+
 ## v0.1.2
 
 - **Fix:** YouTube videos with automatic dubbing offer captions in many languages; cue sometimes picked a translated track (e.g. Arabic for an English talk). It now always uses the video's original language.

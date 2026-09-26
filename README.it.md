@@ -7,13 +7,13 @@
 
 # cue
 
-**I podcast che ricordi davvero, e cosa significano per te.**
+**Podcast e video che ricordi davvero, e cosa significano per te.**
 
-Incolli il link di un podcast. Ottieni cosa dice, cosa significa *per te* e cosa fare, nel tuo Notion. *(Cue si pronuncia come la lettera Q.)*
+Incolli il link di un podcast, di un video YouTube, di un talk o di una lezione. Ottieni cosa dice, cosa significa *per te* e cosa fare, nel tuo Notion. *(Cue si pronuncia come la lettera Q.)*
 
 [🇬🇧 Read in English](README.md)
 
-Ascolti podcast bellissimi e dopo una settimana non ricordi niente. Cue trasforma ogni puntata in una pagina Notion che userai davvero. Dentro trovi:
+Ascolti podcast bellissimi, guardi talk e lezioni, e dopo una settimana non ricordi niente. Cue trasforma ognuno in una pagina Notion che userai davvero. Dentro trovi:
 - le idee chiave;
 - i capitoli con i minutaggi cliccabili;
 - le citazioni migliori;
@@ -69,7 +69,7 @@ Nell'app Claude per computer apri la scheda **Code** e avvia una sessione in una
 1. Clicca **+** accanto alla casella del messaggio → **Plugins** → **Add plugin**.
 2. Scegli **Add marketplace** e incolla:
    ```
-   https://github.com/NikolajSaudella/cue-podcasts
+   https://github.com/NikolajSaudella/cue
    ```
 3. Seleziona **cue** nella lista e scegli **Install for you**, così funziona in ogni cartella.
 
@@ -77,7 +77,7 @@ Nell'app Claude per computer apri la scheda **Code** e avvia una sessione in una
 <summary>Usi Claude Code dal terminale?</summary>
 
 ```
-/plugin marketplace add NikolajSaudella/cue-podcasts
+/plugin marketplace add NikolajSaudella/cue
 /plugin install cue@cue
 ```
 </details>
@@ -96,7 +96,7 @@ Da lì fa tutto Claude:
 
 ## Uso quotidiano
 
-- **Incolla un link** in Claude: YouTube, Spotify o Apple Podcasts.
+- **Incolla un link** in Claude: un podcast (Spotify, Apple Podcasts), qualsiasi video YouTube (interviste, talk, lezioni, webinar) o il link di un file audio.
 - **Dal telefono:** aggiungi una riga con il link nell'**📥 Inbox** di Notion, poi di' a Claude "processa la mia inbox".
 - **Tieni aggiornata "🧭 My context":** nuovo progetto, nuovo obiettivo? Modifica la pagina e le prossime puntate ne terranno conto.
 

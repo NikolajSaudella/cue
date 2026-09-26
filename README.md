@@ -7,13 +7,13 @@
 
 # cue
 
-**Podcasts you actually remember — and what they mean for you.**
+**Podcasts and videos you actually remember — and what they mean for you.**
 
-Paste a podcast link. Get what it says, what it means for *you*, and what to do next, in your Notion. *(Cue is pronounced like the letter Q.)*
+Paste a link to a podcast, a YouTube video, a talk or a lecture. Get what it says, what it means for *you*, and what to do next, in your Notion. *(Cue is pronounced like the letter Q.)*
 
 [🇮🇹 Leggi in italiano](README.it.md)
 
-You listen to great podcasts and forget them a week later. Cue turns each episode into a Notion page you'll actually use: the key ideas, chapters with clickable timestamps, the best quotes, and — the part that matters — **how it connects to your own projects and what you should do about it**.
+You listen to great podcasts, watch great talks and lectures, and forget them a week later. Cue turns each one into a Notion page you'll actually use: the key ideas, chapters with clickable timestamps, the best quotes, and — the part that matters — **how it connects to your own projects and what you should do about it**.
 
 It's a free plugin for the Claude app. No API keys, no subscriptions beyond your Claude plan, no code.
 
@@ -65,7 +65,7 @@ In the Claude desktop app, open the **Code** tab and start a session in any fold
 1. Click **+** next to the message box → **Plugins** → **Add plugin**.
 2. Choose **Add marketplace** and paste:
    ```
-   https://github.com/NikolajSaudella/cue-podcasts
+   https://github.com/NikolajSaudella/cue
    ```
 3. Select **cue** in the list and choose **Install for you**, so it works in every folder.
 
@@ -73,7 +73,7 @@ In the Claude desktop app, open the **Code** tab and start a session in any fold
 <summary>Using Claude Code in the terminal instead?</summary>
 
 ```
-/plugin marketplace add NikolajSaudella/cue-podcasts
+/plugin marketplace add NikolajSaudella/cue
 /plugin install cue@cue
 ```
 </details>
@@ -93,7 +93,7 @@ Claude takes it from there. It will:
 
 ## Everyday use
 
-- **Paste a link** in Claude: YouTube, Spotify or Apple Podcasts. For example: `https://www.youtube.com/watch?v=...`
+- **Paste a link** in Claude: a podcast (Spotify, Apple Podcasts), any YouTube video (interviews, talks, lectures, webinars) or a link to an audio file. For example: `https://www.youtube.com/watch?v=...`
 - **From your phone**: add a row with the link to the **📥 Inbox** in Notion, then tell Claude "process my inbox".
 - **Keep "🧭 My context" up to date**: new project, new goal? Edit the page, and future episodes will take it into account.
 

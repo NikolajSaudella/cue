@@ -1,6 +1,6 @@
 {
   "name": "cue",
-  "description": "cue: podcasts you actually remember, as personal notes in Notion",
+  "description": "cue: podcasts and videos you actually remember, as personal notes in Notion",
   "owner": {
     "name": "Nikolaj Saudella"
   },
@@ -8,7 +8,7 @@
     {
       "name": "cue",
       "source": "./",
-      "description": "Podcasts you actually remember: paste a link, get Notion notes with what it says, what it means for you, and what to do next."
+      "description": "Podcasts and videos you actually remember: paste a link, get Notion notes with what it says, what it means for you, and what to do next."
     }
   ]
 }
