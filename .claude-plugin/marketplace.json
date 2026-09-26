@@ -1,14 +1,14 @@
 {
-  "name": "podcast-brain",
-  "description": "Podcast Brain: podcasts turned into personal notes in Notion",
+  "name": "cue",
+  "description": "cue: podcasts you actually remember, as personal notes in Notion",
   "owner": {
     "name": "Nikolaj Saudella"
   },
   "plugins": [
     {
-      "name": "podcast-brain",
+      "name": "cue",
       "source": "./",
-      "description": "Paste a podcast link, get Notion notes: what it says, what it means for you, and what to do next."
+      "description": "Podcasts you actually remember: paste a link, get Notion notes with what it says, what it means for you, and what to do next."
     }
   ]
 }

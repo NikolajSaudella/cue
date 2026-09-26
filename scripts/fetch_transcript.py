@@ -1,5 +1,5 @@
 """
-Podcast Brain - fetch metadata and a timestamped transcript for one episode.
+Cue - fetch metadata and a timestamped transcript for one episode.
 
 Normally started by transcribe.py in a background process. Usage:
     python fetch_transcript.py <url> --data <dir> [--model small] [--force] [--notion-page <id>]
@@ -39,7 +39,7 @@ import requests
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
 
-DATA_DIR = Path(os.environ.get("PODCAST_BRAIN_DATA") or Path.home() / ".podcast-brain")
+DATA_DIR = Path(os.environ.get("CUE_DATA") or Path.home() / ".cue")
 EPISODES_DIR = DATA_DIR / "episodes"
 MODELS_DIR = DATA_DIR / "models"
 
@@ -66,7 +66,7 @@ AUDIO_EXTS = (".mp3", ".m4a", ".aac", ".wav", ".ogg", ".opus", ".flac", ".webm")
 
 
 def log(msg):
-    print(f"[podcast-brain] {msg}", file=sys.stderr, flush=True)
+    print(f"[cue] {msg}", file=sys.stderr, flush=True)
     if LIVE:
         LIVE.set(progress_text(msg.strip()))
 

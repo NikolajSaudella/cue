@@ -9,7 +9,7 @@
 # ]
 # ///
 """
-Podcast Brain - one idempotent command to get the transcript of a link.
+Cue - one idempotent command to get the transcript of a link.
 
 Run it with uv, which installs Python and the dependencies by itself the first time:
     uv run --script transcribe.py <url> --data <dir> [--notion-page <row>] [--max 150] [--model small] [--force]
@@ -69,8 +69,8 @@ def read_json(path):
 
 def last_progress(log_path):
     try:
-        lines = [l for l in log_path.read_text(encoding="utf-8", errors="ignore").splitlines() if "[podcast-brain]" in l]
-        return lines[-1].replace("[podcast-brain]", "").strip() if lines else ""
+        lines = [l for l in log_path.read_text(encoding="utf-8", errors="ignore").splitlines() if "[cue]" in l]
+        return lines[-1].replace("[cue]", "").strip() if lines else ""
     except OSError:
         return ""
 

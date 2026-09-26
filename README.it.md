@@ -1,16 +1,29 @@
-# 🎧 Podcast Brain
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/cue-logo-reversed.svg">
+    <img src="docs/images/cue-logo.svg" alt="cue" width="160">
+  </picture>
+</p>
 
-**Incolli il link di un podcast. Ottieni cosa dice, cosa significa *per te* e cosa fare, nel tuo Notion.**
+# cue
+
+**I podcast che ricordi davvero, e cosa significano per te.**
+
+Incolli il link di un podcast. Ottieni cosa dice, cosa significa *per te* e cosa fare, nel tuo Notion. *(Cue si pronuncia come la lettera Q.)*
 
 [🇬🇧 Read in English](README.md)
 
-Ascolti podcast bellissimi e dopo una settimana non ricordi niente. Podcast Brain trasforma ogni puntata in una pagina Notion che userai davvero. Dentro trovi:
+Ascolti podcast bellissimi e dopo una settimana non ricordi niente. Cue trasforma ogni puntata in una pagina Notion che userai davvero. Dentro trovi:
 - le idee chiave;
 - i capitoli con i minutaggi cliccabili;
 - le citazioni migliori;
 - la parte che conta: **come si collega ai tuoi progetti e cosa dovresti farne**.
 
 È un plugin gratuito per l'app Claude. Niente chiavi API, niente abbonamenti oltre al tuo piano Claude, niente codice.
+
+## Perché si chiama così
+
+Nell'audio il **cue point** è il punto preciso di una traccia da cui ripartire: ogni nota di Cue ne ha uno. In psicologia il **retrieval cue** è lo spunto che fa tornare in mente un ricordo: è la promessa.
 
 ## Cosa ottieni
 
@@ -41,28 +54,28 @@ Nell'app Claude per computer apri la scheda **Code** e avvia una sessione in una
 1. Clicca **+** accanto alla casella del messaggio → **Plugins** → **Add plugin**.
 2. Scegli **Add marketplace** e incolla:
    ```
-   https://github.com/NikolajSaudella/podcast-brain
+   https://github.com/NikolajSaudella/cue-podcasts
    ```
-3. Seleziona **Podcast Brain** nella lista e scegli **Install for you**, così funziona in ogni cartella.
+3. Seleziona **cue** nella lista e scegli **Install for you**, così funziona in ogni cartella.
 
 <details>
 <summary>Usi Claude Code dal terminale?</summary>
 
 ```
-/plugin marketplace add NikolajSaudella/podcast-brain
-/plugin install podcast-brain@podcast-brain
+/plugin marketplace add NikolajSaudella/cue-podcasts
+/plugin install cue@cue
 ```
 </details>
 
 Poi apri una nuova chat e scrivi:
 
 ```
-Configura Podcast Brain
+Configura Cue
 ```
 
 Da lì fa tutto Claude:
 1. **Ti fa 4 domande veloci:** chi sei, cosa stai costruendo, i tuoi obiettivi e i temi che ti interessano. È quello che rende gli appunti personali.
-2. **Crea il tuo spazio Podcast Brain su Notion:** una pagina principale, la pagina con il tuo contesto e i database Puntate, Concetti e Azioni (i nomi sono in inglese).
+2. **Crea il tuo spazio cue su Notion:** una pagina principale, la pagina con il tuo contesto e i database Puntate, Concetti e Azioni (i nomi sono in inglese).
 3. **Installa gli strumenti di trascrizione** sul tuo computer. Tu approvi e basta: niente terminale.
 4. **Elabora con te la prima puntata.**
 
@@ -88,7 +101,7 @@ Più dettagli (in inglese): [docs/how-it-works.md](docs/how-it-works.md).
 
 - Audio e trascrizioni restano **sul tuo computer**.
 - Gli appunti vanno solo nel **tuo** Notion, tramite il connettore che hai autorizzato.
-- Podcast Brain non ha server, account né statistiche.
+- Cue non ha server, account né statistiche.
 
 ## Domande frequenti
 
@@ -99,7 +112,7 @@ No. Usa il tuo piano Claude e strumenti gratuiti e open source.
 Sì, mentre una puntata viene elaborata, perché la trascrizione gira in locale.
 
 **Posso cambiare l'aspetto su Notion?**
-Puoi aggiungere viste, spostare pagine e aggiungere proprietà tue. Non rinominare le proprietà esistenti né le loro opzioni: Podcast Brain usa quei nomi.
+Puoi aggiungere viste, spostare pagine e aggiungere proprietà tue. Non rinominare le proprietà esistenti né le loro opzioni: Cue usa quei nomi.
 
 ## Prossime funzioni
 

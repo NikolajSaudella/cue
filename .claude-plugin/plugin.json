@@ -1,14 +1,15 @@
 {
-  "name": "podcast-brain",
-  "displayName": "Podcast Brain",
+  "name": "cue",
+  "displayName": "cue",
   "version": "0.1.0",
-  "description": "Paste a podcast link, get Notion notes: what it says, what it means for you, and what to do next.",
+  "description": "Podcasts you actually remember: paste a link, get Notion notes with what it says, what it means for you, and what to do next.",
   "author": {
     "name": "Nikolaj Saudella",
     "url": "https://www.linkedin.com/in/nikolajsaudella/"
   },
   "license": "MIT",
   "keywords": [
+    "cue",
     "podcast",
     "notion",
     "notes",
@@ -17,6 +18,6 @@
     "spotify",
     "whisper"
   ],
-  "homepage": "https://github.com/NikolajSaudella/podcast-brain",
-  "repository": "https://github.com/NikolajSaudella/podcast-brain"
+  "homepage": "https://github.com/NikolajSaudella/cue-podcasts",
+  "repository": "https://github.com/NikolajSaudella/cue-podcasts"
 }

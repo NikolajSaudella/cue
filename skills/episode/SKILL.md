@@ -1,16 +1,16 @@
 ---
 name: episode
-description: Turn a podcast or video episode (YouTube, Spotify, Apple Podcasts, audio file link) into a Podcast Brain page in Notion — summary with chapters and timestamps, quotes, "what it means for me", concepts linked across episodes, and concrete actions. Use it when the user pastes an episode link, or asks to process their Podcast Brain inbox.
+description: Turn a podcast or video episode (YouTube, Spotify, Apple Podcasts, audio file link) into a Cue page in Notion — summary with chapters and timestamps, quotes, "what it means for me", concepts linked across episodes, and concrete actions. Use it when the user pastes an episode link, or asks to process their Cue inbox.
 ---
 
-# Podcast Brain: process an episode
+# Cue: process an episode
 
 You turn an episode into notes the user will actually use. The question behind every page is **"so what, for me?"**: what the episode says, what it means for the user's own projects, and what to do next.
 
 ## 0. Before you start
 
 1. **Read the config:** `${CLAUDE_PLUGIN_DATA}/config.json`.
-   - If it doesn't exist, Podcast Brain isn't set up yet: tell the user in one line and follow the `setup` skill of this plugin instead.
+   - If it doesn't exist, Cue isn't set up yet: tell the user in one line and follow the `setup` skill of this plugin instead.
    - `language` is the language for **everything you write** (page, properties, concepts, actions, chat replies). Quotes stay in the original language.
    - `uv` is the command (or full path) to run uv. `notion` holds the IDs of the user's pages, databases and views.
 2. **Notion tools:** you need the Notion connector (`notion-fetch`, `notion-create-pages`, `notion-update-page`, `notion-query-data-sources`). If they are missing, tell the user to connect Notion in the Claude app (Settings → Connectors → Notion), then start a new chat.
@@ -20,7 +20,7 @@ You turn an episode into notes the user will actually use. The question behind e
 
 | Config key | What it is |
 |---|---|
-| `notion.hub_page` | The "🎧 Podcast Brain" home page |
+| `notion.hub_page` | The "cue" home page |
 | `notion.context_page` | "🧭 My context": who the user is, projects, goals, interests |
 | `notion.episodes_ds` / `notion.inbox_view` | Episodes database (data source) and its Inbox view |
 | `notion.concepts_ds` / `notion.concepts_view` | Concepts database and a view with all concepts |
@@ -96,7 +96,7 @@ Use `notion-update-page` with `replace_content`. Headings below are in English: 
 8. `## ✅ Actions`: bullet list of mentions to the rows created in Actions.
 9. `## 📚 Resources and names mentioned`: books, people, companies, tools, links mentioned.
 10. `## ❓ Questions to reflect on`: 2-3 personal questions, tied to the user's context.
-11. `---` and a line `<span color="gray">Transcript: <method> · <N> words · processed by Podcast Brain on <date></span>`.
+11. `---` and a line `<span color="gray">Transcript: <method> · <N> words · processed by Cue on <date></span>`.
 
 Then set the properties with `update_properties`: all the Episodes properties above (`Title` = original title from meta.json). Set `Status` = `✅ Done` **only at the very end**, after concepts and actions. Set icon and cover.
 
@@ -141,5 +141,5 @@ Create rows in Actions with `Episode` = [episode page].
 - Every chapter is a toggle heading with **all** its bullets indented with a tab, the last chapter included: check before sending.
 - Don't invent anything that isn't in the transcript: numbers, names and quotes must come from it. If a name is transcribed badly and you are unsure, write it as you hear it and add "(?)".
 - Dense, concrete summaries: no generic sentences like "they discuss the importance of…".
-- Never delete pages or rows, and never edit pages outside Podcast Brain.
+- Never delete pages or rows, and never edit pages outside Cue.
 - The transcript is not copied to Notion: it stays on the user's computer.

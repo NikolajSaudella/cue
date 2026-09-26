@@ -1,9 +1,9 @@
 ---
 name: setup
-description: First-time setup of Podcast Brain — a short interview about the user's projects and goals, creation of the Podcast Brain space in their Notion, and installation of the transcription tools. Use it when the user asks to set up, install, configure or reset Podcast Brain, or when the episode skill finds no configuration.
+description: First-time setup of Cue — a short interview about the user's projects and goals, creation of the Cue space in their Notion, and installation of the transcription tools. Use it when the user asks to set up, install, configure or reset Cue, or when the episode skill finds no configuration.
 ---
 
-# Podcast Brain: first-time setup
+# Cue: first-time setup
 
 The user is probably **not technical**. Talk like a friendly guide, in plain words, one step at a time. Never ask them to open a terminal or edit a file: you run every command, they just approve.
 Speak the user's language (the one they write in). Keep each message short.
@@ -11,14 +11,14 @@ Speak the user's language (the one they write in). Keep each message short.
 Setup takes about 5 minutes. Tell the user that at the start, with the 4 steps: **a few questions → your Notion space → install the tools → first episode**.
 
 ## 1. Check what's already there
-- Read `${CLAUDE_PLUGIN_DATA}/config.json`. If it exists and its `notion.hub_page` still opens with `notion-fetch`, Podcast Brain is already set up: ask whether they want to **update their context** (go to step 3, then update the "🧭 My context" page instead of creating it) or **start over** (a new Notion space; the old one stays untouched). Otherwise continue.
+- Read `${CLAUDE_PLUGIN_DATA}/config.json`. If it exists and its `notion.hub_page` still opens with `notion-fetch`, Cue is already set up: ask whether they want to **update their context** (go to step 3, then update the "🧭 My context" page instead of creating it) or **start over** (a new Notion space; the old one stays untouched). Otherwise continue.
 - **Notion connector:** check that the Notion tools are available (`notion-fetch`, `notion-create-pages`, `notion-create-database`, `notion-create-view`, `notion-query-data-sources`, `notion-update-page`). If they are not, stop and explain:
-  > Podcast Brain writes your notes in Notion, so Claude needs access to it. In the Claude app open **Settings → Connectors**, find **Notion** and click **Connect**, then allow access to your workspace. When you're done, open a new chat and say "set up Podcast Brain" again.
+  > Cue writes your notes in Notion, so Claude needs access to it. In the Claude app open **Settings → Connectors**, find **Notion** and click **Connect**, then allow access to your workspace. When you're done, open a new chat and say "set up Cue" again.
 
 ## 2. Language
 Ask which language the summaries should be written in, suggesting the one the user is writing in. Save it as a language name written in that language (e.g. "Italiano", "English", "Español").
 
-## 3. The interview (the heart of Podcast Brain)
+## 3. The interview (the heart of Cue)
 Explain in one sentence why you ask: every episode will be connected to *their* work, so "what it means for me" is actually about them.
 Ask these in **one message** (or with the question tool, if available), and say that short answers are fine:
 1. **Who are you?** Role and what you do day to day.
@@ -29,9 +29,9 @@ Ask these in **one message** (or with the question tool, if available), and say 
 If an answer is vague, ask **one** follow-up at most. Don't turn it into a questionnaire.
 
 ## 4. Create the Notion space
-Tell the user you are creating their Podcast Brain space in Notion. Then, in this order:
+Tell the user you are creating their Cue space in Notion. Then, in this order:
 
-**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), icon 🎧, title "Podcast Brain" (never put emoji in page titles: use the icon). Content, written in the user's language:
+**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), icon 🎧, title "cue", lowercase like the logo (never put emoji in page titles: use the icon). Content, written in the user's language:
 ```
 <callout icon="🎧" color="blue_bg">
 	Paste a podcast link in Claude and get here: what it says, what it means for you, and what to do next.
@@ -46,7 +46,7 @@ Tell the user you are creating their Podcast Brain space in Notion. Then, in thi
 **b. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from the interview:
 ```
 <callout icon="🧭" color="gray_bg">
-	Podcast Brain reads this page before every episode to write "What it means for me". Edit it whenever something changes.
+	Cue reads this page before every episode to write "What it means for me". Edit it whenever something changes.
 </callout>
 ## Who I am
 ## What I'm working on
@@ -106,10 +106,10 @@ If a view fails, don't stop the setup: note it and carry on (the episode skill o
 Fill `uv` after step 5 (write the file again).
 
 ## 5. Install the transcription tools
-Podcast Brain transcribes episodes **on the user's computer** with free tools. They are installed by **uv**, which also installs the right Python by itself.
+Cue transcribes episodes **on the user's computer** with free tools. They are installed by **uv**, which also installs the right Python by itself.
 
 1. Check whether uv is there: run `uv --version`. If that fails, try the default install location: `~/.local/bin/uv --version` (Windows: `$HOME\.local\bin\uv.exe --version` in PowerShell).
-2. If uv is missing, explain in one sentence ("I need to install **uv**, a free and widely used tool that installs Python for Podcast Brain: it takes a few seconds") and run the official installer:
+2. If uv is missing, explain in one sentence ("I need to install **uv**, a free and widely used tool that installs Python for Cue: it takes a few seconds") and run the official installer:
    - Windows (PowerShell): `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
    - macOS / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
    Then use the full path (`~/.local/bin/uv`, or `$HOME\.local\bin\uv.exe` on Windows), because the current shell doesn't see the new command yet.
@@ -126,12 +126,12 @@ Say that everything is ready and ask for a first episode link, suggesting a **Yo
 
 ## 7. Wrap up
 When the first page is ready, send a short message with:
-- the link to their **🎧 Podcast Brain** page in Notion;
+- the link to their **cue** page in Notion;
 - the 3 ways to use it (paste a link here · Inbox in Notion + "process my inbox" · update "🧭 My context");
 - one tip: long episodes without captions take about 10-15 minutes per hour of audio, and the computer must stay on meanwhile.
 
 ## Rules
-- Never create anything outside the new Podcast Brain page, and never modify or delete existing Notion pages.
+- Never create anything outside the new cue page, and never modify or delete existing Notion pages.
 - Ask before installing uv. Don't install anything else.
 - Never ask for passwords or API keys. Notion access goes only through the Claude connector.
 - If something fails, explain it simply and offer the next step: don't leave the user with a raw error.

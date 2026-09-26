@@ -1,14 +1,27 @@
-# 🎧 Podcast Brain
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/cue-logo-reversed.svg">
+    <img src="docs/images/cue-logo.svg" alt="cue" width="160">
+  </picture>
+</p>
 
-**Paste a podcast link. Get what it says, what it means for *you*, and what to do next — in your Notion.**
+# cue
+
+**Podcasts you actually remember — and what they mean for you.**
+
+Paste a podcast link. Get what it says, what it means for *you*, and what to do next, in your Notion. *(Cue is pronounced like the letter Q.)*
 
 [🇮🇹 Leggi in italiano](README.it.md)
 
-You listen to great podcasts and forget them a week later. Podcast Brain turns each episode into a Notion page you'll actually use: the key ideas, chapters with clickable timestamps, the best quotes, and — the part that matters — **how it connects to your own projects and what you should do about it**.
+You listen to great podcasts and forget them a week later. Cue turns each episode into a Notion page you'll actually use: the key ideas, chapters with clickable timestamps, the best quotes, and — the part that matters — **how it connects to your own projects and what you should do about it**.
 
 It's a free plugin for the Claude app. No API keys, no subscriptions beyond your Claude plan, no code.
 
 <!-- TODO: screenshot of an episode page → docs/images/episode-page.png -->
+
+## Why the name
+
+In audio, a **cue point** is the exact spot in a track you jump back to: every note Cue writes has one. In psychology, a **retrieval cue** is the hint that brings a memory back: that's the promise.
 
 ## What you get
 
@@ -39,29 +52,29 @@ In the Claude desktop app, open the **Code** tab and start a session in any fold
 1. Click **+** next to the message box → **Plugins** → **Add plugin**.
 2. Choose **Add marketplace** and paste:
    ```
-   https://github.com/NikolajSaudella/podcast-brain
+   https://github.com/NikolajSaudella/cue-podcasts
    ```
-3. Select **Podcast Brain** in the list and choose **Install for you**, so it works in every folder.
+3. Select **cue** in the list and choose **Install for you**, so it works in every folder.
 
 <details>
 <summary>Using Claude Code in the terminal instead?</summary>
 
 ```
-/plugin marketplace add NikolajSaudella/podcast-brain
-/plugin install podcast-brain@podcast-brain
+/plugin marketplace add NikolajSaudella/cue-podcasts
+/plugin install cue@cue
 ```
 </details>
 
 Then start a new chat and write:
 
 ```
-Set up Podcast Brain
+Set up Cue
 ```
 
 Claude takes it from there. It will:
 
 1. **Ask you 4 quick questions**: who you are, what you're building, your goals, the topics you care about. This is what makes the notes personal.
-2. **Create your Podcast Brain space in Notion**: a home page, your context page, and the Episodes, Concepts and Actions databases.
+2. **Create your cue space in Notion**: a home page, your context page, and the Episodes, Concepts and Actions databases.
 3. **Install the transcription tools** on your computer. You just approve; no terminal needed.
 4. **Process your first episode** with you.
 
@@ -102,7 +115,7 @@ More detail for the curious: [docs/how-it-works.md](docs/how-it-works.md).
 
 - Audio and transcripts stay **on your computer**.
 - Your notes go only to **your** Notion, through the connector you authorised.
-- Podcast Brain has no server, no account, no analytics.
+- Cue has no server, no account, no analytics.
 
 ## FAQ
 
@@ -116,7 +129,7 @@ Yes, while an episode is being processed, since transcription runs locally.
 Yes. You choose the language during setup. The episode can be in any language Whisper understands.
 
 **Can I change the Notion layout?**
-Add views, move pages, add your own properties: all fine. Don't rename the existing properties or their options: Podcast Brain uses those names.
+Add views, move pages, add your own properties: all fine. Don't rename the existing properties or their options: Cue uses those names.
 
 **Something went wrong.**
 Tell Claude what happened in your own words. The row in Notion also shows the error in plain language.

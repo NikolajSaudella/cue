@@ -1,6 +1,6 @@
-# How Podcast Brain works
+# How Cue works
 
-Podcast Brain is a [Claude Code plugin](https://code.claude.com/docs/en/plugins): two skills (instructions Claude follows) plus a small Python transcription engine. Claude is the "brain"; Notion is where the notes live; the user's computer does the transcription.
+Cue is a [Claude Code plugin](https://code.claude.com/docs/en/plugins): two skills (instructions Claude follows) plus a small Python transcription engine. Claude is the "brain"; Notion is where the notes live; the user's computer does the transcription.
 
 ## Pieces
 
@@ -33,7 +33,7 @@ Long transcriptions run in a detached process. `transcribe.py` waits up to 150 s
 
 ## Data on the user's computer
 
-Everything lives in the plugin's data folder (`~/.claude/plugins/data/podcast-brain-…/`), which survives plugin updates:
+Everything lives in the plugin's data folder (`~/.claude/plugins/data/cue-…/`), which survives plugin updates:
 
 | File | Content |
 |---|---|
@@ -60,6 +60,6 @@ Databases are read through views (the connector's "view mode"). That mode has no
 ## Running the engine by hand
 
 ```
-uv run --script scripts/transcribe.py --check --data ~/.podcast-brain
-uv run --script scripts/transcribe.py "https://www.youtube.com/watch?v=..." --data ~/.podcast-brain
+uv run --script scripts/transcribe.py --check --data ~/.cue
+uv run --script scripts/transcribe.py "https://www.youtube.com/watch?v=..." --data ~/.cue
 ```
