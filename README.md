@@ -11,7 +11,9 @@
 
 **Podcasts and videos you actually remember — and what they mean for you.**
 
-Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for *you*, and what to do next, and connects it to everything you've heard before. A free plugin for the Claude app. *(Pronounced like the letter Q.)*
+Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for *you*, and what to do next, and connects it to everything you've heard before. A free plugin for the Claude app.
+
+*Why "cue"? A cue point is the exact spot in a track you jump back to; a retrieval cue is the hint that brings a memory back. Pronounced like the letter Q.*
 
 [🇮🇹 Leggi in italiano](README.it.md)
 
@@ -82,8 +84,6 @@ Claude asks you 4 quick questions, creates your space in Notion, installs everyt
 More questions, and how it works under the hood: [docs/how-it-works.md](docs/how-it-works.md).
 
 ---
-
-**Why "cue"?** A *cue point* is the exact spot in a track you jump back to; a *retrieval cue* is the hint that brings a memory back.
 
 **Next:** subscriptions to your favourite shows, a weekly digest, scheduled runs, and maybe other AI apps (ChatGPT / Codex). Ideas and bugs: [Issues](../../issues).
 

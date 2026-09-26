@@ -11,7 +11,9 @@
 
 **Podcast e video che ricordi davvero, e cosa significano per te.**
 
-Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa *per te* e cosa fare, e la collega a tutto quello che hai già ascoltato. Un plugin gratuito per l'app Claude. *(Si pronuncia come la lettera Q.)*
+Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa *per te* e cosa fare, e la collega a tutto quello che hai già ascoltato. Un plugin gratuito per l'app Claude.
+
+*Perché "cue"? Il cue point è il punto preciso di una traccia da cui ripartire; il retrieval cue è lo spunto che fa tornare in mente un ricordo. Si pronuncia come la lettera Q.*
 
 [🇬🇧 Read in English](README.md)
 
@@ -82,8 +84,6 @@ Claude ti fa 4 domande veloci, crea il tuo spazio su Notion, installa quello che
 Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.md](docs/how-it-works.md).
 
 ---
-
-**Perché "cue"?** Il *cue point* è il punto preciso di una traccia da cui ripartire; il *retrieval cue* è lo spunto che fa tornare in mente un ricordo.
 
 **Prossimi passi:** iscrizioni ai tuoi programmi preferiti, un digest settimanale, elaborazioni automatiche e forse altre app di AI (ChatGPT / Codex). Idee e bug: [Issues](../../issues).
 
