@@ -1,0 +1,20 @@
+# Changelog
+
+## v0.1.0 — first public version
+
+The first release of cue: podcasts you actually remember, and what they mean for you.
+
+**What it does**
+- Paste a YouTube, Spotify or Apple Podcasts link (or add it to the Notion inbox) and get a Notion page with: in short, key ideas, chapters with clickable timestamps, verbatim quotes, *what it means for me*, connections, actions, resources and questions.
+- Concepts that link episodes together, including where guests agree or disagree.
+- Concrete actions collected in one to-do list.
+- Summaries in the language you choose; quotes stay in the original.
+
+**Setup**
+- Guided first run inside Claude: a 4-question interview, your Notion space created for you, transcription tools installed automatically (via uv), and a suggested 2-minute first episode.
+- Fewer permission prompts: cue's own commands and files are pre-approved while its skills run.
+
+**Under the hood**
+- Transcription on your computer: YouTube captions when available, otherwise local Whisper (faster-whisper).
+- Spotify episodes matched to the same public episode on Apple Podcasts or RSS.
+- Works on Windows and macOS (macOS still to be tested by a real user).
