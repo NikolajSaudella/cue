@@ -75,6 +75,10 @@ Claude asks you 4 quick questions, creates your space in Notion, installs everyt
 
 **How long does it take?** A couple of minutes for YouTube videos with captions. Audio that needs transcribing takes roughly 30-45 minutes per hour on a typical laptop, in the background.
 
+**How do I update it?** In the Claude app: **+** → **Plugins** → **Manage plugins** → **cue** → **Update**. To hear about new versions, click **Watch** → **Custom** → **Releases** at the top of this page.
+
+**How do I remove it?** **+** → **Plugins** → **Manage plugins** → **cue** → **Uninstall**. Your Notion pages stay yours; cue's folder on your computer (transcripts and the speech model) goes away with it.
+
 More questions, and how it works under the hood: [docs/how-it-works.md](docs/how-it-works.md).
 
 ---

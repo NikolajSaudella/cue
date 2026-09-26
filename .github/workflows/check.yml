@@ -1,0 +1,58 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Manifests are valid JSON
+        run: |
+          python -m json.tool .claude-plugin/plugin.json > /dev/null
+          python -m json.tool .claude-plugin/marketplace.json > /dev/null
+
+      - name: Python scripts compile
+        run: python -m py_compile scripts/*.py
+
+      - name: Version is in the changelog (and matches the tag)
+        run: |
+          version=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          echo "plugin.json version: $version"
+          grep -q "^## v$version" CHANGELOG.md || { echo "::error::CHANGELOG.md has no '## v$version' section"; exit 1; }
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            tag="${GITHUB_REF#refs/tags/}"
+            [[ "$tag" == "v$version" ]] || { echo "::error::Tag $tag does not match plugin.json version v$version"; exit 1; }
+          fi
+
+      - name: Plugin changes come with a new version
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Users only receive an update when the version number changes.
+          version=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          last=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null || true)
+          [[ -z "$last" ]] && exit 0
+          changed=$(git diff --name-only "$last" HEAD -- skills scripts .claude-plugin)
+          if [[ -n "$changed" && "v$version" == "$last" ]]; then
+            echo "::error::Plugin files changed since $last but the version is still $version. Bump it in .claude-plugin/plugin.json and add a CHANGELOG section, or users won't get the update."
+            echo "$changed"
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Claude Code validates the plugin
+        run: npx --yes @anthropic-ai/claude-code plugin validate .

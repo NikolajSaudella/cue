@@ -113,4 +113,18 @@ Claude Code decides whether an installed plugin needs updating by comparing the 
 2. Add a section to `CHANGELOG.md`.
 3. Commit, tag (`git tag -a v0.1.1 -m "..."`) and push with `--follow-tags`, then publish a GitHub release from the tag.
 
-Users get it automatically if they turned on auto-update for the `cue` marketplace; otherwise from `/plugin` → **Installed** → cue → **Update now** in Claude Code, or `claude plugin update cue@cue` in a terminal. (The exact steps in the desktop app are still to be verified.)
+Auto-update is off by default for marketplaces outside Anthropic's own, so users update by hand:
+
+- desktop app: **+** → **Plugins** → **Manage plugins** → cue;
+- terminal session: `/plugin` → **Installed** → cue → **Update now**;
+- shell: `claude plugin marketplace update cue` then `claude plugin update cue@cue`.
+
+Or they turn on auto-update once: `/plugin` → **Marketplaces** → cue → **Enable auto-update**.
+
+## Uninstalling
+
+**+** → **Plugins** → **Manage plugins** → cue → **Uninstall** in the desktop app, or `claude plugin uninstall cue@cue` in a shell. Uninstalling also deletes the data folder (config, transcripts, Whisper model) unless `--keep-data` is passed. The Notion pages stay. uv and its package cache stay too, since other tools may use them: `uv cache clean` frees that space.
+
+## Automatic checks
+
+`.github/workflows/check.yml` runs on every push: manifests are valid JSON, the scripts compile, the version has a `CHANGELOG.md` section (and matches the tag on a release), plugin files never change without a new version, and `claude plugin validate` passes.
