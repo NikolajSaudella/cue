@@ -1,6 +1,15 @@
 ---
 name: episode
 description: Turn a podcast or video episode (YouTube, Spotify, Apple Podcasts, audio file link) into a Cue page in Notion — summary with chapters and timestamps, quotes, "what it means for me", concepts linked across episodes, and concrete actions. Use it when the user pastes an episode link, or asks to process their Cue inbox.
+allowed-tools:
+  - Bash(uv *)
+  - Bash(*uv.exe *)
+  - Bash(*/.local/bin/uv *)
+  - PowerShell(uv *)
+  - PowerShell(*uv.exe *)
+  - Read(~/.claude/plugins/data/**)
+  - Write(~/.claude/plugins/data/**)
+  - Edit(~/.claude/plugins/data/**)
 ---
 
 # Cue: process an episode

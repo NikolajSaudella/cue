@@ -1,12 +1,23 @@
 ---
 name: setup
 description: First-time setup of Cue — a short interview about the user's projects and goals, creation of the Cue space in their Notion, and installation of the transcription tools. Use it when the user asks to set up, install, configure or reset Cue, or when the episode skill finds no configuration.
+allowed-tools:
+  - Bash(uv *)
+  - Bash(*uv.exe *)
+  - Bash(*/.local/bin/uv *)
+  - PowerShell(uv *)
+  - PowerShell(*uv.exe *)
+  - Read(~/.claude/plugins/data/**)
+  - Write(~/.claude/plugins/data/**)
+  - Edit(~/.claude/plugins/data/**)
 ---
 
 # Cue: first-time setup
 
 The user is probably **not technical**. Talk like a friendly guide, in plain words, one step at a time. Never ask them to open a terminal or edit a file: you run every command, they just approve.
 Speak the user's language (the one they write in). Keep each message short.
+
+**Permissions:** this skill pre-approves the uv commands and the files in cue's data folder, but only for the turn in which the skill is loaded. At the start of every later turn of the setup (for example after the user answers the interview), invoke the `cue:setup` skill again to re-apply them, then continue from the step you were at: don't restart. Notion tools still ask once: tell the user they can choose "Always allow".
 
 Setup takes about 5 minutes. Tell the user that at the start, with the 4 steps: **a few questions → your Notion space → install the tools → first episode**.
 
@@ -121,8 +132,11 @@ Cue transcribes episodes **on the user's computer** with free tools. They are in
    It must print `"ok": true`. If not, read the JSON, fix what you can, and explain the rest in plain words.
    `whisper_model_downloaded: false` is normal: the speech model (~500 MB) downloads by itself the first time an episode has no captions.
 
-## 6. First episode
-Say that everything is ready and ask for a first episode link, suggesting a **YouTube** episode (with captions it takes a couple of minutes). Then follow the `episode` skill of this plugin.
+## 6. First episode (the first "wow" must come fast)
+Say that everything is ready and offer two options in one short message:
+- **the suggested episode**: *How to Get Your First 10 Customers* by Y Combinator (14 min, captions, ready in about 2 minutes): `https://www.youtube.com/watch?v=_FBivfgOvuE`;
+- **or their own link** (YouTube is fastest).
+If they just say "ok", "yes" or similar, use the suggested one. Then follow the `episode` skill of this plugin (invoke `cue:episode`).
 
 ## 7. Wrap up
 When the first page is ready, send a short message with:
