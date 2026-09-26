@@ -34,14 +34,23 @@ Summaries are written in the language you choose. Quotes stay in the original.
 
 ## Install
 
-In the Claude app, open **Claude Code** and send these two lines, one at a time:
+In the Claude desktop app, open the **Code** tab and start a session in any folder (for example *Documents*). Then:
+
+1. Click **+** next to the message box → **Plugins** → **Add plugin**.
+2. Choose **Add marketplace** and paste:
+   ```
+   https://github.com/NikolajSaudella/podcast-brain
+   ```
+3. Select **Podcast Brain** in the list and install it **for you**.
+
+<details>
+<summary>Using Claude Code in the terminal instead?</summary>
 
 ```
 /plugin marketplace add NikolajSaudella/podcast-brain
-```
-```
 /plugin install podcast-brain@podcast-brain
 ```
+</details>
 
 Then start a new chat and write:
 

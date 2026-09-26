@@ -36,14 +36,23 @@ I riassunti sono nella lingua che scegli. Le citazioni restano in lingua origina
 
 ## Installazione
 
-Nell'app Claude apri **Claude Code** e invia queste due righe, una alla volta:
+Nell'app Claude per computer apri la scheda **Code** e avvia una sessione in una cartella qualsiasi (per esempio *Documenti*). Poi:
+
+1. Clicca **+** accanto alla casella del messaggio → **Plugins** → **Add plugin**.
+2. Scegli **Add marketplace** e incolla:
+   ```
+   https://github.com/NikolajSaudella/podcast-brain
+   ```
+3. Seleziona **Podcast Brain** nella lista e installalo **per te**.
+
+<details>
+<summary>Usi Claude Code dal terminale?</summary>
 
 ```
 /plugin marketplace add NikolajSaudella/podcast-brain
-```
-```
 /plugin install podcast-brain@podcast-brain
 ```
+</details>
 
 Poi apri una nuova chat e scrivi:
 
