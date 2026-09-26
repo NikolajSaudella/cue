@@ -41,7 +41,7 @@ In the Claude desktop app, open the **Code** tab and start a session in any fold
    ```
    https://github.com/NikolajSaudella/podcast-brain
    ```
-3. Select **Podcast Brain** in the list and install it **for you**.
+3. Select **Podcast Brain** in the list and choose **Install for you**, so it works in every folder.
 
 <details>
 <summary>Using Claude Code in the terminal instead?</summary>

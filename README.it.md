@@ -43,7 +43,7 @@ Nell'app Claude per computer apri la scheda **Code** e avvia una sessione in una
    ```
    https://github.com/NikolajSaudella/podcast-brain
    ```
-3. Seleziona **Podcast Brain** nella lista e installalo **per te**.
+3. Seleziona **Podcast Brain** nella lista e scegli **Install for you**, così funziona in ogni cartella.
 
 <details>
 <summary>Usi Claude Code dal terminale?</summary>
