@@ -1,0 +1,15 @@
+name: An idea for Cue
+description: A feature, a source you'd like supported, or something that would make Cue more useful.
+labels: ["idea"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like Cue to do?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it help you?
+      description: A real example from your week is perfect.

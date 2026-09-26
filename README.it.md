@@ -7,6 +7,8 @@
 
 # cue
 
+[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases)
+
 **Podcast e video che ricordi davvero, e cosa significano per te.**
 
 Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa *per te* e cosa fare, e la collega a tutto quello che hai già ascoltato. Un plugin gratuito per l'app Claude. *(Si pronuncia come la lettera Q.)*
@@ -69,6 +71,8 @@ Claude ti fa 4 domande veloci, crea il tuo spazio su Notion, installa quello che
 
 **Dove finiscono i miei dati?** Audio e trascrizioni restano sul tuo computer, le note vanno solo nel tuo Notion. Cue non ha server né statistiche.
 
+**È sicuro?** Il codice è aperto, chiunque può leggerlo. Cue esegue solo i suoi programmi di trascrizione, installa Python con l'installer ufficiale di uv dopo avertelo chiesto, e scrive solo nelle sue pagine Notion e nella sua cartella sul tuo computer. Non chiede mai password né chiavi API.
+
 **Quanto ci mette?** Un paio di minuti per i video YouTube con sottotitoli. L'audio da trascrivere richiede circa 30-45 minuti per ogni ora su un portatile normale, in background.
 
 Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.md](docs/how-it-works.md).
@@ -78,5 +82,7 @@ Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.m
 **Perché "cue"?** Il *cue point* è il punto preciso di una traccia da cui ripartire; il *retrieval cue* è lo spunto che fa tornare in mente un ricordo.
 
 **Prossimi passi:** iscrizioni ai tuoi programmi preferiti, un digest settimanale, elaborazioni automatiche e forse altre app di AI (ChatGPT / Codex). Idee e bug: [Issues](../../issues).
+
+Se Cue ti è utile, una ⭐ su GitHub aiuta altri a trovarlo.
 
 Creato da [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere. Licenza MIT.

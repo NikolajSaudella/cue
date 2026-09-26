@@ -7,6 +7,8 @@
 
 # cue
 
+[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases)
+
 **Podcasts and videos you actually remember — and what they mean for you.**
 
 Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for *you*, and what to do next, and connects it to everything you've heard before. A free plugin for the Claude app. *(Pronounced like the letter Q.)*
@@ -69,6 +71,8 @@ Claude asks you 4 quick questions, creates your space in Notion, installs everyt
 
 **Where does my data go?** Audio and transcripts stay on your computer; notes go only to your Notion. Cue has no server and no analytics.
 
+**Is it safe?** The code is open, so anyone can read it. Cue only runs its own transcription scripts, installs Python through the official uv installer after asking you, and writes only to its own Notion pages and its own folder on your computer. It never asks for passwords or API keys.
+
 **How long does it take?** A couple of minutes for YouTube videos with captions. Audio that needs transcribing takes roughly 30-45 minutes per hour on a typical laptop, in the background.
 
 More questions, and how it works under the hood: [docs/how-it-works.md](docs/how-it-works.md).
@@ -78,5 +82,7 @@ More questions, and how it works under the hood: [docs/how-it-works.md](docs/how
 **Why "cue"?** A *cue point* is the exact spot in a track you jump back to; a *retrieval cue* is the hint that brings a memory back.
 
 **Next:** subscriptions to your favourite shows, a weekly digest, scheduled runs, and maybe other AI apps (ChatGPT / Codex). Ideas and bugs: [Issues](../../issues).
+
+If Cue helps you, a ⭐ on GitHub helps others find it.
 
 Built by [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer. MIT License.

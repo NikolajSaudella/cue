@@ -1,0 +1,37 @@
+name: Something didn't work
+description: Tell us what happened, in your own words. No technical knowledge needed.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying Cue. Three short answers are enough to help us fix it.
+  - type: input
+    id: link
+    attributes:
+      label: Which link did you paste?
+      description: The podcast or video link, if the problem is with an episode.
+      placeholder: https://www.youtube.com/watch?v=...
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you expected, and what you saw instead. If Claude or Notion showed an error, paste it here.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Your computer
+      options:
+        - Windows
+        - Mac
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Cue version (optional)
+      description: In the Claude app, + → Plugins → Manage plugins shows it.
+      placeholder: "0.1.3"
