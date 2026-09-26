@@ -77,6 +77,7 @@ Give the databases icons: Episodes 🎧, Concepts 💡, Actions ✅ (with `notio
 - On Episodes, a table named "📥 Inbox": `FILTER "Status" IS EMPTY OR "Status" IN ("📥 To process", "⏳ Processing"); SORT BY "Added" ASC; SHOW "Title", "Link", "Status", "Progress"`.
 - On Episodes, a gallery named "📚 Library": `FILTER "Status" = "✅ Done"; SORT BY "Added" DESC; SHOW "Podcast", "TL;DR", "Topics"`.
 - On Actions, a table named "To do": `FILTER "Done" = FALSE; SHOW "Action", "Type", "Why", "Episode"`.
+- On the **home page**, a linked table view of Episodes named "📥 Inbox" (`parent_page_id` = home page, `data_source_id` = Episodes), with the same configuration as the Inbox view above. This way the user sees the inbox (and can add links from their phone) right on the home page.
 - Fetch the Concepts database and note the URL of its default view (`view://…`).
 
 If a view fails, don't stop the setup: note it and carry on (the episode skill only needs the Inbox view and a Concepts view; any existing view of Concepts works).
