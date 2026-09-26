@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.1 — fixes from the first real tests
+
+- **Fix:** on Windows, closing the Claude app during a long transcription stopped Whisper halfway. The background transcription now keeps going.
+- **Honest timing:** transcribing audio takes roughly 30-45 minutes per hour on a typical laptop (the docs said 10-15). YouTube episodes with captions are still ready in a couple of minutes.
+
 ## v0.1.0 — first public version
 
 The first release of cue: podcasts you actually remember, and what they mean for you.

@@ -59,7 +59,7 @@ Property **names** and **select options** are fixed and in English: use them exa
   The link is in `Link`; if empty, look for it in the title or page content. If there is no link at all, set `⚠️ Error` and explain in `TL;DR`.
   Before starting, set `Status` = `⏳ Processing` (and `Link`, if you found it elsewhere).
 
-Tell the user roughly how long it takes: a few minutes for YouTube episodes with captions; for audio that needs transcribing, about 10-15 minutes per hour of audio (the first time also downloads a ~500 MB speech model).
+Tell the user roughly how long it takes: a few minutes for YouTube episodes with captions; for audio that needs transcribing, roughly 30-45 minutes per hour of audio on a typical laptop (the first time also downloads a ~500 MB speech model). The transcription runs in the background: the user can keep working, but the computer must stay on. If it was interrupted anyway (computer turned off), running the same command starts it again.
 
 ## Steps for each episode
 

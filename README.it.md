@@ -102,7 +102,7 @@ Da lì fa tutto Claude:
 
 Tempi:
 - **Puntate YouTube con sottotitoli:** un paio di minuti.
-- **Puntate da trascrivere:** circa 10-15 minuti per ogni ora di audio.
+- **Puntate da trascrivere** (Spotify, Apple Podcasts, YouTube senza sottotitoli): circa 30-45 minuti per ogni ora di audio su un portatile normale, meno sui computer recenti. Lavora in background: puoi fare altro, ma il computer deve restare acceso.
 
 ## Come funziona
 

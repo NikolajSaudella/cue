@@ -33,6 +33,9 @@ from urllib.parse import parse_qs, urlparse
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 os.environ.setdefault("HF_HUB_DISABLE_IMPLICIT_TOKEN", "1")
 os.environ.setdefault("HF_HUB_VERBOSITY", "error")
+# Whisper's math library (Intel runtime) aborts on console close / Ctrl-C events on Windows:
+# without this, closing the Claude app mid-transcription kills the background worker.
+os.environ.setdefault("FOR_DISABLE_CONSOLE_CTRL_HANDLER", "1")
 
 import requests
 

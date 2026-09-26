@@ -142,7 +142,7 @@ If they just say "ok", "yes" or similar, use the suggested one. Then follow the 
 When the first page is ready, send a short message with:
 - the link to their **cue** page in Notion;
 - the 3 ways to use it (paste a link here · Inbox in Notion + "process my inbox" · update "🧭 My context");
-- one tip: long episodes without captions take about 10-15 minutes per hour of audio, and the computer must stay on meanwhile.
+- one tip: episodes without captions (Spotify, most podcasts) take roughly 30-45 minutes per hour of audio; it runs in the background, but the computer must stay on meanwhile.
 
 ## Rules
 - Never create anything outside the new cue page, and never modify or delete existing Notion pages.

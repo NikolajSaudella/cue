@@ -99,7 +99,7 @@ Claude takes it from there. It will:
 
 How long it takes:
 - **YouTube episodes with captions:** a couple of minutes.
-- **Episodes that need transcribing:** about 10-15 minutes per hour of audio.
+- **Episodes that need transcribing** (Spotify, Apple Podcasts, YouTube without captions): roughly 30-45 minutes per hour of audio on a typical laptop, faster on recent computers. It runs in the background: you can keep working, but keep the computer on.
 
 ## How it works
 
