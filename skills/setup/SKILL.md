@@ -54,19 +54,61 @@ Apply their corrections and move on. Another round only if they corrected someth
 ## 5. Create the Notion space
 Tell the user you are creating their Cue space in Notion. Then, in this order:
 
-**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), icon 🎧, title "cue", lowercase like the logo (never put emoji in page titles: use the icon). Content, written in the user's language:
-```
-<callout icon="🎧" color="blue_bg">
-	Paste a podcast or video link in Claude and get here: what it says, what it means for you, and what to do next.
-</callout>
-## How to use it
-- **In Claude:** paste the link of a podcast episode or a video (YouTube, Spotify, Apple Podcasts).
-- **From your phone:** add a row to the **Inbox** below with the link, then tell Claude "process my inbox".
-- **Make it yours:** keep "🧭 My context" up to date: it's what makes the notes personal.
----
-```
+**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), title "cue", lowercase like the logo (never put emoji in page titles: use the icon), and the cue brand:
+- `icon`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-icon.png`
+- `cover`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-cover.png`
 
-**b. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from steps 2-4. Leave out a section when you have nothing true to put in it: never invent.
+Content, written in the user's language (keep the emoji, the `orange` colors and the database names Episodes, Concepts, Actions; translate "My context" as in step c):
+```
+<callout icon="🟠" color="orange_bg">
+	**Podcasts and videos you actually remember.** Paste a link in Claude and find it here: what it says, what it means for you, and what to do next.
+</callout>
+<columns>
+	<column>
+		### 💬 In Claude {color="orange"}
+		Paste the link of a podcast or a video (YouTube, Spotify, Apple Podcasts). With captions it's ready in a couple of minutes.
+	</column>
+	<column>
+		### 📱 From your phone {color="orange"}
+		Add the link as a new row in the **Inbox** below, then tell Claude "process my inbox".
+	</column>
+	<column>
+		### 🧭 Make it yours {color="orange"}
+		Keep **My context** up to date: who you are, what you're building, your questions. It's what makes the notes personal.
+	</column>
+</columns>
+<details>
+<summary>**Good to know**</summary>
+	- **Timing:** YouTube videos with captions are ready in about 2 minutes. Without captions (Spotify, most podcasts) it takes 30-45 minutes per hour of audio: it runs in the background, but the computer must stay on.
+	- **Privacy:** transcripts stay on your computer. Only the notes go to Notion.
+	- **Updates:** in the Claude app, **+** → **Plugins** → **Manage plugins** → **cue** → **Update**.
+	- **Open source:** [github.com/NikolajSaudella/cue](https://github.com/NikolajSaudella/cue)
+</details>
+## 🗂️ Inside cue
+- **Episodes:** one note per episode: in short, key ideas, chapters with timestamps, quotes and what it means for you.
+- **Concepts:** the ideas that come back across episodes, with who agrees and who doesn't.
+- **Actions:** concrete things to read, try and apply to your projects.
+- **My context:** who you are, what you're building and how you like your notes. Cue reads it before every episode.
+```
+Every page, database and linked view you create on the home page next is added **at the end of the page**, so the order of the steps below is the order on the page: Episodes, Concepts, Actions and My context right under this list, then the Inbox and the Library at the bottom.
+
+**b. Databases**, all with `parent: {page_id: <home>}`. Use exactly these schemas (property names and options in English; the skills rely on them):
+
+Episodes, title "Episodes":
+```
+CREATE TABLE ("Title" TITLE, "Status" SELECT('📥 To process':gray, '⏳ Processing':yellow, '✅ Done':green, '⚠️ Error':red), "Link" URL, "Podcast" RICH_TEXT, "Guests" RICH_TEXT, "TL;DR" RICH_TEXT, "Topics" MULTI_SELECT('Startups':blue, 'Product':purple, 'Growth':green, 'Marketing':pink, 'Sales':orange, 'Fundraising & VC':yellow, 'Leadership':red, 'Careers':brown, 'AI & Tech':blue, 'Economics':gray, 'Personal finance':green, 'Productivity':purple, 'Mindset':pink, 'Health':green, 'Science':blue, 'Society & Politics':orange, 'Design':purple, 'Other':gray), "Source" SELECT('YouTube':red, 'Spotify':green, 'Apple Podcasts':purple, 'Other':gray), "Duration (min)" NUMBER, "Published" DATE, "Rating" SELECT('🔥 Must-listen':red, '👍 Good':green, '😐 Meh':gray), "Progress" RICH_TEXT, "Added" CREATED_TIME)
+```
+Concepts, title "Concepts" (replace `<EPISODES_DS>` with the Episodes data source ID returned above):
+```
+CREATE TABLE ("Concept" TITLE, "Description" RICH_TEXT, "Category" SELECT('Business & Startups':blue, 'Technology & AI':purple, 'Economics & Finance':green, 'Mind & Productivity':pink, 'Leadership & People':orange, 'Health & Wellbeing':green, 'Science':blue, 'Society & Culture':yellow, 'Other':gray), "Episodes" RELATION('<EPISODES_DS>', DUAL 'Concepts'))
+```
+Actions, title "Actions":
+```
+CREATE TABLE ("Action" TITLE, "Type" SELECT('📚 Read':blue, '🛠️ Try':orange, '🚀 For my projects':red, '💡 Apply':yellow, '👤 Follow':purple, '🎓 Learn':green), "Why" RICH_TEXT, "Done" CHECKBOX, "Episode" RELATION('<EPISODES_DS>', DUAL 'Actions'))
+```
+Give the databases icons: Episodes 🎧, Concepts 💡, Actions ✅ (with `notion-update-page` on each database page, if the create call didn't set them).
+
+**c. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from steps 2-4. Leave out a section when you have nothing true to put in it: never invent.
 ```
 <callout icon="🧭" color="gray_bg">
 	Cue reads this page before every episode to write "What it means for me". Edit it whenever something changes.
@@ -85,28 +127,27 @@ Tell the user you are creating their Cue space in Notion. Then, in this order:
 - **Skip the basics of:** <topics they know well, or "—">
 ```
 
-**c. Databases**, all with `parent: {page_id: <home>}`. Use exactly these schemas (property names and options in English; the skills rely on them):
-
-Episodes, title "Episodes":
-```
-CREATE TABLE ("Title" TITLE, "Status" SELECT('📥 To process':gray, '⏳ Processing':yellow, '✅ Done':green, '⚠️ Error':red), "Link" URL, "Podcast" RICH_TEXT, "Guests" RICH_TEXT, "TL;DR" RICH_TEXT, "Topics" MULTI_SELECT('Startups':blue, 'Product':purple, 'Growth':green, 'Marketing':pink, 'Sales':orange, 'Fundraising & VC':yellow, 'Leadership':red, 'Careers':brown, 'AI & Tech':blue, 'Economics':gray, 'Personal finance':green, 'Productivity':purple, 'Mindset':pink, 'Health':green, 'Science':blue, 'Society & Politics':orange, 'Design':purple, 'Other':gray), "Source" SELECT('YouTube':red, 'Spotify':green, 'Apple Podcasts':purple, 'Other':gray), "Duration (min)" NUMBER, "Published" DATE, "Rating" SELECT('🔥 Must-listen':red, '👍 Good':green, '😐 Meh':gray), "Progress" RICH_TEXT, "Added" CREATED_TIME)
-```
-Concepts, title "Concepts" (replace `<EPISODES_DS>` with the Episodes data source ID returned above):
-```
-CREATE TABLE ("Concept" TITLE, "Description" RICH_TEXT, "Category" SELECT('Business & Startups':blue, 'Technology & AI':purple, 'Economics & Finance':green, 'Mind & Productivity':pink, 'Leadership & People':orange, 'Health & Wellbeing':green, 'Science':blue, 'Society & Culture':yellow, 'Other':gray), "Episodes" RELATION('<EPISODES_DS>', DUAL 'Concepts'))
-```
-Actions, title "Actions":
-```
-CREATE TABLE ("Action" TITLE, "Type" SELECT('📚 Read':blue, '🛠️ Try':orange, '🚀 For my projects':red, '💡 Apply':yellow, '👤 Follow':purple, '🎓 Learn':green), "Why" RICH_TEXT, "Done" CHECKBOX, "Episode" RELATION('<EPISODES_DS>', DUAL 'Actions'))
-```
-Give the databases icons: Episodes 🎧, Concepts 💡, Actions ✅ (with `notion-update-page` on each database page, if the create call didn't set them).
-
 **d. Views** with `notion-create-view` (`database_id` + `data_source_id`):
 - On Episodes, a table named "📥 Inbox": `FILTER "Status" IS EMPTY OR "Status" IN ("📥 To process", "⏳ Processing"); SORT BY "Added" ASC; SHOW "Title", "Link", "Status", "Progress"`.
 - On Episodes, a gallery named "📚 Library": `FILTER "Status" = "✅ Done"; SORT BY "Added" DESC; SHOW "Podcast", "TL;DR", "Topics"`.
 - On Actions, a table named "To do": `FILTER "Done" = FALSE; SHOW "Action", "Type", "Why", "Episode"`.
-- On the **home page**, a linked table view of Episodes named "📥 Inbox" (`parent_page_id` = home page, `data_source_id` = Episodes), with the same configuration as the Inbox view above. This way the user sees the inbox (and can add links from their phone) right on the home page.
 - Fetch the Concepts database and note the URL of its default view (`view://…`).
+
+Then the bottom of the **home page**, with these four calls **in this order** (each one adds to the end of the page). The Inbox only shows links still to process: a finished episode leaves it, so the Library must be on the home page too, or the user thinks their episode is missing.
+1. `notion-update-page` with `insert_content`, `position: {"type": "end"}`, in the user's language:
+   ```
+   ## 📥 Inbox
+   <span color="gray">Links waiting to be processed. When an episode is ready it leaves the Inbox and you find it in the Library, below.</span>
+   ```
+2. `notion-create-view`: a linked table of Episodes named "📥 Inbox" (`parent_page_id` = home page, `data_source_id` = Episodes), with the same configuration as the Inbox view above.
+3. `notion-update-page` with `insert_content`, `position: {"type": "end"}`, in the user's language:
+   ```
+   ## 📚 Library
+   <span color="gray">Your finished episodes, newest first. Open a card to read the note.</span>
+   ```
+4. `notion-create-view`: a linked gallery of Episodes named "📚 Library" (`parent_page_id` = home page, `data_source_id` = Episodes), with the same configuration as the Library view above.
+
+Never rearrange the home page afterwards with `replace_content`: Notion doesn't move linked views reliably, and they end up in the wrong place.
 
 If a view fails, don't stop the setup: note it and carry on (the episode skill only needs the Inbox view and a Concepts view; any existing view of Concepts works).
 
@@ -160,7 +201,7 @@ Cue transcribes episodes **on the user's computer** with free tools. They are in
 
 ## 8. Wrap up
 When the first page is ready, send a short message with:
-- the link to their **cue** page in Notion;
+- the link to their **cue** page in Notion, and where finished episodes go: the **📚 Library** on that page (the Inbox only shows links still to process);
 - the 3 ways to use it (paste a link here · Inbox in Notion + "process my inbox" · update "🧭 My context", including how they like their notes);
 - one tip: episodes without captions (Spotify, most podcasts) take roughly 30-45 minutes per hour of audio; it runs in the background, but the computer must stay on meanwhile.
 

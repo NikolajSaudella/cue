@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.1 — a home page that looks like cue
+
+- **Your episodes show up on the home page.** The cue page now has the 📚 Library under the 📥 Inbox. Before, a finished episode left the Inbox (which only shows links still to process) and seemed to disappear. Already set up? Your episodes are in **Episodes → 📚 Library**.
+- **The cue look.** The home page gets the cue logo and cover, the brand's orange, and a clearer guide: three ways to use it, what's inside each database, and a "Good to know" section (timing, privacy, updates).
+
 ## v0.3.0 — an onboarding that's about you
 
 - **Faster, more personal setup.** Most questions are now one tap (who you are, what you want from podcasts and videos, short or detailed notes). Then two open questions: what you're building (a link to your website is enough: Claude reads it) and the question you're trying to answer these months.
