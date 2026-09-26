@@ -63,3 +63,13 @@ Databases are read through views (the connector's "view mode"). That mode has no
 uv run --script scripts/transcribe.py --check --data ~/.cue
 uv run --script scripts/transcribe.py "https://www.youtube.com/watch?v=..." --data ~/.cue
 ```
+
+## Releasing an update
+
+Claude Code decides whether an installed plugin needs updating by comparing the `version` in `.claude-plugin/plugin.json`. **Every change meant for users needs a new version number**, otherwise people who already installed cue never receive it:
+
+1. Bump `version` in `.claude-plugin/plugin.json` (e.g. `0.1.0` → `0.1.1` for fixes, `0.2.0` for new features).
+2. Add a section to `CHANGELOG.md`.
+3. Commit, tag (`git tag -a v0.1.1 -m "..."`) and push with `--follow-tags`, then publish a GitHub release from the tag.
+
+Users get it with **+ → Plugins → Manage plugins → cue → Update**, or automatically if they turned on auto-update for the `cue` marketplace.
