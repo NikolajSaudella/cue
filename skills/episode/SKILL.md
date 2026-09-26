@@ -136,6 +136,8 @@ Create rows in Actions with `Episode` = [episode page].
 
 ## Rules
 - In **properties** (Title, TL;DR, Progress…) write plain text: no escapes (`\|`, `\*`). Escapes are only for page content.
+- Write file names, commands and paths as inline code (`` `CLAUDE.md` ``, `` `/memory` ``): otherwise Notion turns names like CLAUDE.md into web links.
+- Claims the episode makes about third parties (companies, people, products) are the speaker's claims: attribute them ("according to the episode…") instead of stating them as facts.
 - Every chapter is a toggle heading with **all** its bullets indented with a tab, the last chapter included: check before sending.
 - Don't invent anything that isn't in the transcript: numbers, names and quotes must come from it. If a name is transcribed badly and you are unsure, write it as you hear it and add "(?)".
 - Dense, concrete summaries: no generic sentences like "they discuss the importance of…".

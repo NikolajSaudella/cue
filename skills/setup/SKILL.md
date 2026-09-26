@@ -31,7 +31,7 @@ If an answer is vague, ask **one** follow-up at most. Don't turn it into a quest
 ## 4. Create the Notion space
 Tell the user you are creating their Podcast Brain space in Notion. Then, in this order:
 
-**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), icon 🎧, title "Podcast Brain". Content, written in the user's language:
+**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), icon 🎧, title "Podcast Brain" (never put emoji in page titles: use the icon). Content, written in the user's language:
 ```
 <callout icon="🎧" color="blue_bg">
 	Paste a podcast link in Claude and get here: what it says, what it means for you, and what to do next.
@@ -43,7 +43,7 @@ Tell the user you are creating their Podcast Brain space in Notion. Then, in thi
 ---
 ```
 
-**b. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, written in the user's language from the interview:
+**b. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from the interview:
 ```
 <callout icon="🧭" color="gray_bg">
 	Podcast Brain reads this page before every episode to write "What it means for me". Edit it whenever something changes.
