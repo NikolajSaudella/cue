@@ -37,7 +37,7 @@ Summaries are written in the language you choose. Quotes stay in the original.
 In the Claude app, open **Claude Code** and send these two lines, one at a time:
 
 ```
-/plugin marketplace add OWNER/podcast-brain
+/plugin marketplace add NikolajSaudella/podcast-brain
 ```
 ```
 /plugin install podcast-brain@podcast-brain
@@ -122,7 +122,7 @@ Ideas and bug reports are welcome in [Issues](../../issues).
 
 ## Credits
 
-Built by [Nikolaj Saudella](https://www.linkedin.com/in/OWNER-LINKEDIN): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer.
+Built by [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer.
 Transcription by [yt-dlp](https://github.com/yt-dlp/yt-dlp), [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) and [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Python and dependencies are installed by [uv](https://github.com/astral-sh/uv).
 
 MIT License.

@@ -4,8 +4,19 @@
   "version": "0.1.0",
   "description": "Paste a podcast link, get Notion notes: what it says, what it means for you, and what to do next.",
   "author": {
-    "name": "Nikolaj Saudella"
+    "name": "Nikolaj Saudella",
+    "url": "https://www.linkedin.com/in/nikolajsaudella/"
   },
   "license": "MIT",
-  "keywords": ["podcast", "notion", "notes", "second-brain", "youtube", "spotify", "whisper"]
+  "keywords": [
+    "podcast",
+    "notion",
+    "notes",
+    "second-brain",
+    "youtube",
+    "spotify",
+    "whisper"
+  ],
+  "homepage": "https://github.com/NikolajSaudella/podcast-brain",
+  "repository": "https://github.com/NikolajSaudella/podcast-brain"
 }

@@ -39,7 +39,7 @@ I riassunti sono nella lingua che scegli. Le citazioni restano in lingua origina
 Nell'app Claude apri **Claude Code** e invia queste due righe, una alla volta:
 
 ```
-/plugin marketplace add OWNER/podcast-brain
+/plugin marketplace add NikolajSaudella/podcast-brain
 ```
 ```
 /plugin install podcast-brain@podcast-brain
@@ -100,5 +100,5 @@ Puoi aggiungere viste, spostare pagine e aggiungere proprietà tue. Non rinomina
 
 ## Crediti
 
-Creato da [Nikolaj Saudella](https://www.linkedin.com/in/OWNER-LINKEDIN): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere.
+Creato da [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere.
 Licenza MIT.
