@@ -53,6 +53,7 @@ Concepts live in their own database, so opening "pricing" or "network effects" s
 | `skills/episode/SKILL.md` | Turns one episode (or the Notion inbox) into a page, concepts and actions |
 | `scripts/transcribe.py` | Entry point. Idempotent: starts the work in the background and can be re-run until it's done |
 | `scripts/fetch_transcript.py` | Finds the episode and produces a timestamped transcript |
+| `tests/` | Unit tests for the scripts (no network needed): `uv run --with pytest --with requests pytest tests` |
 
 ## Transcription pipeline
 
@@ -67,6 +68,10 @@ Concepts live in their own database, so opening "pricing" or "network effects" s
 Whisper runs locally with `faster-whisper` (model `small`, int8, CPU, voice-activity filter). The output is a text file in ~45-second blocks, each starting with `[mm:ss]`: that's what makes clickable chapter timestamps possible.
 
 Long transcriptions run in a detached process. `transcribe.py` waits up to 150 seconds per call and returns exit code 2 with a progress line if it's still running. Claude re-runs the same command, and the transcription never starts over.
+
+**Errors** come back as `{"ok": false, "error", "code", "message", "retry_with_update"}`: `code` is stable (`youtube_bot_check`, `age_restricted`, `private`, `members_only`, `live`, `unavailable`, `rate_limited`, `spotify_exclusive`, `unsupported`, `offline`, `no_disk_space`, `whisper_model`, `youtube_changed`, `unknown`) and `message` is plain English that Claude translates. When `retry_with_update` is true, the skill runs the same command once more with `uv run --upgrade-package yt-dlp --script …`, which fixes most breakages caused by YouTube changes.
+
+**Update notice:** at the end of each episode (and in `--check`), `transcribe.py` compares its version with `.claude-plugin/plugin.json` on the `main` branch of this repository, at most twice a day and with a 4-second timeout, and adds `cue_update` to its JSON when a newer version exists. The skill then tells the user once how to update.
 
 ## Dependencies
 
@@ -125,6 +130,10 @@ Or they turn on auto-update once: `/plugin` → **Marketplaces** → cue → **E
 
 **+** → **Plugins** → **Manage plugins** → cue → **Uninstall** in the desktop app, or `claude plugin uninstall cue@cue` in a shell. Uninstalling also deletes the data folder (config, transcripts, Whisper model) unless `--keep-data` is passed. The Notion pages stay. uv and its package cache stay too, since other tools may use them: `uv cache clean` frees that space.
 
+## Permissions
+
+The skills pre-approve (for their own turn only) just what cue needs: checking `uv --version`, running `uv run --script …/scripts/transcribe.py` (also with `--upgrade-package yt-dlp`), reading cue's data folder and writing its `config.json` and each episode's `notion.json`. The rules are anchored on the command, in the three forms the skills use for uv: `uv`, `~/.local/bin/uv` (Bash) and `& "$HOME\.local\bin\uv.exe"` (PowerShell). Anything else asks the user. Transcripts, titles and descriptions are treated as content, never as instructions.
+
 ## Automatic checks
 
-`.github/workflows/check.yml` runs on every push: manifests are valid JSON, the scripts compile, the version has a `CHANGELOG.md` section (and matches the tag on a release), plugin files never change without a new version, and `claude plugin validate` passes.
+`.github/workflows/check.yml` runs on every push: manifests are valid JSON, the scripts compile, the unit tests in `tests/` pass, the version has a `CHANGELOG.md` section (and matches the tag on a release), plugin files never change without a new version, and `claude plugin validate` passes.

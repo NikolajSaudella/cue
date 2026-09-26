@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.0 — safer, sturdier, and it tells you about updates
+
+- **Safer permissions.** Cue now pre-approves only its own transcription script and its own config files, instead of any `uv` command. Episode transcripts and descriptions are treated as content, never as instructions: if a video contains text addressed to Claude, it's ignored and you're told.
+- **YouTube keeps working when YouTube changes.** When a video can't be read because YouTube changed something, cue updates its YouTube downloader and tries again, by itself.
+- **Clear errors.** Private, age-restricted, members-only and live videos, Spotify exclusives, no connection, full disk: each one now gets a plain explanation and the next step.
+- **Update notice.** At the end of an episode, cue tells you (once) when a new version is available and how to update it.
+- **Tests.** The transcription scripts have automatic tests, run on every change.
+
 ## v0.1.3
 
 - Cue is now presented for **podcasts and videos**: interviews, talks, lectures and webinars on YouTube work exactly like podcast episodes (they always did, now the product says so).

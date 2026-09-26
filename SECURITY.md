@@ -8,6 +8,8 @@
 
 It has no server, no account and no analytics, and it never asks for passwords or API keys. Everything it runs is in this repository.
 
+While it works, cue pre-approves only its own transcription script and its own config files: any other command needs your approval. Transcripts and video descriptions are written by strangers, so cue treats them as content and never follows instructions found in them.
+
 ## Reporting a problem
 
 If you find a security issue, please **don't open a public issue**. Report it privately instead:

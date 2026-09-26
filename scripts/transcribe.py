@@ -28,18 +28,56 @@ import ctypes
 import json
 import os
 import platform
+import re
 import shutil
 import subprocess
 import sys
 import time
 from pathlib import Path
 
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fetch_transcript as ft  # noqa: E402
 
 PYTHON = sys.executable
 WORKER = Path(__file__).resolve().parent / "fetch_transcript.py"
+PLUGIN_JSON = Path(__file__).resolve().parent.parent / ".claude-plugin" / "plugin.json"
+# What users get when they update: the version on the default branch of the repository
+LATEST_URL = "https://raw.githubusercontent.com/NikolajSaudella/cue/main/.claude-plugin/plugin.json"
+UPDATE_EVERY = 12 * 3600  # check GitHub at most twice a day
+
+
+def version_tuple(v):
+    parts = [int(x) for x in re.findall(r"\d+", str(v or ""))[:3]]
+    return tuple(parts + [0] * (3 - len(parts)))
+
+
+def update_info():
+    """{"current", "latest"} when a newer cue exists on GitHub, else None. Never fails, never slow (4 s max, cached)."""
+    try:
+        current = json.loads(PLUGIN_JSON.read_text(encoding="utf-8"))["version"]
+    except (OSError, ValueError, KeyError):
+        return None
+    cache = ft.DATA_DIR / "update-check.json"
+    data = read_json(cache) or {}
+    if time.time() - data.get("checked_at", 0) > UPDATE_EVERY:
+        latest = data.get("latest")
+        try:
+            r = ft.HTTP.get(LATEST_URL, timeout=4)
+            if r.ok:
+                latest = r.json().get("version") or latest
+        except Exception:
+            pass
+        data = {"checked_at": time.time(), "latest": latest}
+        try:
+            cache.write_text(json.dumps(data), encoding="utf-8")
+        except OSError:
+            pass
+    latest = data.get("latest")
+    if latest and version_tuple(latest) > version_tuple(current):
+        return {"current": current, "latest": latest}
+    return None
 
 
 def pid_alive(pid):
@@ -116,6 +154,13 @@ def check():
         report["data_writable"] = f"no: {e}"
         report["ok"] = False
     report["whisper_model_downloaded"] = any(ft.MODELS_DIR.glob("models--*whisper-small*")) if ft.MODELS_DIR.exists() else False
+    try:
+        report["cue_version"] = json.loads(PLUGIN_JSON.read_text(encoding="utf-8"))["version"]
+    except (OSError, ValueError, KeyError):
+        pass
+    upd = update_info()
+    if upd:
+        report["cue_update"] = upd
     print(json.dumps(report, ensure_ascii=False, indent=2))
     sys.exit(0 if report["ok"] else 1)
 
@@ -142,7 +187,7 @@ def main():
     try:
         source = ft.detect_source(url)
     except ft.FetchError as e:
-        print(json.dumps({"ok": False, "error": str(e)}, ensure_ascii=False))
+        print(json.dumps({"ok": False, "error": str(e), **ft.classify_error(e)}, ensure_ascii=False, indent=2))
         sys.exit(1)
     workdir = ft.EPISODES_DIR / ft.work_id(source, url)
     workdir.mkdir(parents=True, exist_ok=True)
@@ -178,7 +223,12 @@ def main():
         }, ensure_ascii=False, indent=2))
         sys.exit(2)
     if not result:
-        result = {"ok": False, "error": "The process ended without a result", "log": last_progress(log_path)}
+        err = ft.FetchError("The process ended without a result")
+        result = {"ok": False, "error": str(err), "log": last_progress(log_path), **ft.classify_error(err, [last_progress(log_path)], source)}
+    # tell the user about a new version once the episode is done (or failed), not while it's running
+    upd = update_info()
+    if upd:
+        result["cue_update"] = upd
     print(json.dumps(result, ensure_ascii=False, indent=2))
     sys.exit(0 if result.get("ok") else 1)
 

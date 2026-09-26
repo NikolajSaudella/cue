@@ -2,14 +2,17 @@
 name: setup
 description: First-time setup of Cue — a short interview about the user's projects and goals, creation of the Cue space in their Notion, and installation of the transcription tools. Use it when the user asks to set up, install, configure or reset Cue, or when the episode skill finds no configuration.
 allowed-tools:
-  - Bash(uv *)
-  - Bash(*uv.exe *)
-  - Bash(*/.local/bin/uv *)
-  - PowerShell(uv *)
-  - PowerShell(*uv.exe *)
-  - Read(~/.claude/plugins/data/**)
-  - Write(~/.claude/plugins/data/**)
-  - Edit(~/.claude/plugins/data/**)
+  - Bash(uv --version)
+  - Bash(~/.local/bin/uv --version)
+  - Bash(uv run --script *scripts/transcribe.py*)
+  - Bash(~/.local/bin/uv run --script *scripts/transcribe.py*)
+  - PowerShell(uv --version)
+  - PowerShell(& "$HOME\.local\bin\uv.exe" --version)
+  - PowerShell(uv run --script *scripts/transcribe.py*)
+  - PowerShell(& "$HOME\.local\bin\uv.exe" run --script *scripts/transcribe.py*)
+  - Read(~/.claude/plugins/data/cue-*/**)
+  - Write(~/.claude/plugins/data/cue-*/config.json)
+  - Edit(~/.claude/plugins/data/cue-*/config.json)
 ---
 
 # Cue: first-time setup
@@ -17,7 +20,7 @@ allowed-tools:
 The user is probably **not technical**. Talk like a friendly guide, in plain words, one step at a time. Never ask them to open a terminal or edit a file: you run every command, they just approve.
 Speak the user's language (the one they write in). Keep each message short.
 
-**Permissions:** this skill pre-approves the uv commands and the files in cue's data folder, but only for the turn in which the skill is loaded. At the start of every later turn of the setup (for example after the user answers the interview), invoke the `cue:setup` skill again to re-apply them, then continue from the step you were at: don't restart. Notion tools still ask once: tell the user they can choose "Always allow".
+**Permissions:** this skill pre-approves only checking uv, running cue's own transcription script and writing cue's config file, and only for the turn in which the skill is loaded. At the start of every later turn of the setup (for example after the user answers the interview), invoke the `cue:setup` skill again to re-apply them, then continue from the step you were at: don't restart. Notion tools still ask once: tell the user they can choose "Always allow".
 
 Setup takes about 5 minutes. Tell the user that at the start, with the 4 steps: **a few questions → your Notion space → install the tools → first episode**.
 
@@ -119,12 +122,12 @@ Fill `uv` after step 5 (write the file again).
 ## 5. Install the transcription tools
 Cue transcribes episodes **on the user's computer** with free tools. They are installed by **uv**, which also installs the right Python by itself.
 
-1. Check whether uv is there: run `uv --version`. If that fails, try the default install location: `~/.local/bin/uv --version` (Windows: `$HOME\.local\bin\uv.exe --version` in PowerShell).
+1. Check whether uv is there: run `uv --version`. If that fails, try the default install location: `~/.local/bin/uv --version` in Bash (on Windows too), or `& "$HOME\.local\bin\uv.exe" --version` in PowerShell.
 2. If uv is missing, explain in one sentence ("I need to install **uv**, a free and widely used tool that installs Python for Cue: it takes a few seconds") and run the official installer:
    - Windows (PowerShell): `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
    - macOS / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
-   Then use the full path (`~/.local/bin/uv`, or `$HOME\.local\bin\uv.exe` on Windows), because the current shell doesn't see the new command yet.
-3. Save in the config `uv` = the command that works (`uv`, or the full path).
+   Then use the install location (step 1), because the current shell doesn't see the new command yet.
+3. Save in the config `uv` = the command that works, written **exactly** in one of these forms: `uv` (on the PATH), `~/.local/bin/uv` (Bash, Windows included) or `& "$HOME\.local\bin\uv.exe"` (PowerShell). cue's permissions recognise only these forms: any other spelling makes the user approve every call.
 4. Run the health check (it installs everything the first time, about 1 minute; use a 10-minute timeout):
    ```
    <uv> run --script "${CLAUDE_PLUGIN_ROOT}/scripts/transcribe.py" --check --data "${CLAUDE_PLUGIN_DATA}"
@@ -146,6 +149,6 @@ When the first page is ready, send a short message with:
 
 ## Rules
 - Never create anything outside the new cue page, and never modify or delete existing Notion pages.
-- Ask before installing uv. Don't install anything else.
+- Ask before installing uv. Don't install anything else, and don't run commands other than the ones in this guide.
 - Never ask for passwords or API keys. Notion access goes only through the Claude connector.
 - If something fails, explain it simply and offer the next step: don't leave the user with a raw error.

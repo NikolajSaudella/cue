@@ -39,8 +39,9 @@ os.environ.setdefault("FOR_DISABLE_CONSOLE_CTRL_HANDLER", "1")
 
 import requests
 
-sys.stdout.reconfigure(encoding="utf-8")
-sys.stderr.reconfigure(encoding="utf-8")
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8")
 
 DATA_DIR = Path(os.environ.get("CUE_DATA") or Path.home() / ".cue")
 EPISODES_DIR = DATA_DIR / "episodes"
@@ -178,6 +179,57 @@ LIVE = None
 
 class FetchError(Exception):
     pass
+
+
+TRAIL = []  # errors met along the way (e.g. captions that failed), used to explain the final error
+
+
+# Known failures, checked in order: (code, patterns, plain message, worth retrying with a newer yt-dlp)
+KNOWN_ERRORS = [
+    ("youtube_bot_check", ("not a bot",),
+     "YouTube asked to confirm that you're not a bot, so the video couldn't be read. Try again in a few minutes.", True),
+    ("age_restricted", ("confirm your age", "age-restricted", "age restricted", "inappropriate for some users"),
+     "The video is age-restricted: YouTube shows it only to signed-in users, so cue can't read it.", False),
+    ("private", ("private video", "video is private"),
+     "The video is private.", False),
+    ("members_only", ("members-only", "join this channel", "channel's members", "members only"),
+     "The video is for channel members only.", False),
+    ("live", ("live event", "premieres in", "is live", "this live stream"),
+     "It's a live stream or a premiere that hasn't finished: try again when the recording is available.", False),
+    ("unavailable", ("video unavailable", "video is unavailable", "has been removed", "not available in your country",
+                     "not made this video available", "video is no longer available"),
+     "The video is not available (removed, or blocked in your country).", False),
+    ("rate_limited", ("http error 429", "too many requests", "requestblocked", "ipblocked"),
+     "YouTube is limiting requests from your connection right now. Try again in a few minutes.", False),
+    ("spotify_exclusive", ("no public audio found",),
+     "No public audio for this episode (it may be a Spotify exclusive). Try the YouTube link of the same episode.", False),
+    ("unsupported", ("unsupported source", "link not recognised", "without an episode"),
+     "This link isn't supported: use a YouTube, Spotify or Apple Podcasts episode link, or a link to an audio file.", False),
+    ("offline", ("failed to resolve", "getaddrinfo", "nameresolutionerror", "connectionerror", "max retries exceeded",
+                 "timed out", "network is unreachable"),
+     "No internet connection, or the site didn't answer. Check the connection and try again.", False),
+    ("no_disk_space", ("no space left",),
+     "The disk is full: free some space and try again.", False),
+    ("whisper_model", ("huggingface", "hf_hub", "snapshot_download"),
+     "The speech model couldn't be downloaded (first time only, about 500 MB). Check the connection and try again.", False),
+    ("youtube_changed", ("unable to extract", "nsig", "signature", "requested format is not available",
+                         "http error 403", "precondition check failed"),
+     "YouTube changed something on its side, so the video couldn't be read.", True),
+]
+
+
+def classify_error(error, trail=(), source=""):
+    """Turn an exception into a stable code, a plain-language message and whether a newer yt-dlp may fix it."""
+    text = " | ".join([f"{type(error).__name__}: {error}", *trail]).lower().replace("’", "'")
+    for code, patterns, message, retry in KNOWN_ERRORS:
+        if any(p in text for p in patterns):
+            return {"code": code, "message": message, "retry_with_update": retry}
+    return {
+        "code": "unknown",
+        "message": "Something went wrong while reading the episode.",
+        # yt-dlp breaks when YouTube changes: a newer version is the most common fix
+        "retry_with_update": source == "youtube",
+    }
 
 
 # --------------------------------------------------------------------------- utils
@@ -365,6 +417,7 @@ def fetch_youtube(url, workdir, model_name):
             info = ydl.extract_info(canonical, download=False) or {}
     except Exception as e:  # metadata is nice to have, not essential
         log(f"  yt-dlp metadata not available: {e}")
+        TRAIL.append(str(e)[:300])
 
     upload = info.get("upload_date") or ""
     meta = {
@@ -395,6 +448,7 @@ def fetch_youtube(url, workdir, model_name):
             break
         except Exception as e:
             log(f"  {name}: {type(e).__name__}: {str(e)[:200]}")
+            TRAIL.append(f"{type(e).__name__}: {str(e)[:300]}")
 
     if not segments:
         log("No captions: downloading the audio to transcribe it with Whisper...")
@@ -707,6 +761,7 @@ def main():
     LIVE.set("🔎 Finding the episode…")
 
     url = args.url.strip().strip("<>\"'")
+    source = ""
     try:
         source = detect_source(url)
         workdir = EPISODES_DIR / work_id(source, url)
@@ -750,7 +805,8 @@ def main():
         }, ensure_ascii=False, indent=2))
         LIVE.finish("✍️ Writing the summary…")
     except Exception as e:
-        print(json.dumps({"ok": False, "error": f"{type(e).__name__}: {e}"}, ensure_ascii=False, indent=2))
+        print(json.dumps({"ok": False, "error": f"{type(e).__name__}: {str(e)[:500]}", **classify_error(e, TRAIL, source)},
+                         ensure_ascii=False, indent=2))
         LIVE.finish("⚠️ Transcription error")
         sys.exit(1)
 

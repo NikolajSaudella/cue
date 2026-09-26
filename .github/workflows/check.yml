@@ -26,6 +26,11 @@ jobs:
       - name: Python scripts compile
         run: python -m py_compile scripts/*.py
 
+      - name: Unit tests
+        run: |
+          pip install --quiet pytest requests
+          pytest -q tests
+
       - name: Version is in the changelog (and matches the tag)
         run: |
           version=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
