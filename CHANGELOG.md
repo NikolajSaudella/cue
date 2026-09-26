@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+- **Fix:** YouTube videos with automatic dubbing offer captions in many languages; cue sometimes picked a translated track (e.g. Arabic for an English talk). It now always uses the video's original language.
+
 ## v0.1.1 — fixes from the first real tests
 
 - **Fix:** on Windows, closing the Claude app during a long transcription stopped Whisper halfway. The background transcription now keeps going.

@@ -315,8 +315,9 @@ def youtube_captions_api(video_id, lang_hint):
         raise FetchError("no captions")
     generated = [t for t in tlist if t.is_generated]
     manual = [t for t in tlist if not t.is_generated]
-    # The spoken language is the one of the automatic captions (or yt-dlp's hint)
-    spoken = (generated[0].language_code if generated else lang_hint or "").split("-")[0]
+    # The spoken language comes from YouTube's metadata (yt-dlp). Auto-dubbed videos have automatic
+    # captions in many languages, so the first generated track is only a fallback.
+    spoken = (lang_hint or (generated[0].language_code if generated else "")).split("-")[0]
     pick = None
     for t in manual + generated:
         if spoken and t.language_code.split("-")[0] == spoken:
