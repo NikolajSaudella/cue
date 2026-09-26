@@ -17,7 +17,7 @@ Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scriv
 
 [🇬🇧 Read in English](README.md)
 
-<img src="docs/images/video-connections.jpg" alt="Ogni puntata diventa idee, e le idee si collegano tra puntate: confermano, aggiungono, si contraddicono">
+<img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni">
 
 ▶ [Guarda il video di 30 secondi](https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196)
 
