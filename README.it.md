@@ -75,7 +75,7 @@ Claude ti fa 4 domande veloci, crea il tuo spazio su Notion, installa quello che
 
 **Quanto ci mette?** Un paio di minuti per i video YouTube con sottotitoli. L'audio da trascrivere richiede circa 30-45 minuti per ogni ora su un portatile normale, in background.
 
-**Come lo aggiorno?** Nell'app Claude: **+** → **Plugins** → **Manage plugins** → **cue** → **Update**. Per sapere quando esce una nuova versione, clicca **Watch** → **Custom** → **Releases** in cima a questa pagina.
+**Come lo aggiorno?** Nell'app Claude: **+** → **Plugins** → **Manage plugins** → **cue** → **Update** (o **Aggiorna**). Per sapere quando esce una nuova versione, clicca **Watch** → **Custom** → **Releases** in cima a questa pagina.
 
 **Come lo tolgo?** **+** → **Plugins** → **Manage plugins** → **cue** → **Uninstall**. Le pagine Notion restano tue; la cartella di Cue sul tuo computer (trascrizioni e modello vocale) se ne va con lui.
 

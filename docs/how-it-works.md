@@ -115,7 +115,7 @@ Claude Code decides whether an installed plugin needs updating by comparing the 
 
 Auto-update is off by default for marketplaces outside Anthropic's own, so users update by hand:
 
-- desktop app: **+** → **Plugins** → **Manage plugins** → cue;
+- desktop app: **+** → **Plugins** → **Manage plugins** → cue → **Update**;
 - terminal session: `/plugin` → **Installed** → cue → **Update now**;
 - shell: `claude plugin marketplace update cue` then `claude plugin update cue@cue`.
 
