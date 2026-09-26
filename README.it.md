@@ -21,6 +21,21 @@ Ascolti podcast bellissimi e dopo una settimana non ricordi niente. Cue trasform
 
 È un plugin gratuito per l'app Claude. Niente chiavi API, niente abbonamenti oltre al tuo piano Claude, niente codice.
 
+## Guardalo in azione
+
+**[Sfoglia la demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** Senza installare niente: due puntate di Y Combinator elaborate da cue per un founder di esempio che costruisce un'app per i turni dei ristoranti (demo in inglese).
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/episode-summary.png" alt="In breve e idee chiave, con i numeri veri della puntata"><br><sub>In breve e idee chiave, con i numeri veri della puntata</sub></td>
+    <td width="50%"><img src="docs/images/episode-for-me.png" alt="Cosa significa per me: legato alle domande del founder"><br><sub>Cosa significa per me: legato alle domande del founder</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/episode-chapters.png" alt="Capitoli con i minuti cliccabili"><br><sub>Capitoli con i minuti cliccabili</sub></td>
+    <td width="50%"><img src="docs/images/concept-disagreement.png" alt="Un concetto su cui due ospiti non sono d'accordo"><br><sub>Un concetto su cui due ospiti non sono d'accordo</sub></td>
+  </tr>
+</table>
+
 ## Perché si chiama così
 
 Nell'audio il **cue point** è il punto preciso di una traccia da cui ripartire: ogni nota di Cue ne ha uno. In psicologia il **retrieval cue** è lo spunto che fa tornare in mente un ricordo: è la promessa.

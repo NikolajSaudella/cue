@@ -17,7 +17,20 @@ You listen to great podcasts and forget them a week later. Cue turns each episod
 
 It's a free plugin for the Claude app. No API keys, no subscriptions beyond your Claude plan, no code.
 
-<!-- TODO: screenshot of an episode page → docs/images/episode-page.png -->
+## See it in action
+
+**[Browse the live demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** No install needed: two Y Combinator episodes processed by cue for an example founder who is building a scheduling app for restaurants.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/episode-summary.png" alt="In short and key ideas, with the episode's real numbers"><br><sub>In short and key ideas, with the episode's real numbers</sub></td>
+    <td width="50%"><img src="docs/images/episode-for-me.png" alt="What it means for me: tied to the founder's own questions"><br><sub>What it means for me: tied to the founder's own questions</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/episode-chapters.png" alt="Chapters with clickable timestamps"><br><sub>Chapters with clickable timestamps</sub></td>
+    <td width="50%"><img src="docs/images/concept-disagreement.png" alt="A concept where two guests disagree"><br><sub>A concept where two guests disagree</sub></td>
+  </tr>
+</table>
 
 ## Why the name
 
