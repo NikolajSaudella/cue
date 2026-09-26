@@ -19,7 +19,7 @@ Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scriv
 
 <img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni">
 
-▶ [Guarda il video di 30 secondi](https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196)
+▶ [Guarda il video di 30 secondi](https://github.com/user-attachments/assets/63b909c4-b687-4c8f-b27b-b83e1888be69)
 
 ## Prova la demo
 
