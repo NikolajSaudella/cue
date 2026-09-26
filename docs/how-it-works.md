@@ -2,6 +2,47 @@
 
 Cue is a [Claude Code plugin](https://code.claude.com/docs/en/plugins): two skills (instructions Claude follows) plus a small Python transcription engine. Claude is the "brain"; Notion is where the notes live; the user's computer does the transcription.
 
+```mermaid
+flowchart LR
+    A[🔗 Podcast or video link] --> B{Captions on YouTube?}
+    B -- yes --> D[📝 Timestamped transcript]
+    B -- no --> C[Find the public audio<br/>Spotify → Apple Podcasts / RSS]
+    C --> W[🎙️ Whisper, on your computer]
+    W --> D
+    D --> E[🧠 Claude reads it all<br/>+ your context page]
+    E --> F[📄 Page in Notion]
+    E --> G[💡 Concepts linked across episodes]
+    E --> H[✅ Actions]
+```
+
+## What a page contains
+
+- ⚡ **In short**: the core idea in 2-3 sentences
+- 🧠 **Key ideas**: 5-8 points with the real numbers and examples
+- 📑 **Chapters**: timestamps that jump straight to that minute
+- 💬 **Quotes**: word for word, with the minute they were said
+- 🧭 **What it means for me**: tied to the projects and goals in "🧭 My context"
+- 🔗 **Connections**: the concepts in the episode and what other episodes say about them (confirms / adds / disagrees)
+- ✅ **Actions**, 📚 resources mentioned, ❓ questions to reflect on
+
+Concepts live in their own database, so opening "pricing" or "network effects" shows everything every guest said about it.
+
+## More questions
+
+**How long does it take?** YouTube videos with captions: a couple of minutes. Audio that needs transcribing (Spotify, Apple Podcasts, YouTube without captions): roughly 30-45 minutes per hour of audio on a typical laptop, faster on recent computers. It runs in the background, but the computer must stay on. The first time also downloads a ~500 MB speech model.
+
+**Which sources work?** Spotify and Apple Podcasts episodes, any YouTube video (interviews, talks, lectures, webinars) and direct links to audio files. Spotify episodes are matched to the same public episode on Apple Podcasts or its RSS feed; Spotify exclusives can't be transcribed, so use the YouTube link if there is one.
+
+**Which languages?** Notes are written in the language chosen during setup; quotes stay in the original. The episode can be in any language Whisper understands.
+
+**Privacy?** Audio and transcripts stay on your computer. Notes go only to your Notion, through the connector you authorised. Claude runs in your own app, on your own plan. Cue has no server, no account, no analytics.
+
+**Can I change the Notion layout?** Add views, move pages, add your own properties: all fine. Don't rename the existing properties or their options: Cue uses those names.
+
+**Something went wrong.** Tell Claude what happened in your own words. The row in Notion also shows the error in plain language.
+
+**Credits.** Transcription by [yt-dlp](https://github.com/yt-dlp/yt-dlp), [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) and [faster-whisper](https://github.com/SYSTRAN/faster-whisper) (OpenAI's [Whisper](https://github.com/openai/whisper) model). Python and dependencies are installed by [uv](https://github.com/astral-sh/uv).
+
 ## Pieces
 
 | Path | What it does |
