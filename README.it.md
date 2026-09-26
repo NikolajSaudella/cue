@@ -1,0 +1,104 @@
+# 🎧 Podcast Brain
+
+**Incolli il link di un podcast. Ottieni cosa dice, cosa significa *per te* e cosa fare, nel tuo Notion.**
+
+[🇬🇧 Read in English](README.md)
+
+Ascolti podcast bellissimi e dopo una settimana non ricordi niente. Podcast Brain trasforma ogni puntata in una pagina Notion che userai davvero. Dentro trovi:
+- le idee chiave;
+- i capitoli con i minutaggi cliccabili;
+- le citazioni migliori;
+- la parte che conta: **come si collega ai tuoi progetti e cosa dovresti farne**.
+
+È un plugin gratuito per l'app Claude. Niente chiavi API, niente abbonamenti oltre al tuo piano Claude, niente codice.
+
+## Cosa ottieni
+
+Per ogni puntata, una pagina Notion con:
+
+- ⚡ **In breve:** l'idea centrale in 2-3 frasi.
+- 🧠 **Idee chiave:** 5-8 punti con i numeri e gli esempi veri della puntata.
+- 📑 **Capitoli:** con i minutaggi che portano dritti a quel momento.
+- 💬 **Citazioni:** parola per parola, con il minuto.
+- 🧭 **Cosa significa per me:** legato ai *tuoi* progetti e obiettivi, non consigli generici.
+- 🔗 **Collegamenti:** i concetti della puntata e cosa ne dicono le altre puntate che hai già elaborato: chi è d'accordo e chi no.
+- ✅ **Azioni:** passi concreti (un libro, un tool da provare, un'idea per il tuo progetto) raccolti in un'unica lista.
+
+Col tempo costruisci un **cervello**: una libreria di concetti che collega le puntate tra loro. Aprendo "effetti di rete" o "pricing" vedi tutto quello che ne ha detto ogni ospite.
+
+I riassunti sono nella lingua che scegli. Le citazioni restano in lingua originale.
+
+## Cosa ti serve
+
+- L'**app Claude** per computer (Windows o Mac) con un piano Claude **Pro o Max**.
+- Un account **Notion** collegato a Claude (Impostazioni → Connettori → Notion).
+- Circa 5 minuti.
+
+## Installazione
+
+Nell'app Claude apri **Claude Code** e invia queste due righe, una alla volta:
+
+```
+/plugin marketplace add OWNER/podcast-brain
+```
+```
+/plugin install podcast-brain@podcast-brain
+```
+
+Poi apri una nuova chat e scrivi:
+
+```
+Configura Podcast Brain
+```
+
+Da lì fa tutto Claude:
+1. **Ti fa 4 domande veloci:** chi sei, cosa stai costruendo, i tuoi obiettivi e i temi che ti interessano. È quello che rende gli appunti personali.
+2. **Crea il tuo spazio Podcast Brain su Notion:** una pagina principale, la pagina con il tuo contesto e i database Puntate, Concetti e Azioni (i nomi sono in inglese).
+3. **Installa gli strumenti di trascrizione** sul tuo computer. Tu approvi e basta: niente terminale.
+4. **Elabora con te la prima puntata.**
+
+## Uso quotidiano
+
+- **Incolla un link** in Claude: YouTube, Spotify o Apple Podcasts.
+- **Dal telefono:** aggiungi una riga con il link nell'**📥 Inbox** di Notion, poi di' a Claude "processa la mia inbox".
+- **Tieni aggiornata "🧭 My context":** nuovo progetto, nuovo obiettivo? Modifica la pagina e le prossime puntate ne terranno conto.
+
+Tempi:
+- **Puntate YouTube con sottotitoli:** un paio di minuti.
+- **Puntate da trascrivere:** circa 10-15 minuti per ogni ora di audio.
+
+## Come funziona
+
+- **La trascrizione avviene sul tuo computer.** Usa i sottotitoli di YouTube se ci sono; altrimenti Whisper, il modello open source di riconoscimento vocale.
+- **Le puntate Spotify** vengono abbinate alla stessa puntata pubblica su Apple Podcasts o nel suo feed RSS. Le esclusive Spotify non si possono trascrivere: usa il link YouTube, se esiste.
+- **Claude**, nella tua app e con il tuo piano, scrive gli appunti e parla con Notion tramite il connettore ufficiale.
+
+Più dettagli (in inglese): [docs/how-it-works.md](docs/how-it-works.md).
+
+## Privacy
+
+- Audio e trascrizioni restano **sul tuo computer**.
+- Gli appunti vanno solo nel **tuo** Notion, tramite il connettore che hai autorizzato.
+- Podcast Brain non ha server, account né statistiche.
+
+## Domande frequenti
+
+**Costa qualcosa?**
+No. Usa il tuo piano Claude e strumenti gratuiti e open source.
+
+**Il computer deve restare acceso?**
+Sì, mentre una puntata viene elaborata, perché la trascrizione gira in locale.
+
+**Posso cambiare l'aspetto su Notion?**
+Puoi aggiungere viste, spostare pagine e aggiungere proprietà tue. Non rinominare le proprietà esistenti né le loro opzioni: Podcast Brain usa quei nomi.
+
+## Prossime funzioni
+
+- 📡 **Iscrizioni:** segui un podcast o un canale YouTube e le puntate nuove arrivano da sole.
+- 📬 **Digest della settimana:** ogni domenica le idee che sono tornate e 3 azioni.
+- ⏰ **Automazioni:** l'inbox elaborata a orari fissi.
+
+## Crediti
+
+Creato da [Nikolaj Saudella](https://www.linkedin.com/in/OWNER-LINKEDIN): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere.
+Licenza MIT.

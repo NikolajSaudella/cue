@@ -1,0 +1,11 @@
+{
+  "name": "podcast-brain",
+  "displayName": "Podcast Brain",
+  "version": "0.1.0",
+  "description": "Paste a podcast link, get Notion notes: what it says, what it means for you, and what to do next.",
+  "author": {
+    "name": "Nikolaj Saudella"
+  },
+  "license": "MIT",
+  "keywords": ["podcast", "notion", "notes", "second-brain", "youtube", "spotify", "whisper"]
+}
