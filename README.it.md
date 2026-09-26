@@ -13,7 +13,9 @@ Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scriv
 
 [🇬🇧 Read in English](README.md)
 
-https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196
+<img src="docs/images/video-connections.jpg" alt="Ogni puntata diventa idee, e le idee si collegano tra puntate: confermano, aggiungono, si contraddicono">
+
+▶ [Guarda il video di 30 secondi](https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196)
 
 ## Prova la demo
 

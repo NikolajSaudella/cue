@@ -13,7 +13,9 @@ Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in you
 
 [🇮🇹 Leggi in italiano](README.it.md)
 
-https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196
+<img src="docs/images/video-connections.jpg" alt="Every episode becomes ideas, and ideas connect across episodes: confirms, adds, disagrees">
+
+▶ [Watch the 30-second video](https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196)
 
 ## Try the live demo
 
