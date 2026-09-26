@@ -470,6 +470,54 @@ def fetch_youtube(url, workdir, model_name):
     return meta, segments
 
 
+def pick_suggestions(entries, min_min=7, max_min=30, min_views=1000):
+    """From a flat YouTube search, keep finished videos of a comfortable length (no lives, no Shorts), in YouTube's order."""
+    out = []
+    for e in entries or []:
+        dur = e.get("duration") or 0
+        if not e.get("id") or not (min_min * 60 <= dur <= max_min * 60):
+            continue
+        if e.get("live_status") in ("is_live", "is_upcoming", "post_live") or "/shorts/" in (e.get("url") or ""):
+            continue
+        if (e.get("view_count") or 0) < min_views:
+            continue
+        out.append({
+            "title": e.get("title") or "",
+            "channel": e.get("channel") or e.get("uploader") or "",
+            "url": f"https://www.youtube.com/watch?v={e['id']}",
+            "duration_min": round(dur / 60),
+        })
+    return out
+
+
+def has_captions(video_id):
+    """True / False, or None when YouTube doesn't answer (the video may still work)."""
+    from youtube_transcript_api import YouTubeTranscriptApi
+
+    try:
+        return bool(list(YouTubeTranscriptApi().list(video_id)))
+    except Exception as e:
+        return False if "disabled" in str(e).lower() or "no transcript" in str(e).lower() else None
+
+
+def suggest_videos(query, n=3):
+    """A few short YouTube videos with captions about the user's question: ready in about 2 minutes each."""
+    import yt_dlp
+
+    with yt_dlp.YoutubeDL(ydl_opts({"extract_flat": True})) as ydl:
+        res = ydl.extract_info(f"ytsearch20:{query}", download=False) or {}
+    confirmed, unknown = [], []
+    for v in pick_suggestions(res.get("entries")):
+        caps = has_captions(v["url"].rsplit("=", 1)[-1])
+        if caps:
+            confirmed.append(v)
+        elif caps is None:
+            unknown.append(v)
+        if len(confirmed) >= n:
+            break
+    return (confirmed + unknown)[:n]
+
+
 # --------------------------------------------------------------------------- Spotify / Apple / RSS
 
 

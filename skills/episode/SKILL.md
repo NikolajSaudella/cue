@@ -92,6 +92,12 @@ Keep **`Progress`** updated in the later steps too, translated into the user's l
 - Read all existing concepts from the concepts view.
 
 ### 3. Write the episode page
+**Make it theirs first.** Follow "How I like my notes" in 🧭 My context (older context pages may not have it: then use *Detailed* and a balanced focus):
+- **Length.** *Short*: "In short" in 2 sentences, 3-5 key ideas, 4-8 chapters with 1-2 bullets each, 2-3 quotes, 2-3 points in "What it means for me", only the notable resources, 1-2 questions. *Detailed*: the ranges below.
+- **Focus.** *Practical tactics*: key ideas and actions lean on concrete steps, numbers and how-tos. *Big ideas*: principles, mental models and why they matter. *Staying up to date*: what's new, who is doing what, dates. Several chosen: balance them.
+- **Skip the basics of** the topics listed there: don't explain them, go straight to what's new for this user.
+- **Open questions** ("My open questions"): when the episode helps answer one, the first point of "What it means for me" says so explicitly (*"Your question 'How do I get my first customers?': …"*). If it doesn't, don't force it.
+
 Use `notion-update-page` with `replace_content`. Headings below are in English: **write them in the user's language**, keeping the emoji. Structure:
 
 1. `<callout icon="⚡" color="blue_bg">` **In short:** 2-3 sentences with the core thesis and why it matters.

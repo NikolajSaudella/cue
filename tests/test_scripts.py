@@ -112,6 +112,23 @@ def test_classify_error_uses_the_trail_and_the_source():
         "code": "unknown", "message": "Something went wrong while reading the episode.", "retry_with_update": False}
 
 
+def test_pick_suggestions_keeps_short_finished_popular_videos():
+    entries = [
+        {"id": "ok1", "title": "Good talk", "channel": "YC", "duration": 14 * 60, "view_count": 50000},
+        {"id": "short", "title": "Too short", "duration": 3 * 60, "view_count": 90000},
+        {"id": "long", "title": "Too long", "duration": 95 * 60, "view_count": 90000},
+        {"id": "live", "title": "Live now", "duration": 20 * 60, "view_count": 90000, "live_status": "is_live"},
+        {"id": "sh", "title": "A Short", "duration": 10 * 60, "view_count": 90000, "url": "https://www.youtube.com/shorts/sh"},
+        {"id": "few", "title": "Nobody watched", "duration": 10 * 60, "view_count": 12},
+        {"id": "ok2", "title": "Another", "uploader": "Someone", "duration": 8 * 60, "view_count": 2000},
+        {"title": "No id", "duration": 10 * 60, "view_count": 90000},
+    ]
+    picks = ft.pick_suggestions(entries)
+    assert [p["url"].rsplit("=", 1)[-1] for p in picks] == ["ok1", "ok2"]
+    assert picks[0] == {"title": "Good talk", "channel": "YC", "url": "https://www.youtube.com/watch?v=ok1", "duration_min": 14}
+    assert picks[1]["channel"] == "Someone"
+
+
 def test_version_tuple():
     assert tr.version_tuple("0.2.0") == (0, 2, 0)
     assert tr.version_tuple("v1.10") == (1, 10, 0)

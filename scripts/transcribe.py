@@ -174,11 +174,21 @@ def main():
     ap.add_argument("--model", default="small")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--notion-page", default="", help="ID/URL of the Notion row: live progress if a Notion token is configured")
+    ap.add_argument("--suggest", default="", help="search YouTube for short videos with captions about this question")
     args = ap.parse_args()
     ft.configure(args.data)
 
     if args.check:
         check()
+    if args.suggest:
+        try:
+            videos = ft.suggest_videos(args.suggest)
+            print(json.dumps({"ok": True, "query": args.suggest, "videos": videos}, ensure_ascii=False, indent=2))
+            sys.exit(0)
+        except Exception as e:
+            print(json.dumps({"ok": False, "error": f"{type(e).__name__}: {str(e)[:300]}", **ft.classify_error(e, source="youtube")},
+                             ensure_ascii=False, indent=2))
+            sys.exit(1)
     if not args.url:
         ap.error("missing url")
     live = bool(args.notion_page and (os.environ.get("NOTION_TOKEN") or ft.load_env().get("NOTION_TOKEN")))

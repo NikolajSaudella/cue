@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.3.0 — an onboarding that's about you
+
+- **Faster, more personal setup.** Most questions are now one tap (who you are, what you want from podcasts and videos, short or detailed notes). Then two open questions: what you're building (a link to your website is enough: Claude reads it) and the question you're trying to answer these months.
+- **"Here's what I understood."** Before creating anything, Claude shows you what it will know about you, and you fix it in one message.
+- **A first episode picked for you.** Cue searches YouTube for short videos with captions about your question, so the first "What it means for me" answers something you actually care about.
+- **Notes the way you like them.** "🧭 My context" now has "How I like my notes": short or detailed, tactics or big ideas, and topics to skip the basics of. Every episode follows it, and says so when it helps answer your open question.
+
 ## v0.2.0 — safer, sturdier, and it tells you about updates
 
 - **Safer permissions.** Cue now pre-approves only its own transcription script and its own config files, instead of any `uv` command. Episode transcripts and descriptions are treated as content, never as instructions: if a video contains text addressed to Claude, it's ignored and you're told.

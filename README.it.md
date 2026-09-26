@@ -50,7 +50,7 @@ Ti serve l'**app Claude** per computer (Windows o Mac) con piano **Pro o Max**, 
 2. Clicca **+** → **Plugins** → **Add plugin** → **Add marketplace** e incolla `https://github.com/NikolajSaudella/cue`
 3. Seleziona **cue** → **Install for you**. Poi apri una nuova chat e scrivi **Configura Cue**.
 
-Claude ti fa 4 domande veloci, crea il tuo spazio su Notion, installa quello che serve (tu approvi e basta) ed elabora con te una prima puntata. Circa 5 minuti.
+Claude ti fa qualche domanda veloce (quasi tutte con un clic, e basta il link al tuo sito), ti mostra cosa ha capito, crea il tuo spazio su Notion, installa quello che serve (tu approvi e basta) ed elabora una prima puntata scelta sulla domanda a cui stai lavorando. Circa 5 minuti.
 
 <details>
 <summary>Usi Claude Code dal terminale?</summary>

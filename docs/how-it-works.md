@@ -108,7 +108,10 @@ Databases are read through views (the connector's "view mode"). That mode has no
 ```
 uv run --script scripts/transcribe.py --check --data ~/.cue
 uv run --script scripts/transcribe.py "https://www.youtube.com/watch?v=..." --data ~/.cue
+uv run --script scripts/transcribe.py --suggest "how to price a b2b saas" --data ~/.cue
 ```
+
+`--suggest` searches YouTube for up to 3 videos of 7-30 minutes, most with captions (so they are ready in about 2 minutes): the setup uses it to pick a first episode about the user's own question.
 
 ## Releasing an update
 
