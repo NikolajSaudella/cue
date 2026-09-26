@@ -23,7 +23,7 @@ Ascolti podcast bellissimi, guardi talk e lezioni, e dopo una settimana non rico
 
 ## L'idea in 30 secondi
 
-<!-- VIDEO: qui va il video di lancio (link user-attachments di GitHub) -->
+https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196
 
 <table>
   <tr>

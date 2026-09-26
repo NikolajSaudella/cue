@@ -19,7 +19,7 @@ It's a free plugin for the Claude app. No API keys, no subscriptions beyond your
 
 ## The idea in 30 seconds
 
-<!-- VIDEO: the launch video goes here (GitHub user-attachments link) -->
+https://github.com/user-attachments/assets/e10e5245-765c-46e8-b7ea-6ad10795b196
 
 <table>
   <tr>
