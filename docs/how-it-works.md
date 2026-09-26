@@ -72,4 +72,4 @@ Claude Code decides whether an installed plugin needs updating by comparing the 
 2. Add a section to `CHANGELOG.md`.
 3. Commit, tag (`git tag -a v0.1.1 -m "..."`) and push with `--follow-tags`, then publish a GitHub release from the tag.
 
-Users get it with **+ → Plugins → Manage plugins → cue → Update**, or automatically if they turned on auto-update for the `cue` marketplace.
+Users get it automatically if they turned on auto-update for the `cue` marketplace; otherwise from `/plugin` → **Installed** → cue → **Update now** in Claude Code, or `claude plugin update cue@cue` in a terminal. (The exact steps in the desktop app are still to be verified.)
