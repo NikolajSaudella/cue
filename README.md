@@ -19,7 +19,7 @@ Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in you
 
 <img src="docs/images/video-unfold.jpg" alt="One link in, everything that matters out: in short, quotes, chapters, what it means for me, actions">
 
-▶ [Watch the 30-second video](https://github.com/user-attachments/assets/63b909c4-b687-4c8f-b27b-b83e1888be69)
+▶ [Watch the 30-second video](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c)
 
 ## Try the live demo
 
