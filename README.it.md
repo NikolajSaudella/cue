@@ -89,4 +89,4 @@ Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.m
 
 Se Cue ti è utile, una ⭐ su GitHub aiuta altri a trovarlo.
 
-Creato da [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere. Licenza MIT.
+Creato in meno di 48 ore da [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere. Licenza MIT.

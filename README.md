@@ -89,4 +89,4 @@ More questions, and how it works under the hood: [docs/how-it-works.md](docs/how
 
 If Cue helps you, a ⭐ on GitHub helps others find it.
 
-Built by [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer. MIT License.
+Built in under 48 hours by [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer. MIT License.
