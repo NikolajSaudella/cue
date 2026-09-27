@@ -55,8 +55,8 @@ Apply their corrections and move on. Another round only if they corrected someth
 Tell the user you are creating their cue space in Notion. The home page is built so that what the user opens every day (Inbox, Library, next steps) comes first, the guide sits in a toggle, and the databases live in a "Behind the scenes" sub-page. Notion only lets you add blocks at the end of a page (and one insert at the start), so **follow the steps in this exact order**. Everything is written in the user's language; keep the emoji, the orange callout and the database names Episodes, Concepts, Actions; a single column (no `<columns>`).
 
 **a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), title "cue", lowercase like the logo (never put emoji in page titles: use the icon), **no content yet**, and the cue brand:
-- `icon`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-icon.png`
-- `cover`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-cover.png`
+- `icon`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-icon-2.png`
+- `cover`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-cover-2.png`
 
 **b. Databases**, all with `parent: {page_id: <home>}` for now (step f moves them). Use exactly these schemas (property names and options in English; the skills rely on them):
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.4 — the right logo and banner
+
+- New cue pages get the current logo (black square with the cue wordmark) and the orange banner. The images have new file names, because Notion keeps showing a cached copy when an image changes at the same address.
+
 ## v0.5.3 — updates that actually arrive
 
 - **"Want me to install it?"** When a new version of cue is out, cue now offers to install it for you. Say yes and Claude refreshes cue's catalogue and updates the plugin (two fixed commands, nothing else), then asks you to restart the app. Before, the app's Update button often found nothing, because its copy of the catalogue was out of date.

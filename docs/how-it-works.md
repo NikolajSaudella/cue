@@ -95,7 +95,7 @@ Everything lives in the plugin's data folder (`~/.claude/plugins/data/cue-…/`)
 
 Created by the setup skill:
 
-- a **home page** with the cue logo and cover (`docs/images/notion-icon.png`, `docs/images/notion-cover.png`): a short welcome, a link to My context, the 📥 Inbox, the 📚 Library and ✅ Next steps as linked views, and a "How it works" toggle;
+- a **home page** with the cue logo and cover (`docs/images/notion-icon-2.png`, `docs/images/notion-cover-2.png`): a short welcome, a link to My context, the 📥 Inbox, the 📚 Library and ✅ Next steps as linked views, and a "How it works" toggle;
 - a **Behind the scenes** sub-page with **🧭 My context** and the three databases:
   - **Episodes**, with the views 📥 Inbox and 📚 Library;
   - **Concepts**, with a two-way relation to Episodes;
