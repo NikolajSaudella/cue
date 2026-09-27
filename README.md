@@ -142,6 +142,7 @@ Uninstalling keeps your Notion pages. To hear about new versions, click **Watch*
 - **Too many permission requests:** cue's commands are pre-approved; for Notion, choose "Always allow" the first time.
 - **A YouTube video fails:** cue updates its downloader and retries by itself. Private, age-restricted or members-only videos can't be read.
 - **Transcription is slow:** the Progress column in Notion shows the minutes left. Video calls and exports slow it down.
+- **Update shows no new version:** the app's copy of the cue catalogue can lag behind. In a Code session, ask Claude to run `claude plugin marketplace update cue` and then `claude plugin update cue@cue`, and restart the app.
 - **Still stuck?** Tell Claude what happened in your own words, or open an [issue](../../issues).
 
 </details>

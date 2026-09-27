@@ -142,6 +142,7 @@ Se lo togli, le pagine Notion restano tue. Per sapere quando esce una nuova vers
 - **Troppe richieste di permesso:** i comandi di cue sono già approvati; per Notion scegli "Always allow" la prima volta.
 - **Un video YouTube non va:** cue aggiorna da solo lo strumento di download e riprova. I video privati, con limite d'età o solo per membri non si possono leggere.
 - **La trascrizione è lenta:** la colonna Progress su Notion mostra i minuti che mancano. Videochiamate ed esportazioni la rallentano.
+- **"Aggiorna" non trova la versione nuova:** la copia del catalogo di cue nell'app può restare indietro. In una sessione Code chiedi a Claude di eseguire `claude plugin marketplace update cue` e poi `claude plugin update cue@cue`, poi riavvia l'app.
 - **Ancora bloccato?** Racconta a Claude cosa è successo con parole tue, o apri una [issue](../../issues).
 
 </details>
