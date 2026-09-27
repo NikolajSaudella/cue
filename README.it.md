@@ -7,7 +7,7 @@
 
 # cue
 
-[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases)
+[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases) [![Check](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg)](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml)
 
 **Podcast e video che ricordi davvero, e cosa significano per te.**
 
@@ -15,22 +15,32 @@ Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scriv
 
 *Perché "cue"? Il cue point è il punto preciso di una traccia da cui ripartire; il retrieval cue è lo spunto che fa tornare in mente un ricordo. Si pronuncia come la lettera Q.*
 
+**[▶ Guarda il video di 30 secondi](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c) · [Sfoglia la demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) · [Installa](#installazione)**
+
 [🇬🇧 Read in English](README.md)
 
-<img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni">
+<a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c"><img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni (clicca per il video di 30 secondi)"></a>
 
-▶ [Guarda il video di 30 secondi](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c)
+## Guarda la differenza
 
-## Prova la demo
-
-**[Sfoglia la demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** Pagine vere create da Cue da cinque puntate di Y Combinator, per un founder di esempio (demo in inglese). Senza installare niente.
+Pagine vere della demo: cinque video di Y Combinator, elaborati per un founder di esempio che costruisce software per ristoranti (demo in inglese). Per sfogliarle non serve installare niente.
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/episode-for-me.png" alt="Cosa significa per me"><br><sub>Cosa significa per me: legato ai tuoi progetti</sub></td>
-    <td width="50%"><img src="docs/images/concept-disagreement.png" alt="Due ospiti non sono d'accordo"><br><sub>Collegamenti: dove gli ospiti sono d'accordo o no</sub></td>
+    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/episode-for-me.png" alt="Cosa significa per me, scritto sul progetto del founder"></a></td>
+    <td><b>Non solo un riassunto. Consigli per il tuo progetto.</b><br><br>Un talk su come trovare i primi 10 clienti diventa passi concreti per <i>questo</i> founder: visitare i ristoranti tra pranzo e cena, organizzare una cena con i titolari, rimandare gli strumenti di vendita.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d">Apri la puntata →</a></td>
+  </tr>
+  <tr>
+    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/concept-disagreement.png" alt="Due ospiti tirano in direzioni diverse sulla rete di contatti"></a></td>
+    <td><b>Quando due puntate tirano in direzioni diverse.</b><br><br>Un ospite dice che la tua rete di contatti è la fonte migliore di clienti, un altro avverte che è una fonte meno sincera. Cue li mette uno accanto all'altro e ti dice cosa farne.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2">Apri l'idea →</a></td>
+  </tr>
+  <tr>
+    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/concept-four-episodes.png" alt="Un'idea collegata a quattro puntate"></a></td>
+    <td><b>Un'idea. Quattro puntate.</b><br><br>"Do things that don't scale" torna in quattro video diversi, ognuno con il suo punto di vista. Ogni idea tiene tutto quello che ogni ospite ne ha detto.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d">Apri l'idea →</a></td>
   </tr>
 </table>
+
+**[Sfoglia tutta la demo su Notion →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)**
 
 ## Cosa ottieni
 
@@ -86,12 +96,21 @@ Per Notion usa il connettore del tuo account claude.ai (accedi con lo stesso acc
 
 **Come lo tolgo?** **+** → **Plugins** → **Manage plugins** → **cue** → **Uninstall**. Le pagine Notion restano tue; la cartella di Cue sul tuo computer (trascrizioni e modello vocale) se ne va con lui.
 
+**Su quali computer funziona?** Windows e Mac, con l'app Claude per computer. Finora provato su Windows 11: se lo provi su un Mac, raccontaci com'è andata nelle [Issues](../../issues).
+
+**Qualcosa non funziona?**
+- *"Notion non è collegato"*: nella scheda Code clicca **+** → **Connectors** e attiva Notion, poi apri una nuova sessione.
+- *Claude chiede spesso il permesso*: i comandi di cue sono già approvati; per Notion scegli "Always allow" la prima volta.
+- *Un video YouTube non va*: cue aggiorna da solo lo strumento di download e riprova; i video privati, con limite d'età o solo per membri non si possono leggere.
+- *La trascrizione è lenta*: lavora in background; la colonna Progress su Notion mostra i minuti che mancano. Le app pesanti (videochiamate, esportazioni) la rallentano.
+- Ancora bloccato? Racconta a Claude cosa è successo con parole tue, o apri una [issue](../../issues).
+
 Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.md](docs/how-it-works.md).
 
 ---
 
 **Prossimi passi:** iscrizioni ai tuoi programmi preferiti, un digest settimanale, elaborazioni automatiche e forse altre app di AI (ChatGPT / Codex). Idee e bug: [Issues](../../issues).
 
-Se Cue ti è utile, una ⭐ su GitHub aiuta altri a trovarlo.
+Se Cue ti è utile, una ⭐ su GitHub aiuta altri a trovarlo. Vuoi migliorarlo? Leggi [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Creato in meno di 48 ore da [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere. Licenza MIT.

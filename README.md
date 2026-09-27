@@ -7,7 +7,7 @@
 
 # cue
 
-[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases)
+[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases) [![Check](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg)](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml)
 
 **Podcasts and videos you actually remember — and what they mean for you.**
 
@@ -15,22 +15,32 @@ Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in you
 
 *Why "cue"? A cue point is the exact spot in a track you jump back to; a retrieval cue is the hint that brings a memory back. Pronounced like the letter Q.*
 
+**[▶ Watch the 30-second video](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c) · [Explore the live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) · [Install](#install)**
+
 [🇮🇹 Leggi in italiano](README.it.md)
 
-<img src="docs/images/video-unfold.jpg" alt="One link in, everything that matters out: in short, quotes, chapters, what it means for me, actions">
+<a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c"><img src="docs/images/video-unfold.jpg" alt="One link in, everything that matters out: in short, quotes, chapters, what it means for me, actions (click to watch the 30-second video)"></a>
 
-▶ [Watch the 30-second video](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c)
+## See the difference
 
-## Try the live demo
-
-**[Browse the demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)** Real pages made by Cue from five Y Combinator episodes, for an example founder. No install needed.
+Real pages from the live demo: five Y Combinator videos, processed for an example founder building restaurant software. No install needed to browse them.
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/episode-for-me.png" alt="What it means for me"><br><sub>What it means for me: tied to your own projects</sub></td>
-    <td width="50%"><img src="docs/images/concept-disagreement.png" alt="Two guests disagree"><br><sub>Connections: where guests agree or disagree</sub></td>
+    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/episode-for-me.png" alt="What it means for me, written for the founder's own project"></a></td>
+    <td><b>Not just a summary. Advice for your project.</b><br><br>A talk on getting your first 10 customers becomes next steps for <i>this</i> founder: visit restaurants between lunch and dinner, host a dinner for owners, skip the sales tools for now.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d">Open the episode →</a></td>
+  </tr>
+  <tr>
+    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/concept-disagreement.png" alt="Two guests pull in different directions on the warm network"></a></td>
+    <td><b>When two episodes pull in different directions.</b><br><br>One guest says your network is your best source of buyers, another warns it's a weaker source of truth. Cue puts them side by side and tells you what to do with both.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2">Open the idea →</a></td>
+  </tr>
+  <tr>
+    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/concept-four-episodes.png" alt="One idea linked to four episodes"></a></td>
+    <td><b>One idea. Four episodes.</b><br><br>"Do things that don't scale" comes back in four different videos, each with its own angle. Every idea you meet keeps everything each guest said about it.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d">Open the idea →</a></td>
   </tr>
 </table>
+
+**[Explore the full Notion demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)**
 
 ## What you get
 
@@ -86,12 +96,21 @@ For Notion, use the connector of your claude.ai account (sign in with the same a
 
 **How do I remove it?** **+** → **Plugins** → **Manage plugins** → **cue** → **Uninstall**. Your Notion pages stay yours; cue's folder on your computer (transcripts and the speech model) goes away with it.
 
+**Which computers does it work on?** Windows and Mac, with the Claude desktop app. Tested on Windows 11 so far: if you try it on a Mac, tell us how it went in the [Issues](../../issues).
+
+**Something's not working?**
+- *"Notion isn't connected"*: in the Code tab, click **+** → **Connectors** and switch Notion on, then start a new session.
+- *Claude asks for permission a lot*: cue's own commands are pre-approved; for Notion, choose "Always allow" the first time.
+- *A YouTube video fails*: cue updates its YouTube downloader and retries by itself; private, age-restricted or members-only videos can't be read.
+- *Transcription is slow*: it's working in the background; the Progress column in Notion shows the minutes left. Heavy apps (video calls, exports) slow it down.
+- Still stuck? Tell Claude what happened in your own words, or open an [issue](../../issues).
+
 More questions, and how it works under the hood: [docs/how-it-works.md](docs/how-it-works.md).
 
 ---
 
 **Next:** subscriptions to your favourite shows, a weekly digest, scheduled runs, and maybe other AI apps (ChatGPT / Codex). Ideas and bugs: [Issues](../../issues).
 
-If Cue helps you, a ⭐ on GitHub helps others find it.
+If Cue helps you, a ⭐ on GitHub helps others find it. Want to improve it? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Built in under 48 hours by [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer. MIT License.
