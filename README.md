@@ -19,7 +19,7 @@
 
 ## See the difference
 
-Real pages from the [live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b): five Y Combinator videos, processed for an example founder building restaurant software.
+Real pages from the [live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b): five videos from Y Combinator, 20VC and David Senra, processed for an example founder building restaurant software.
 
 **Not just a summary. Advice for your project, and it follows you.** A talk on getting your first 10 customers becomes next steps for *this* founder. When the founder's situation changed (6 paying restaurants, a first salesperson to hire), cue rewrote the advice and kept the old version one click away. [Open the episode →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
 
@@ -29,9 +29,9 @@ Real pages from the [live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e
 
 <a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/see-disagreement.png" alt="Two guests pull in different directions on the warm network"></a>
 
-**One idea. Four episodes.** "Do things that don't scale" comes back in four different videos, and the idea keeps what each guest said. [Open the idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d)
+**One idea, two different shows.** The founders of Bending Spoons (on David Senra) and Revolut (on 20VC) both distrust experience as a hiring filter, for different reasons: cue says where each one applies, and what it means for this founder's next hire. [Open the idea →](https://app.notion.com/p/nikolaj1205/3e84ef8c88ab814b8012dae95fd53b6d)
 
-<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/see-four-episodes.png" alt="One idea linked to four episodes"></a>
+<a href="https://app.notion.com/p/nikolaj1205/3e84ef8c88ab814b8012dae95fd53b6d"><img src="docs/images/see-two-shows.png" alt="Talent over experience: two founders from two different podcasts, where they agree and where it depends on context"></a>
 
 ## What you get
 

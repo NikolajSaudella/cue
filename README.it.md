@@ -19,7 +19,7 @@
 
 ## Guarda la differenza
 
-Pagine vere della [demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) (in inglese): cinque video di Y Combinator, elaborati per un founder di esempio che costruisce software per ristoranti.
+Pagine vere della [demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) (in inglese): cinque video di Y Combinator, 20VC e David Senra, elaborati per un founder di esempio che costruisce software per ristoranti.
 
 **Non solo un riassunto. Consigli per il tuo progetto, che ti seguono.** Un talk su come trovare i primi 10 clienti diventa passi concreti per *questo* founder. Quando la sua situazione è cambiata (6 ristoranti paganti, un primo venditore da assumere), cue ha riscritto i consigli e tenuto la versione precedente a un clic. [Apri la puntata →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
 
@@ -29,9 +29,9 @@ Pagine vere della [demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c8
 
 <a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/see-disagreement.png" alt="Due ospiti tirano in direzioni diverse sulla rete di contatti"></a>
 
-**Un'idea. Quattro puntate.** "Do things that don't scale" torna in quattro video diversi, e l'idea tiene quello che ha detto ogni ospite. [Apri l'idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d)
+**Un'idea, due podcast diversi.** I fondatori di Bending Spoons (da David Senra) e di Revolut (a 20VC) diffidano entrambi dell'esperienza come criterio per assumere, per motivi diversi: cue dice dove vale ciascuno, e cosa significa per la prossima assunzione di questo founder. [Apri l'idea →](https://app.notion.com/p/nikolaj1205/3e84ef8c88ab814b8012dae95fd53b6d)
 
-<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/see-four-episodes.png" alt="Un'idea collegata a quattro puntate"></a>
+<a href="https://app.notion.com/p/nikolaj1205/3e84ef8c88ab814b8012dae95fd53b6d"><img src="docs/images/see-two-shows.png" alt="Talent over experience: due fondatori da due podcast diversi, dove sono d'accordo e dove dipende dal contesto"></a>
 
 ## Cosa ottieni
 
