@@ -3,7 +3,8 @@
 ## What cue does on your computer
 
 - Runs its own transcription scripts (`scripts/`), with Python and their dependencies installed by [uv](https://github.com/astral-sh/uv), only after asking you.
-- Downloads public audio and captions for the episodes you give it, plus a speech model the first time (~500 MB).
+- Downloads public audio and captions for the episodes you give it, plus a speech model the first time (~500 MB). Audio downloads accept only public web addresses (local and private network addresses are refused, redirects included), stop at ~1.5 GB and check the free disk space first.
+- Saves audio (deleted after transcription) and transcripts only on your computer. Claude reads the transcript in your own Claude app to write the notes, under your plan's terms; Notion receives only the notes.
 - Reads and writes only its own folder (`~/.claude/plugins/data/cue-…/`) and the Notion pages it created for you.
 
 It has no server, no account and no analytics, and it never asks for passwords or API keys. Everything it runs is in this repository.

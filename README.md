@@ -40,7 +40,7 @@ Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in you
 - 🔗 **A brain that grows**: ideas connect across everything you've processed, including where guests disagree
 - ✅ **Actions**: concrete next steps, collected in one to-do list
 
-Notes in the language you choose. Audio and transcripts stay on your computer.
+Notes in the language you choose. Audio and transcripts are saved only on your computer.
 
 ## Install
 
@@ -74,7 +74,7 @@ For Notion, use the connector of your claude.ai account (sign in with the same a
 
 **Does it cost anything?** No. It runs on your Claude plan and free, open-source tools.
 
-**Where does my data go?** Audio and transcripts stay on your computer; notes go only to your Notion. Cue has no server and no analytics.
+**Where does my data go?** Three places, and nowhere else. **Your computer** keeps the audio (deleted after transcription) and the transcripts. **Claude** reads the transcript to write your notes, like any text you send it, under your Claude plan's terms. **Your Notion** gets the notes, never the full transcript. Cue itself has no server, no account and no analytics.
 
 **Does it work in the normal Claude chat?** No: cue runs in the **Code** tab of the Claude app, because it transcribes on your computer. It's the same app and the same plan, nothing extra to pay.
 

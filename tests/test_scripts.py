@@ -44,7 +44,11 @@ def test_work_id_is_stable_per_episode():
     assert ft.work_id("youtube", "https://youtu.be/_FBivfgOvuE?t=10") == "youtube-_FBivfgOvuE"
     assert ft.work_id("spotify", "https://open.spotify.com/episode/6vquQZjCFblZsGEccyCdsM?si=a") == "spotify-6vquQZjCFblZsGEccyCdsM"
     assert ft.work_id("apple", "https://podcasts.apple.com/us/podcast/x/id123?i=456") == "apple-456"
-    assert ft.work_id("audio", "https://example.com/a/My Episode 12.mp3") == "audio-My-Episode-12"
+    a1 = ft.work_id("audio", "https://example.com/a/My Episode 12.mp3")
+    assert a1.startswith("audio-My-Episode-12-") and len(a1) == len("audio-My-Episode-12-") + 8
+    assert a1 == ft.work_id("audio", "https://EXAMPLE.com/a/My Episode 12.mp3?token=abc")
+    # two different links that end with the same file name get different folders
+    assert ft.work_id("audio", "https://a.com/episode.mp3") != ft.work_id("audio", "https://b.com/episode.mp3")
 
 
 @pytest.mark.parametrize("seconds, text", [(0, "00:00"), (59.9, "00:59"), (61, "01:01"), (3600, "1:00:00"), (3725, "1:02:05")])
@@ -55,8 +59,15 @@ def test_fmt_ts(seconds, text):
 def test_chunk_segments_groups_by_time_and_drops_noise():
     segments = [(0, "Hello"), (10, "[Music]"), (20, "world &amp; friends"), (50, "next"), (60, "block")]
     chunks = ft.chunk_segments(segments)
-    assert chunks[0] == (0, "Hello world & friends next")
-    assert chunks[1] == (60, "block")
+    # the words said at 0:50 open a new block: they are never labelled [00:00]
+    assert chunks == [(0, "Hello world & friends"), (50, "next block")]
+
+
+def test_block_time_is_never_far_before_its_words():
+    segments = [(i * 7.3, f"w{i}") for i in range(200)]
+    said_at = {text: s for s, text in segments}
+    for start, text in ft.chunk_segments(segments):
+        assert all(said_at[w] - start < ft.CHUNK_SECONDS for w in text.split())
 
 
 def test_chunk_segments_splits_long_text():
@@ -110,6 +121,53 @@ def test_classify_error_uses_the_trail_and_the_source():
     assert ft.classify_error(RuntimeError("boom"), source="youtube")["retry_with_update"] is True
     assert ft.classify_error(RuntimeError("boom"), source="spotify") == {
         "code": "unknown", "message": "Something went wrong while reading the episode.", "retry_with_update": False}
+
+
+SEGS = [
+    (0.0, "welcome back to the show"),
+    (3.5, "today we talk about your first customers"),
+    (61.2, "he closed more in three days than he had"),
+    (64.0, "in three months of sending cold emails"),
+    (70.0, "which is crazy when you think about it"),
+    (125.0, "so start with your network"),
+]
+
+
+def test_locate_quotes_finds_time_and_words():
+    res = ft.locate_quotes(SEGS, ["He closed more in 3 days than he had in 3 months of sending cold emails.",
+                                  "Start with your network!",
+                                  "This sentence was never said on the show at all."])
+    assert res[0]["found"] and res[0]["start"] == 61.2 and res[0]["time"] == "01:01"
+    assert "three months of sending cold emails" in res[0]["said"]
+    assert res[1]["found"] and res[1]["start"] == 125.0
+    assert not res[2]["found"] and res[2]["start"] is None
+
+
+def test_read_segments_from_old_transcripts(tmp_path):
+    (tmp_path / "transcript.txt").write_text("# Title\n\n[00:00] hello there\n[01:05] second block\n[1:02:03] late\n", encoding="utf-8")
+    assert ft.read_segments(tmp_path) == [(0, "hello there"), (65, "second block"), (3723, "late")]
+    ft.write_atomic(tmp_path / "segments.json", '[[1.5, "from json"]]')
+    assert ft.read_segments(tmp_path) == [(1.5, "from json")]
+    assert not (tmp_path / "segments.json.tmp").exists()
+
+
+def test_safe_url_hides_tokens():
+    assert ft.safe_url("https://feeds.example.com/private/ep1.mp3?token=SECRET&x=1") == "https://feeds.example.com/private/ep1.mp3"
+
+
+@pytest.mark.parametrize("host, public", [
+    ("127.0.0.1", False), ("10.0.0.5", False), ("192.168.1.10", False), ("169.254.169.254", False),
+    ("::1", False), ("[::1]", False), ("8.8.8.8", True), ("", False),
+])
+def test_is_public_host(host, public):
+    assert ft.is_public_host(host) is public
+
+
+def test_check_url_refuses_local_and_odd_links():
+    for url in ("file:///etc/passwd", "http://127.0.0.1:8080/a.mp3", "http://192.168.0.2/ep.mp3"):
+        with pytest.raises(ft.FetchError):
+            ft.check_url(url)
+    ft.check_url("https://8.8.8.8/episode.mp3")
 
 
 def test_pick_suggestions_keeps_short_finished_popular_videos():

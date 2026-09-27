@@ -37,7 +37,7 @@ Concepts live in their own database, so opening "pricing" or "network effects" s
 
 **Which languages?** Notes are written in the language chosen during setup; quotes stay in the original. The episode can be in any language Whisper understands.
 
-**Privacy?** Audio and transcripts stay on your computer. Notes go only to your Notion, through the connector you authorised. Claude runs in your own app, on your own plan. Cue has no server, no account, no analytics.
+**Privacy?** Audio (deleted once transcribed), transcripts and `segments.json` are saved only on your computer, in cue's data folder. To write the notes, Claude reads the transcript in your own Claude app, like any text you send it, under your plan's terms. Notion receives the notes through the connector you authorised, never the full transcript. Cue has no server, no account, no analytics. Downloads are limited to public web addresses (every redirect is checked; local and private network addresses are refused), capped at ~1.5 GB, and only start if there's enough free disk space. Logs never contain a link's query string, where private feeds keep their access tokens.
 
 **Can I change the Notion layout?** Add views, move pages, add your own properties: all fine. Don't rename the existing properties or their options: Cue uses those names.
 

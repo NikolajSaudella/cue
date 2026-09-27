@@ -80,7 +80,7 @@ Content, written in the user's language (keep the emoji, the `orange` colors and
 <details>
 <summary>**Good to know**</summary>
 	- **Timing:** YouTube videos with captions are ready in a few minutes. Without captions (Spotify, most podcasts) it takes about 15-25 minutes per hour of audio on a recent laptop: it runs in the background, but the computer must stay on.
-	- **Privacy:** transcripts stay on your computer. Only the notes go to Notion.
+	- **Privacy:** audio and transcripts are saved only on your computer. Claude reads the transcript to write your notes; only the notes go to Notion.
 	- **Updates:** in the Claude app, **+** → **Plugins** → **Manage plugins** → **cue** → **Update**.
 	- **Open source:** [github.com/NikolajSaudella/cue](https://github.com/NikolajSaudella/cue)
 </details>

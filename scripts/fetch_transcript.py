@@ -18,6 +18,9 @@ Prints a final JSON on stdout with the paths and the metadata.
 
 import argparse
 import difflib
+import hashlib
+import ipaddress
+import socket
 import html
 import json
 import os
@@ -28,7 +31,7 @@ import time
 import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urljoin, urlparse
 
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 os.environ.setdefault("HF_HUB_DISABLE_IMPLICIT_TOKEN", "1")
@@ -64,9 +67,11 @@ PREVIEW_UA = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uate
 HTTP = requests.Session()
 HTTP.headers.update({"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
 
-CHUNK_SECONDS = 45  # rough length of each transcript block
+CHUNK_SECONDS = 30  # a block never starts more than this before the words it holds
 CHUNK_MAX_CHARS = 1200
 AUDIO_EXTS = (".mp3", ".m4a", ".aac", ".wav", ".ogg", ".opus", ".flac", ".webm")
+MAX_AUDIO_BYTES = 1_500_000_000  # ~1.5 GB: far more than any podcast episode
+NOISE = ("[Music]", "[Musica]", "[Applause]", "[Musique]", "[Música]")
 
 
 def log(msg):
@@ -257,35 +262,140 @@ def fmt_ts(seconds):
     return f"{h}:{m:02d}:{s:02d}" if h else f"{m:02d}:{s:02d}"
 
 
-def chunk_segments(segments):
-    """Merge (start, text) segments into blocks of ~45 seconds."""
-    chunks, cur_start, cur_text = [], None, []
+def clean_segments(segments):
+    """(start, text) segments with normalised text, without empty lines and [Music]-style noise."""
+    out = []
     for start, text in segments:
         text = re.sub(r"\s+", " ", html.unescape(text or "")).strip()
-        if not text or text in ("[Music]", "[Musica]", "[Applause]"):
-            continue
+        if text and text not in NOISE:
+            out.append((round(float(start), 2), text))
+    return out
+
+
+def chunk_segments(segments):
+    """Merge segments into blocks of ~30 seconds. A block is closed *before* a segment that would make it too long,
+    so the [mm:ss] of a block is never more than CHUNK_SECONDS before any of its words."""
+    chunks, cur_start, cur_text = [], None, []
+    for start, text in clean_segments(segments):
+        if cur_text and (start - cur_start >= CHUNK_SECONDS or len(" ".join(cur_text)) + len(text) > CHUNK_MAX_CHARS):
+            chunks.append((cur_start, " ".join(cur_text)))
+            cur_start, cur_text = None, []
         if cur_start is None:
             cur_start = start
         cur_text.append(text)
-        joined = " ".join(cur_text)
-        if start - cur_start >= CHUNK_SECONDS or len(joined) >= CHUNK_MAX_CHARS:
-            chunks.append((cur_start, joined))
-            cur_start, cur_text = None, []
     if cur_text:
         chunks.append((cur_start, " ".join(cur_text)))
     return chunks
 
 
-def download(url, dest):
-    log(f"Downloading audio: {url[:100]}")
-    with HTTP.get(url, stream=True, timeout=60, allow_redirects=True) as r:
+def locate_quotes(segments, quotes, threshold=0.6):
+    """Find each quote in the original segments: the exact start time and the words actually said.
+    Windows of consecutive segments about as long as the quote are compared with a fuzzy ratio."""
+    segs = [(s, t, norm(t)) for s, t in clean_segments(segments)]
+    out = []
+    for q in quotes:
+        nq = norm(q)
+        best = (0.0, None, None)
+        if nq:
+            for i in range(len(segs)):
+                joined_raw, joined_norm = [], ""
+                for j in range(i, min(i + 12, len(segs))):
+                    joined_raw.append(segs[j][1])
+                    joined_norm = (joined_norm + " " + segs[j][2]).strip()
+                    if len(joined_norm) >= len(nq) * 0.8:
+                        sm = difflib.SequenceMatcher(None, nq, joined_norm)
+                        if sm.quick_ratio() > best[0]:
+                            score = sm.ratio()
+                            if score > best[0]:
+                                best = (score, segs[i][0], " ".join(joined_raw))
+                    if len(joined_norm) > len(nq) * 1.6:
+                        break
+        score, start, said = best
+        found = score >= threshold
+        out.append({"quote": q, "found": found, "score": round(score, 2),
+                    "start": start if found else None, "time": fmt_ts(start) if found else None,
+                    "said": said if found else None})
+    return out
+
+
+def read_segments(workdir):
+    """Original segments of an episode: segments.json, or the [mm:ss] blocks of an older transcript.txt."""
+    seg_path, tx_path = workdir / "segments.json", workdir / "transcript.txt"
+    if seg_path.exists():
+        return [tuple(s) for s in json.loads(seg_path.read_text(encoding="utf-8"))]
+    segs = []
+    if tx_path.exists():
+        for line in tx_path.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"^\[(?:(\d+):)?(\d+):(\d+)\] (.*)$", line)
+            if m:
+                h, mi, s = int(m.group(1) or 0), int(m.group(2)), int(m.group(3))
+                segs.append((h * 3600 + mi * 60 + s, m.group(4)))
+    return segs
+
+
+def write_atomic(path, text):
+    """Write a file so that a crash never leaves it half written."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def safe_url(url):
+    """For logs: host and path only, never the query string (private feeds put access tokens there)."""
+    p = urlparse(url)
+    return f"{p.scheme}://{p.netloc}{p.path}"[:120]
+
+
+def is_public_host(host):
+    """False for localhost, private, link-local and other non-public addresses (and names that resolve to them)."""
+    if not host:
+        return False
+    try:
+        addrs = [ipaddress.ip_address(host.strip("[]"))]
+    except ValueError:
+        try:
+            addrs = [ipaddress.ip_address(ai[4][0].split("%")[0]) for ai in socket.getaddrinfo(host, None)]
+        except OSError:
+            return True  # can't resolve: requests will fail with a clear network error anyway
+    return all(a.is_global for a in addrs)
+
+
+def check_url(url):
+    p = urlparse(url)
+    if p.scheme not in ("http", "https"):
+        raise FetchError(f"Unsupported source: only web links can be downloaded ({p.scheme or 'no scheme'})")
+    if not is_public_host(p.hostname):
+        raise FetchError("Unsupported source: this link points to a local or private network address")
+
+
+def download(url, dest, max_bytes=MAX_AUDIO_BYTES):
+    """Download an audio file: public web addresses only (every redirect is checked), with a size cap and a disk check."""
+    log(f"Downloading audio: {safe_url(url)}")
+    for _ in range(6):
+        check_url(url)
+        r = HTTP.get(url, stream=True, timeout=60, allow_redirects=False)
+        if r.is_redirect and r.headers.get("location"):
+            url = urljoin(url, r.headers["location"])
+            r.close()
+            continue
+        break
+    else:
+        raise FetchError("Too many redirects while downloading the audio")
+    with r:
         r.raise_for_status()
         total = int(r.headers.get("content-length") or 0)
+        if total > max_bytes:
+            raise FetchError(f"The audio file is too big ({total / 1e9:.1f} GB)")
+        free = shutil.disk_usage(dest.parent).free
+        if free < max(total, 200_000_000) + 500_000_000:
+            raise FetchError(f"No space left on the disk for the audio ({free / 1e9:.1f} GB free)")
         done, last = 0, time.time()
         with open(dest, "wb") as f:
             for block in r.iter_content(1 << 16):
                 f.write(block)
                 done += len(block)
+                if done > max_bytes:
+                    raise FetchError("The audio file is too big")
                 if total and time.time() - last > 5:
                     log(f"  download {done * 100 // total}%")
                     last = time.time()
@@ -791,7 +901,9 @@ def work_id(source, url):
         return f"spotify-{m.group(1) if m else 'x'}"
     if source == "apple":
         return f"apple-{parse_qs(urlparse(url).query).get('i', ['x'])[0]}"
-    return "audio-" + re.sub(r"[^A-Za-z0-9]+", "-", Path(urlparse(url).path).stem)[:40]
+    p = urlparse(url)
+    key = f"{p.netloc.lower()}{p.path}"  # two different links that both end in episode.mp3 get different folders
+    return "audio-" + re.sub(r"[^A-Za-z0-9]+", "-", Path(p.path).stem)[:30] + "-" + hashlib.sha1(key.encode()).hexdigest()[:8]
 
 
 def main():
@@ -822,11 +934,13 @@ def main():
         else:
             fetcher = {"youtube": fetch_youtube, "spotify": fetch_spotify, "apple": fetch_apple, "audio": fetch_direct_audio}[source]
             meta, segments = fetcher(url, workdir, args.model)
+            segments = clean_segments(segments)
             chunks = chunk_segments(segments)
             meta["duration_min"] = round((meta.get("duration_sec") or (chunks[-1][0] if chunks else 0)) / 60)
             meta["words"] = sum(len(t.split()) for _, t in chunks)
             meta["input_url"] = url
-            meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+            write_atomic(workdir / "segments.json", json.dumps(segments, ensure_ascii=False))
+            write_atomic(meta_path, json.dumps(meta, ensure_ascii=False, indent=2))
             header = [
                 f"# {meta['title']}",
                 f"# Show/channel: {meta.get('podcast') or '-'}",
@@ -835,7 +949,7 @@ def main():
                 "",
             ]
             lines = [f"[{fmt_ts(s)}] {t}" for s, t in chunks]
-            tx_path.write_text("\n".join(header + lines) + "\n", encoding="utf-8")
+            write_atomic(tx_path, "\n".join(header + lines) + "\n")
             log(f"Saved transcript: {len(lines)} blocks, {meta['words']} words")
 
         print(json.dumps({

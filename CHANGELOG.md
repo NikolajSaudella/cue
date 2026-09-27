@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.5.0 — quotes you can trust, and a clearer privacy promise
+
+- **Exact minutes for quotes.** Every quote is now looked up in the transcript before it's published: the minute and link come from the moment it was actually said, the wording follows what was said, and quotes that can't be found are dropped. Chapter times are more precise too (blocks of 30 seconds that never start after the words they hold; before, a timestamp could be up to 45 seconds early). Quotes from automatic transcripts carry a small note.
+- **No duplicate pages.** Cue records the Notion page as soon as it creates it, so an interrupted episode is picked up on the same page. Two audio links with the same file name no longer share a folder, and cue's files are written so that a crash never leaves them half written.
+- **Clear about data.** The README now says exactly where your data goes: audio and transcripts on your computer, the transcript read by Claude to write your notes, only the notes in Notion. Audio downloads accept only public web addresses, stop at ~1.5 GB, check the free disk space, and logs no longer show links' access tokens.
+- **Readings, not facts.** "What it means for me" separates what the guest says, cue's reading for you, and a small **To check** test when it depends on your situation, and it says when data is missing.
+- **More precise links between ideas.** Besides confirms / contradicts / adds, links can be an **analogy** or **depend on context**; each concept notes when it applies and its exceptions; a final check keeps exceptions and reminds that a popular idea isn't a proven one.
+
 ## v0.4.0 — notes that follow you, and honest timing
 
 - **"Refresh my notes."** Changed job, project or goals in "🧭 My context"? Cue rewrites the personal parts of your past episodes ("What it means for me", "Questions to reflect on", the concepts' "For me") for who you are now, for the episodes you choose. What each episode says stays the same, the previous version stays in a toggle, and old actions are never deleted. Cue also notices when your context has changed and offers it.

@@ -40,7 +40,7 @@ Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scriv
 - 🔗 **Un cervello che cresce**: le idee si collegano tra tutto quello che hai elaborato, anche quando gli ospiti non sono d'accordo
 - ✅ **Azioni**: passi concreti, raccolti in un'unica lista
 
-Note nella lingua che scegli. Audio e trascrizioni restano sul tuo computer.
+Note nella lingua che scegli. Audio e trascrizioni sono salvati solo sul tuo computer.
 
 ## Installazione
 
@@ -74,7 +74,7 @@ Per Notion usa il connettore del tuo account claude.ai (accedi con lo stesso acc
 
 **Costa qualcosa?** No. Usa il tuo piano Claude e strumenti gratuiti e open source.
 
-**Dove finiscono i miei dati?** Audio e trascrizioni restano sul tuo computer, le note vanno solo nel tuo Notion. Cue non ha server né statistiche.
+**Dove finiscono i miei dati?** In tre posti, e da nessun'altra parte. **Il tuo computer** tiene l'audio (cancellato dopo la trascrizione) e le trascrizioni. **Claude** legge la trascrizione per scrivere le note, come qualsiasi testo che gli mandi, alle condizioni del tuo piano Claude. **Il tuo Notion** riceve le note, mai la trascrizione completa. Cue di suo non ha server, account né statistiche.
 
 **Funziona nella chat normale di Claude?** No: cue funziona nella scheda **Code** dell'app Claude, perché trascrive sul tuo computer. Stessa app e stesso piano, niente da pagare in più.
 

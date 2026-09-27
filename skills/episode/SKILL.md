@@ -58,10 +58,16 @@ Property **names** and **select options** are fixed and in English: use them exa
 
 ## Modes
 
-- **Chat:** the user pastes one or more links. For each link, if `${CLAUDE_PLUGIN_DATA}/episodes/<id>/notion.json` already exists, the episode is done: give the page link and ask whether to redo it. Otherwise create a row in Episodes (`Title` = the link, `Link`, `Status` = `⏳ Processing`) and go on.
+- **Chat:** the user pastes one or more links. For each link, first ask the script what cue already has:
+  ```
+  <uv> run --script "${CLAUDE_PLUGIN_ROOT}/scripts/transcribe.py" "<EPISODE URL>" --data "${CLAUDE_PLUGIN_DATA}" --lookup
+  ```
+  - `notion` has `done_at`: the episode is done. Give the page link and ask whether to redo it.
+  - `notion` has only `page_url`: an earlier run was interrupted. **Reuse that page** (don't create a new row) and go on.
+  - `notion` is `null`: create a row in Episodes (`Title` = the link, `Link`, `Status` = `⏳ Processing`), then **straight away** write `<dir>/notion.json` with `{"page_url": "<row URL>", "started_at": "<ISO time>"}`, so an interruption never leads to a duplicate page. Then go on.
 - **Inbox** ("process my inbox"): read the Inbox view. Process rows whose `Status` is empty, `📥 To process` or `⏳ Processing` (an interrupted run), oldest first. At most **5 episodes per run**. If the inbox is empty, say so in one line and stop.
   The link is in `Link`; if empty, look for it in the title or page content. If there is no link at all, set `⚠️ Error` and explain in `TL;DR`.
-  Before starting, set `Status` = `⏳ Processing` (and `Link`, if you found it elsewhere).
+  Before starting, set `Status` = `⏳ Processing` (and `Link`, if you found it elsewhere), and write `<dir>/notion.json` with the row's URL as in chat mode (`dir` from `--lookup`).
 
 Tell the user roughly how long it takes: a few minutes for YouTube episodes with captions; for audio that needs transcribing, about 15-25 minutes per hour of audio on a recent laptop, slower on older computers or while the computer is busy with heavy work (the first time also downloads a ~500 MB speech model). The transcription runs in the background: the user can keep working, but the computer must stay on. If it was interrupted anyway (computer turned off), running the same command starts it again.
 
@@ -108,12 +114,23 @@ Use `notion-update-page` with `replace_content`. Headings below are in English: 
    `### [mm:ss](timestamp-link) · Chapter title {toggle="true"}` with 2-4 bullet points **indented with a tab**.
    - If `meta.chapters` exists, use it as the base (merge chapters that are too short).
    - Timestamp link: if `meta.timestamp_link` exists, replace `{seconds}` with the seconds. Otherwise write just `### mm:ss · Title`.
-   - Times come from the `[mm:ss]` markers in the transcript: never invent them.
-5. `## 💬 Quotes`: 2-5 memorable sentences, **verbatim**, in the original language, with the time: `> "..." — [mm:ss](link)`. You may only fix obvious errors of automatic captions.
+   - Times come from the `[mm:ss]` markers in the transcript (each block starts at most 30 seconds before its words): never invent them.
+5. `## 💬 Quotes`: 2-5 memorable sentences, **verbatim**, in the original language, with the time: `> "..." — [mm:ss](link)`.
+   - **Check every quote** before writing it, all in one call (one `--locate` per quote):
+     ```
+     <uv> run --script "${CLAUDE_PLUGIN_ROOT}/scripts/transcribe.py" "<EPISODE URL>" --data "${CLAUDE_PLUGIN_DATA}" --locate "<quote 1>" --locate "<quote 2>"
+     ```
+     For each quote it returns `found`, the exact `time`, the `link` and what was actually `said`. Use that time and link, and keep your wording faithful to `said` (you may only fix obvious caption errors and trim). Drop quotes that are not `found`: never publish a quote you couldn't locate.
+   - If `method` is automatic captions or Whisper, add under the quotes: `<span color="gray">From an automatic transcript: small word errors are possible.</span>` (in the user's language).
 6. `## 🧭 What it means for me`: **specific** links to the user's context (their projects, role, goals, open questions from "🧭 My context"). Name the project. If the episode has little to do with their projects, don't force it: write 2-3 honest points where it is useful. Tone: a sharp friend telling you what to do with it.
+   Keep three things apart in every point:
+   - **what the episode says** (attributed: "Kolysh says…", with the minute when useful), which is a claim, not a proven fact;
+   - **your reading** for the user, written as a reading ("For your app, this suggests…"), never as something already proven;
+   - when it depends on the user's situation, a **To check:** line with one small, concrete test (who, what, how to tell if it worked), e.g. *To check: show the offer to 5 owners and note who would pay before seeing new bookings.*
+   Say when the episode doesn't give the data the conclusion needs, and mention evidence against (from this episode or another one) when there is some.
 7. `## 🔗 Connections`:
    - `**Concepts:**` then the mentions of the episode's concepts, separated by ` · `.
-   - `**Other episodes:**` for each other episode that shares a concept: one line with a mention of that episode and the **kind of link** (confirms / contradicts / adds). E.g. *"<mention> says X, while here Y"*. If there are none yet: "No connections yet."
+   - `**Other episodes:**` for each other episode that shares a concept: one line with a mention of that episode and the **kind of link**: **confirms** / **contradicts** / **adds** / **analogy** (a similar pattern with a different mechanism: say why it's only an analogy) / **depends on context** (both are right under different conditions: say which). E.g. *"<mention> says X, while here Y"*. If there are none yet: "No connections yet."
 8. `## ✅ Actions`: bullet list of mentions to the rows created in Actions.
 9. `## 📚 Resources and names mentioned`: books, people, companies, tools, links mentioned.
 10. `## ❓ Questions to reflect on`: 2-3 personal questions, tied to the user's context.
@@ -130,6 +147,7 @@ The **reusable** ideas the episode is really about, not passing topics.
   <callout icon="💡" color="gray_bg">
   	Clear definition in 2-3 sentences.
   </callout>
+  **When it applies:** the conditions under which it holds, according to the episodes · **Exceptions:** the cases where it doesn't (write "none mentioned yet" if none)
   ## What the episodes say
   ### <mention-page url="EPISODE_URL">Guest — short title</mention-page>
   - 1-3 points on what THIS episode says about the concept, with examples and numbers
@@ -140,10 +158,15 @@ The **reusable** ideas the episode is really about, not passing topics.
   ```
 - **Existing concept:** read it with `notion-fetch`.
   1. With `update_content`, add a new `### <mention-page …>` under "What the episodes say". Use the heading of the "Agreements and disagreements" section as `old_str` and put it back after the new block.
-  2. Rewrite "Agreements and disagreements": who agrees, who doesn't, who adds a nuance, with mentions.
+  2. Rewrite "Agreements and disagreements": who agrees, who doesn't, who adds a nuance, which links are only analogies and which depend on context, with mentions and **each guest's own position** (not just "they agree"). Update "When it applies / Exceptions" if the new episode adds a condition or an exception.
   3. Add the episode to the concept's `Episodes` relation, keeping the ones already there.
 - On the episode page set the `Concepts` relation with all the concepts used.
 - **Backlinks:** for each earlier episode linked by a shared concept, update its `**Other episodes:**` line with `update_content` (use the exact line read with fetch as `old_str`) and add a mention of the new episode with the kind of link. At most 5 episodes per run.
+
+**Before moving on, check the links you wrote:**
+- no generalisation that erases an exception or a condition stated in the chapters;
+- how often an idea comes up is not evidence that it's true ("in 4 of 5 episodes" means popular, not proven);
+- every link between episodes says what each side actually says, with the minute when you have it.
 
 ### 5. Actions (2-6 per episode)
 Create rows in Actions with `Episode` = [episode page].

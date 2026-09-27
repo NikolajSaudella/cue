@@ -175,6 +175,8 @@ def main():
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--notion-page", default="", help="ID/URL of the Notion row: live progress if a Notion token is configured")
     ap.add_argument("--suggest", default="", help="search YouTube for short videos with captions about this question")
+    ap.add_argument("--lookup", action="store_true", help="only say what cue already has for this link (folder, Notion page, transcript)")
+    ap.add_argument("--locate", action="append", default=[], help="a quote to find in the transcript: exact time and words (repeatable)")
     args = ap.parse_args()
     ft.configure(args.data)
 
@@ -201,6 +203,24 @@ def main():
         sys.exit(1)
     workdir = ft.EPISODES_DIR / ft.work_id(source, url)
     workdir.mkdir(parents=True, exist_ok=True)
+
+    if args.lookup:
+        print(json.dumps({"ok": True, "dir": str(workdir), "notion": read_json(workdir / "notion.json"),
+                          "transcript_ready": (workdir / "transcript.txt").exists()}, ensure_ascii=False, indent=2))
+        sys.exit(0)
+    if args.locate:
+        segs = ft.read_segments(workdir)
+        if not segs:
+            print(json.dumps({"ok": False, "error": "No transcript yet for this link", "code": "no_transcript",
+                              "message": "There is no transcript for this link yet.", "retry_with_update": False}, ensure_ascii=False, indent=2))
+            sys.exit(1)
+        meta = read_json(workdir / "meta.json") or {}
+        found = ft.locate_quotes(segs, args.locate)
+        for f in found:
+            if f["found"] and meta.get("timestamp_link"):
+                f["link"] = meta["timestamp_link"].replace("{seconds}", str(int(f["start"])))
+        print(json.dumps({"ok": True, "method": meta.get("transcript_method"), "quotes": found}, ensure_ascii=False, indent=2))
+        sys.exit(0)
     result_path, pid_path, log_path = workdir / "result.json", workdir / "worker.pid", workdir / "log.txt"
 
     pid = int(pid_path.read_text()) if pid_path.exists() else None
@@ -224,6 +244,7 @@ def main():
         print(json.dumps({
             "ok": None,
             "state": "running",
+            "dir": str(workdir),
             "progress": line,
             "notion_progress": ft.progress_text(line),
             "notion_live": live,
@@ -236,6 +257,7 @@ def main():
         err = ft.FetchError("The process ended without a result")
         result = {"ok": False, "error": str(err), "log": last_progress(log_path), **ft.classify_error(err, [last_progress(log_path)], source)}
     # tell the user about a new version once the episode is done (or failed), not while it's running
+    result.setdefault("dir", str(workdir))
     upd = update_info()
     if upd:
         result["cue_update"] = upd
