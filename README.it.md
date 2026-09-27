@@ -73,35 +73,79 @@ Per Notion usa il connettore del tuo account claude.ai (accedi con lo stesso acc
 
 ## Domande frequenti
 
-**Costa qualcosa?** No. Usa il tuo piano Claude e strumenti gratuiti e open source.
+<details>
+<summary><b>Costa qualcosa?</b></summary>
 
-**Dove finiscono i miei dati?** In tre posti, e da nessun'altra parte. **Il tuo computer** tiene l'audio (cancellato dopo la trascrizione) e le trascrizioni. **Claude** legge la trascrizione per scrivere le note, come qualsiasi testo che gli mandi, alle condizioni del tuo piano Claude. **Il tuo Notion** riceve le note, mai la trascrizione completa. Cue di suo non ha server, account né statistiche.
+No. Usa il tuo piano Claude e strumenti gratuiti e open source.
 
-**Funziona nella chat normale di Claude?** No: cue funziona nella scheda **Code** dell'app Claude, perché trascrive sul tuo computer. Stessa app e stesso piano, niente da pagare in più.
+</details>
 
-**È sicuro?** Il codice è aperto, chiunque può leggerlo. Cue esegue solo i suoi programmi di trascrizione, installa Python con l'installer ufficiale di uv dopo avertelo chiesto, e scrive solo nelle sue pagine Notion e nella sua cartella sul tuo computer. Non chiede mai password né chiavi API.
+<details>
+<summary><b>Posso usarlo nella chat normale di Claude?</b></summary>
 
-**Quanto ci mette?** Video YouTube con sottotitoli: pochi minuti in tutto, quasi tutti per scrivere le note. Audio da trascrivere (Spotify, Apple Podcasts, video senza sottotitoli): circa 15-25 minuti per ogni ora di audio su un portatile recente, in background, più qualche minuto per scrivere. Dipende soprattutto dal processore del computer e da quanto è occupato (una videochiamata o l'esportazione di un video lo rallentano). La primissima volta scarica anche un modello vocale di circa 500 MB.
+No, funziona nella scheda **Code** dell'app Claude, perché trascrive sul tuo computer. Stessa app, stesso piano, niente da pagare in più.
 
-**Come lo aggiorno?** Nell'app Claude: **+** → **Plugins** → **Manage plugins** → **cue** → **Update** (o **Aggiorna**). Per sapere quando esce una nuova versione, clicca **Watch** → **Custom** → **Releases** in cima a questa pagina.
+</details>
 
-**Come lo tolgo?** **+** → **Plugins** → **Manage plugins** → **cue** → **Uninstall**. Le pagine Notion restano tue; la cartella di Cue sul tuo computer (trascrizioni e modello vocale) se ne va con lui.
+<details>
+<summary><b>Quanto ci mette?</b></summary>
 
-**Su quali computer funziona?** Windows e Mac, con l'app Claude per computer. Finora provato su Windows 11: se lo provi su un Mac, raccontaci com'è andata nelle [Issues](../../issues).
+- **YouTube con sottotitoli:** pochi minuti in tutto.
+- **Audio da trascrivere** (Spotify, Apple Podcasts, video senza sottotitoli): circa **15-25 minuti per ogni ora di audio**, in background.
+- Dipende soprattutto dal processore e da quanto è occupato. La primissima volta cue scarica anche un modello vocale di circa 500 MB.
 
-**Qualcosa non funziona?**
-- *"Notion non è collegato"*: nella scheda Code clicca **+** → **Connectors** e attiva Notion, poi apri una nuova sessione.
-- *Claude chiede spesso il permesso*: i comandi di cue sono già approvati; per Notion scegli "Always allow" la prima volta.
-- *Un video YouTube non va*: cue aggiorna da solo lo strumento di download e riprova; i video privati, con limite d'età o solo per membri non si possono leggere.
-- *La trascrizione è lenta*: lavora in background; la colonna Progress su Notion mostra i minuti che mancano. Le app pesanti (videochiamate, esportazioni) la rallentano.
-- Ancora bloccato? Racconta a Claude cosa è successo con parole tue, o apri una [issue](../../issues).
+</details>
+
+<details>
+<summary><b>Su quali computer funziona?</b></summary>
+
+Windows e Mac, con l'app Claude per computer. Finora provato su Windows 11: se lo provi su un Mac, raccontaci com'è andata nelle [Issues](../../issues).
+
+</details>
+
+<details>
+<summary><b>Dove finiscono i miei dati?</b></summary>
+
+In tre posti, e da nessun'altra parte:
+- **Il tuo computer:** l'audio (cancellato dopo la trascrizione) e le trascrizioni.
+- **Claude:** legge la trascrizione per scrivere le note, alle condizioni del tuo piano Claude.
+- **Il tuo Notion:** le note, mai la trascrizione completa.
+
+Cue di suo non ha server, account né statistiche.
+
+</details>
+
+<details>
+<summary><b>È sicuro?</b></summary>
+
+Il codice è aperto, chiunque può leggerlo. Cue esegue solo i suoi programmi di trascrizione, scrive solo nelle sue pagine Notion e nella sua cartella, e non chiede mai password né chiavi API. Installa Python (con l'installer ufficiale di uv) solo dopo avertelo chiesto.
+
+</details>
+
+<details>
+<summary><b>Come lo aggiorno o lo tolgo?</b></summary>
+
+Nell'app Claude: **+** → **Plugins** → **Manage plugins** → **cue** → **Update** o **Uninstall**.
+
+Se lo togli, le pagine Notion restano tue. Per sapere quando esce una nuova versione, clicca **Watch** → **Custom** → **Releases** in cima a questa pagina.
+
+</details>
+
+<details>
+<summary><b>Qualcosa non funziona?</b></summary>
+
+- **"Notion non è collegato":** nella scheda Code, **+** → **Connectors** → attiva Notion, poi apri una nuova sessione.
+- **Troppe richieste di permesso:** i comandi di cue sono già approvati; per Notion scegli "Always allow" la prima volta.
+- **Un video YouTube non va:** cue aggiorna da solo lo strumento di download e riprova. I video privati, con limite d'età o solo per membri non si possono leggere.
+- **La trascrizione è lenta:** la colonna Progress su Notion mostra i minuti che mancano. Videochiamate ed esportazioni la rallentano.
+- **Ancora bloccato?** Racconta a Claude cosa è successo con parole tue, o apri una [issue](../../issues).
+
+</details>
 
 Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.md](docs/how-it-works.md).
 
 ---
 
-**Prossimi passi:** iscrizioni ai tuoi programmi preferiti, un digest settimanale, elaborazioni automatiche e forse altre app di AI (ChatGPT / Codex). Idee e bug: [Issues](../../issues).
+<p align="center"><b>In arrivo:</b> iscrizioni ai tuoi programmi preferiti, un digest settimanale, elaborazioni automatiche.<br>Idee e bug: <a href="../../issues">Issues</a> · Vuoi aiutare? <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> · Se cue ti è utile, una ⭐ aiuta altri a trovarlo.</p>
 
-Se Cue ti è utile, una ⭐ su GitHub aiuta altri a trovarlo. Vuoi migliorarlo? Leggi [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Creato in meno di 48 ore da [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): io ho fatto il product owner, [Claude Code](https://claude.com/claude-code) l'ingegnere. Licenza MIT.
+<p align="center"><sub>Creato in meno di 48 ore da <a href="https://www.linkedin.com/in/nikolajsaudella/">Nikolaj Saudella</a>: io ho fatto il product owner, <a href="https://claude.com/claude-code">Claude Code</a> l'ingegnere. Licenza MIT.</sub></p>

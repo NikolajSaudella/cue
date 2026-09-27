@@ -73,35 +73,79 @@ For Notion, use the connector of your claude.ai account (sign in with the same a
 
 ## FAQ
 
-**Does it cost anything?** No. It runs on your Claude plan and free, open-source tools.
+<details>
+<summary><b>Does it cost anything?</b></summary>
 
-**Where does my data go?** Three places, and nowhere else. **Your computer** keeps the audio (deleted after transcription) and the transcripts. **Claude** reads the transcript to write your notes, like any text you send it, under your Claude plan's terms. **Your Notion** gets the notes, never the full transcript. Cue itself has no server, no account and no analytics.
+No. It runs on your Claude plan and free, open-source tools.
 
-**Does it work in the normal Claude chat?** No: cue runs in the **Code** tab of the Claude app, because it transcribes on your computer. It's the same app and the same plan, nothing extra to pay.
+</details>
 
-**Is it safe?** The code is open, so anyone can read it. Cue only runs its own transcription scripts, installs Python through the official uv installer after asking you, and writes only to its own Notion pages and its own folder on your computer. It never asks for passwords or API keys.
+<details>
+<summary><b>Can I use it in the normal Claude chat?</b></summary>
 
-**How long does it take?** YouTube videos with captions: a few minutes in all, mostly Claude writing your notes. Audio that needs transcribing (Spotify, Apple Podcasts, videos without captions): about 15-25 minutes per hour of audio on a recent laptop, in the background, plus a few minutes of writing. It depends mostly on your computer's processor and on how busy it is (a video call or a video export slows it down). The very first time, it also downloads a ~500 MB speech model.
+No, it runs in the **Code** tab of the Claude app, because it transcribes on your computer. Same app, same plan, nothing extra to pay.
 
-**How do I update it?** In the Claude app: **+** → **Plugins** → **Manage plugins** → **cue** → **Update**. To hear about new versions, click **Watch** → **Custom** → **Releases** at the top of this page.
+</details>
 
-**How do I remove it?** **+** → **Plugins** → **Manage plugins** → **cue** → **Uninstall**. Your Notion pages stay yours; cue's folder on your computer (transcripts and the speech model) goes away with it.
+<details>
+<summary><b>How long does it take?</b></summary>
 
-**Which computers does it work on?** Windows and Mac, with the Claude desktop app. Tested on Windows 11 so far: if you try it on a Mac, tell us how it went in the [Issues](../../issues).
+- **YouTube with captions:** a few minutes in all.
+- **Audio to transcribe** (Spotify, Apple Podcasts, videos without captions): about **15-25 minutes per hour of audio**, in the background.
+- It depends mostly on your processor and how busy it is. The very first time, cue also downloads a ~500 MB speech model.
 
-**Something's not working?**
-- *"Notion isn't connected"*: in the Code tab, click **+** → **Connectors** and switch Notion on, then start a new session.
-- *Claude asks for permission a lot*: cue's own commands are pre-approved; for Notion, choose "Always allow" the first time.
-- *A YouTube video fails*: cue updates its YouTube downloader and retries by itself; private, age-restricted or members-only videos can't be read.
-- *Transcription is slow*: it's working in the background; the Progress column in Notion shows the minutes left. Heavy apps (video calls, exports) slow it down.
-- Still stuck? Tell Claude what happened in your own words, or open an [issue](../../issues).
+</details>
+
+<details>
+<summary><b>Which computers does it work on?</b></summary>
+
+Windows and Mac, with the Claude desktop app. Tested on Windows 11 so far: if you try it on a Mac, tell us how it went in the [Issues](../../issues).
+
+</details>
+
+<details>
+<summary><b>Where does my data go?</b></summary>
+
+Three places, and nowhere else:
+- **Your computer:** the audio (deleted after transcription) and the transcripts.
+- **Claude:** reads the transcript to write your notes, under your Claude plan's terms.
+- **Your Notion:** the notes, never the full transcript.
+
+Cue itself has no server, no account and no analytics.
+
+</details>
+
+<details>
+<summary><b>Is it safe?</b></summary>
+
+The code is open for anyone to read. Cue only runs its own transcription scripts, writes only to its own Notion pages and its own folder, and never asks for passwords or API keys. It installs Python (through the official uv installer) only after asking you.
+
+</details>
+
+<details>
+<summary><b>How do I update or remove it?</b></summary>
+
+In the Claude app: **+** → **Plugins** → **Manage plugins** → **cue** → **Update** or **Uninstall**.
+
+Uninstalling keeps your Notion pages. To hear about new versions, click **Watch** → **Custom** → **Releases** at the top of this page.
+
+</details>
+
+<details>
+<summary><b>Something's not working?</b></summary>
+
+- **"Notion isn't connected":** in the Code tab, **+** → **Connectors** → switch Notion on, then start a new session.
+- **Too many permission requests:** cue's commands are pre-approved; for Notion, choose "Always allow" the first time.
+- **A YouTube video fails:** cue updates its downloader and retries by itself. Private, age-restricted or members-only videos can't be read.
+- **Transcription is slow:** the Progress column in Notion shows the minutes left. Video calls and exports slow it down.
+- **Still stuck?** Tell Claude what happened in your own words, or open an [issue](../../issues).
+
+</details>
 
 More questions, and how it works under the hood: [docs/how-it-works.md](docs/how-it-works.md).
 
 ---
 
-**Next:** subscriptions to your favourite shows, a weekly digest, scheduled runs, and maybe other AI apps (ChatGPT / Codex). Ideas and bugs: [Issues](../../issues).
+<p align="center"><b>Coming next:</b> subscriptions to your favourite shows, a weekly digest, scheduled runs.<br>Ideas and bugs: <a href="../../issues">Issues</a> · Want to help? <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> · If cue helps you, a ⭐ helps others find it.</p>
 
-If Cue helps you, a ⭐ on GitHub helps others find it. Want to improve it? See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Built in under 48 hours by [Nikolaj Saudella](https://www.linkedin.com/in/nikolajsaudella/): I was the product owner, [Claude Code](https://claude.com/claude-code) was the engineer. MIT License.
+<p align="center"><sub>Built in under 48 hours by <a href="https://www.linkedin.com/in/nikolajsaudella/">Nikolaj Saudella</a>: I was the product owner, <a href="https://claude.com/claude-code">Claude Code</a> was the engineer. MIT License.</sub></p>
