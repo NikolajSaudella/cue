@@ -1,7 +1,7 @@
 {
   "name": "cue",
   "displayName": "cue",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Podcasts and videos you actually remember: paste a link, get Notion notes with what it says, what it means for you, and what to do next.",
   "author": {
     "name": "Nikolaj Saudella",

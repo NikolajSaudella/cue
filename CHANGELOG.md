@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.3 — updates that actually arrive
+
+- **"Want me to install it?"** When a new version of cue is out, cue now offers to install it for you. Say yes and Claude refreshes cue's catalogue and updates the plugin (two fixed commands, nothing else), then asks you to restart the app. Before, the app's Update button often found nothing, because its copy of the catalogue was out of date.
+
 ## v0.5.2 — a cleaner home page
 
 - **What you use every day comes first.** The cue page in Notion now opens with a short welcome and a link to My context, then the 📥 Inbox, the 📚 Library and a new **✅ Next steps** list (your open actions).

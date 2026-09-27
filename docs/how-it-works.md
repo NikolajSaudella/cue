@@ -74,7 +74,7 @@ Long transcriptions run in a detached process. `transcribe.py` waits up to 150 s
 
 **Errors** come back as `{"ok": false, "error", "code", "message", "retry_with_update"}`: `code` is stable (`youtube_bot_check`, `age_restricted`, `private`, `members_only`, `live`, `unavailable`, `rate_limited`, `spotify_exclusive`, `unsupported`, `offline`, `no_disk_space`, `whisper_model`, `youtube_changed`, `unknown`) and `message` is plain English that Claude translates. When `retry_with_update` is true, the skill runs the same command once more with `uv run --upgrade-package yt-dlp --script …`, which fixes most breakages caused by YouTube changes.
 
-**Update notice:** at the end of each episode (and in `--check`), `transcribe.py` compares its version with `.claude-plugin/plugin.json` on the `main` branch of this repository, at most twice a day and with a 4-second timeout, and adds `cue_update` to its JSON when a newer version exists. The skill then tells the user once how to update.
+**Update notice:** at the end of each episode (and in `--check`), `transcribe.py` compares its version with `.claude-plugin/plugin.json` on the `main` branch of this repository, at most twice a day and with a 4-second timeout, and adds `cue_update` to its JSON when a newer version exists. The skill then tells the user once and offers to install it: if they say yes, it runs `claude plugin marketplace update cue` and `claude plugin update cue@cue` (both pre-approved, nothing else) and asks them to restart the app; otherwise it gives the manual steps.
 
 ## Dependencies
 
