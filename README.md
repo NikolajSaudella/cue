@@ -7,7 +7,7 @@
 
 <h3 align="center">Podcasts and videos you actually remember — and what they mean for you.</h3>
 
-<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. A free plugin for the Claude app.</p>
+<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. A free, open-source plugin for the Claude app (needs a Claude Pro or Max plan).</p>
 
 <p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Watch the 30-second video</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Explore the live demo</a> · <a href="#install">Install</a> · <a href="README.it.md">🇮🇹 Italiano</a></b></p>
 
@@ -76,7 +76,7 @@ For Notion, use the connector of your claude.ai account (sign in with the same a
 <details>
 <summary><b>Does it cost anything?</b></summary>
 
-No. It runs on your Claude plan and free, open-source tools.
+The plugin is free and open source. You need a **Claude Pro or Max** plan, because cue runs in Claude's Code tab; the transcription tools it uses are free too.
 
 </details>
 
@@ -106,10 +106,14 @@ Windows and Mac, with the Claude desktop app. Tested on Windows 11 so far: if yo
 <details>
 <summary><b>Where does my data go?</b></summary>
 
-Three places, and nowhere else:
-- **Your computer:** the audio (deleted after transcription) and the transcripts.
-- **Claude:** reads the transcript to write your notes, under your Claude plan's terms.
+**What cue keeps:**
+- **Your computer:** the transcripts (the audio is deleted once transcribed).
 - **Your Notion:** the notes, never the full transcript.
+
+**Who it talks to:**
+- **Claude** reads the transcript to write your notes, under your Claude plan's terms.
+- **The episode's own site** (YouTube, the podcast host, Spotify's public page) to download captions or audio, and Apple's public podcast search to find a Spotify episode's feed.
+- **Hugging Face**, once, to download the speech model; **GitHub**, twice a day, to check for a new version of cue. Nothing about you or your episodes is sent.
 
 Cue itself has no server, no account and no analytics.
 
@@ -146,6 +150,6 @@ More questions, and how it works under the hood: [docs/how-it-works.md](docs/how
 
 ---
 
-<p align="center"><b>Coming next:</b> subscriptions to your favourite shows, a weekly digest, scheduled runs.<br>Ideas and bugs: <a href="../../issues">Issues</a> · Want to help? <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> · If cue helps you, a ⭐ helps others find it.</p>
+<p align="center"><b>Coming next:</b> ask questions across everything you've heard, subscriptions to your favourite shows, a weekly digest.<br>Ideas and bugs: <a href="../../issues">Issues</a> · Want to help? <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> · If cue helps you, a ⭐ helps others find it.</p>
 
 <p align="center"><sub>Built in under 48 hours by <a href="https://www.linkedin.com/in/nikolajsaudella/">Nikolaj Saudella</a>: I was the product owner, <a href="https://claude.com/claude-code">Claude Code</a> was the engineer. MIT License.</sub></p>

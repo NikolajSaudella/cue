@@ -7,7 +7,7 @@
 
 <h3 align="center">Podcast e video che ricordi davvero, e cosa significano per te.</h3>
 
-<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Un plugin gratuito per l'app Claude.</p>
+<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Un plugin gratuito e open source per l'app Claude (serve un piano Claude Pro o Max).</p>
 
 <p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Guarda il video di 30 secondi</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Sfoglia la demo</a> · <a href="#installazione">Installa</a> · <a href="README.md">🇬🇧 English</a></b></p>
 
@@ -76,7 +76,7 @@ Per Notion usa il connettore del tuo account claude.ai (accedi con lo stesso acc
 <details>
 <summary><b>Costa qualcosa?</b></summary>
 
-No. Usa il tuo piano Claude e strumenti gratuiti e open source.
+Il plugin è gratuito e open source. Ti serve un piano **Claude Pro o Max**, perché cue funziona nella scheda Code di Claude; anche gli strumenti di trascrizione che usa sono gratuiti.
 
 </details>
 
@@ -106,10 +106,14 @@ Windows e Mac, con l'app Claude per computer. Finora provato su Windows 11: se l
 <details>
 <summary><b>Dove finiscono i miei dati?</b></summary>
 
-In tre posti, e da nessun'altra parte:
-- **Il tuo computer:** l'audio (cancellato dopo la trascrizione) e le trascrizioni.
-- **Claude:** legge la trascrizione per scrivere le note, alle condizioni del tuo piano Claude.
+**Cosa conserva cue:**
+- **Il tuo computer:** le trascrizioni (l'audio viene cancellato dopo la trascrizione).
 - **Il tuo Notion:** le note, mai la trascrizione completa.
+
+**Con chi parla:**
+- **Claude** legge la trascrizione per scrivere le note, alle condizioni del tuo piano Claude.
+- **Il sito della puntata** (YouTube, l'hosting del podcast, la pagina pubblica di Spotify) per scaricare sottotitoli o audio, e la ricerca pubblica dei podcast di Apple per trovare il feed di una puntata Spotify.
+- **Hugging Face**, una volta, per scaricare il modello vocale; **GitHub**, due volte al giorno, per vedere se c'è una nuova versione di cue. Non viene inviato niente su di te o sulle tue puntate.
 
 Cue di suo non ha server, account né statistiche.
 
@@ -146,6 +150,6 @@ Altre domande e come funziona sotto il cofano (in inglese): [docs/how-it-works.m
 
 ---
 
-<p align="center"><b>In arrivo:</b> iscrizioni ai tuoi programmi preferiti, un digest settimanale, elaborazioni automatiche.<br>Idee e bug: <a href="../../issues">Issues</a> · Vuoi aiutare? <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> · Se cue ti è utile, una ⭐ aiuta altri a trovarlo.</p>
+<p align="center"><b>In arrivo:</b> fare domande su tutto quello che hai ascoltato, iscrizioni ai tuoi programmi preferiti, un digest settimanale.<br>Idee e bug: <a href="../../issues">Issues</a> · Vuoi aiutare? <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> · Se cue ti è utile, una ⭐ aiuta altri a trovarlo.</p>
 
 <p align="center"><sub>Creato in meno di 48 ore da <a href="https://www.linkedin.com/in/nikolajsaudella/">Nikolaj Saudella</a>: io ho fatto il product owner, <a href="https://claude.com/claude-code">Claude Code</a> l'ingegnere. Licenza MIT.</sub></p>
