@@ -52,47 +52,13 @@ Before creating anything, show a short draft, 6 to 8 lines in their language: wh
 Apply their corrections and move on. Another round only if they corrected something important.
 
 ## 5. Create the Notion space
-Tell the user you are creating their cue space in Notion. Then, in this order:
+Tell the user you are creating their cue space in Notion. The home page is built so that what the user opens every day (Inbox, Library, next steps) comes first, the guide sits in a toggle, and the databases live in a "Behind the scenes" sub-page. Notion only lets you add blocks at the end of a page (and one insert at the start), so **follow the steps in this exact order**. Everything is written in the user's language; keep the emoji, the orange callout and the database names Episodes, Concepts, Actions; a single column (no `<columns>`).
 
-**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), title "cue", lowercase like the logo (never put emoji in page titles: use the icon), and the cue brand:
+**a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), title "cue", lowercase like the logo (never put emoji in page titles: use the icon), **no content yet**, and the cue brand:
 - `icon`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-icon.png`
 - `cover`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-cover.png`
 
-Content, written in the user's language (keep the emoji, the `orange` colors and the database names Episodes, Concepts, Actions; translate "My context" as in step c):
-```
-<callout icon="🟠" color="orange_bg">
-	**Podcasts and videos you actually remember.** Paste a link in Claude and find it here: what it says, what it means for you, and what to do next.
-</callout>
-<columns>
-	<column>
-		### 💬 In Claude {color="orange"}
-		Paste the link of a podcast or a video (YouTube, Spotify, Apple Podcasts). With captions it's ready in a couple of minutes.
-	</column>
-	<column>
-		### 📱 From your phone {color="orange"}
-		Add the link as a new row in the **Inbox** below, then tell Claude "process my inbox".
-	</column>
-	<column>
-		### 🧭 Make it yours {color="orange"}
-		Keep **My context** up to date: who you are, what you're building, your questions. It's what makes the notes personal.
-	</column>
-</columns>
-<details>
-<summary>**Good to know**</summary>
-	- **Timing:** YouTube videos with captions are ready in a few minutes. Without captions (Spotify, most podcasts) it takes about 15-25 minutes per hour of audio on a recent laptop: it runs in the background, but the computer must stay on.
-	- **Privacy:** audio and transcripts are saved only on your computer. Claude reads the transcript to write your notes; only the notes go to Notion.
-	- **Updates:** in the Claude app, **+** → **Plugins** → **Manage plugins** → **cue** → **Update**.
-	- **Open source:** [github.com/NikolajSaudella/cue](https://github.com/NikolajSaudella/cue)
-</details>
-## 🗂️ Inside cue
-- **Episodes:** one note per episode: in short, key ideas, chapters with timestamps, quotes and what it means for you.
-- **Concepts:** the ideas that come back across episodes, with who agrees and who doesn't.
-- **Actions:** concrete things to read, try and apply to your projects.
-- **My context:** who you are, what you're building and how you like your notes. cue reads it before every episode.
-```
-Every page, database and linked view you create on the home page next is added **at the end of the page**, so the order of the steps below is the order on the page: Episodes, Concepts, Actions and My context right under this list, then the Inbox and the Library at the bottom.
-
-**b. Databases**, all with `parent: {page_id: <home>}`. Use exactly these schemas (property names and options in English; the skills rely on them):
+**b. Databases**, all with `parent: {page_id: <home>}` for now (step f moves them). Use exactly these schemas (property names and options in English; the skills rely on them):
 
 Episodes, title "Episodes":
 ```
@@ -108,7 +74,7 @@ CREATE TABLE ("Action" TITLE, "Type" SELECT('📚 Read':blue, '🛠️ Try':oran
 ```
 Give the databases icons: Episodes 🎧, Concepts 💡, Actions ✅ (with `notion-update-page` on each database page, if the create call didn't set them).
 
-**c. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from steps 2-4. Leave out a section when you have nothing true to put in it: never invent.
+**c. "🧭 My context" page**, child of the home page for now (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from steps 2-4. Leave out a section when you have nothing true to put in it: never invent.
 ```
 <callout icon="🧭" color="gray_bg">
 	cue reads this page before every episode to write "What it means for me". Edit it whenever something changes.
@@ -133,25 +99,58 @@ Give the databases icons: Episodes 🎧, Concepts 💡, Actions ✅ (with `notio
 - On Actions, a table named "To do": `FILTER "Done" = FALSE; SHOW "Action", "Type", "Why", "Episode"`.
 - Fetch the Concepts database and note the URL of its default view (`view://…`).
 
-Then the bottom of the **home page**, with these four calls **in this order** (each one adds to the end of the page). The Inbox only shows links still to process: a finished episode leaves it, so the Library must be on the home page too, or the user thinks their episode is missing.
-1. `notion-update-page` with `insert_content`, `position: {"type": "end"}`, in the user's language:
+**e. The body of the home page**, with these calls **in this order** (each one adds to the end of the page). The Inbox only shows links still to process: a finished episode leaves it, so the Library must be on the home page too, or the user thinks their episode is missing.
+1. `notion-update-page` with `insert_content`, `position: {"type": "end"}`:
    ```
    ## 📥 Inbox
-   <span color="gray">Links waiting to be processed. When an episode is ready it leaves the Inbox and you find it in the Library, below.</span>
+   <span color="gray">Links waiting to be processed. From your phone, add one as a new row, then tell Claude "process my inbox". When an episode is ready it moves to the Library.</span>
    ```
 2. `notion-create-view`: a linked table of Episodes named "📥 Inbox" (`parent_page_id` = home page, `data_source_id` = Episodes), with the same configuration as the Inbox view above.
-3. `notion-update-page` with `insert_content`, `position: {"type": "end"}`, in the user's language:
+3. `insert_content` at the end:
    ```
    ## 📚 Library
-   <span color="gray">Your finished episodes, newest first. Open a card to read the note.</span>
+   <span color="gray">Your finished episodes, newest first. Your first episode will appear here: open a card to read the note.</span>
    ```
 4. `notion-create-view`: a linked gallery of Episodes named "📚 Library" (`parent_page_id` = home page, `data_source_id` = Episodes), with the same configuration as the Library view above.
+5. `insert_content` at the end:
+   ```
+   ## ✅ Next steps
+   <span color="gray">Concrete actions from your episodes: things to read, try and apply to your projects. Tick them when they're done.</span>
+   ```
+6. `notion-create-view`: a linked table of Actions named "✅ Next steps" (`parent_page_id` = home page, `data_source_id` = Actions), with the same configuration as the "To do" view above.
+7. `insert_content` at the end:
+   ```
+   ---
+   <details>
+   <summary>**How it works**</summary>
+   	- **💬 In Claude:** in the Code tab, paste the link of a podcast or a video (YouTube, Spotify, Apple Podcasts). With captions it's ready in a couple of minutes.
+   	- **📱 From your phone:** add the link as a new row in the Inbox, then tell Claude "process my inbox".
+   	- **🧭 Make it yours:** keep My context up to date: who you are, what you're building, your questions. It's what makes the notes personal.
+   	- **What's inside:** Episodes (one note per episode, with chapters, quotes and what it means for you), Concepts (the ideas that come back across episodes, with who agrees and who doesn't), Actions (your next steps) and My context. You find them all in Behind the scenes, below.
+   	- **Timing:** YouTube videos with captions are ready in a few minutes. Without captions (Spotify, most podcasts) it takes about 15-25 minutes per hour of audio on a recent laptop: it runs in the background, but the computer must stay on.
+   	- **Privacy:** audio and transcripts are saved only on your computer. Claude reads the transcript to write your notes; only the notes go to Notion.
+   	- **Updates:** in the Claude app, **+** → **Plugins** → **Manage plugins** → **cue** → **Update**. If it finds nothing new, ask Claude to run `claude plugin marketplace update cue` first.
+   	- **Open source:** [github.com/NikolajSaudella/cue](https://github.com/NikolajSaudella/cue)
+   </details>
+   ```
+
+**f. "Behind the scenes".** Create a child page of the home page (it lands at the bottom), icon ⚙️, title "Behind the scenes" translated **without the emoji**, content `<span color="gray">Your profile and the full databases. cue keeps them up to date: you rarely need to open them.</span>`. Then `notion-move-pages` with My context, Episodes, Concepts and Actions (in this order) and `new_parent: {page_id: <Behind the scenes>}`: this takes them off the top of the home page. If the move fails, leave them where they are and carry on: everything still works.
+
+**g. The top of the home page**, last: `notion-update-page` with `insert_content`, `position: {"type": "start"}`:
+```
+<callout icon="🟠" color="orange_bg">
+	**Podcasts and videos you actually remember.** Paste a link in Claude and find it here: what it says, what it means for you, and what to do next.
+	**Start here:** in the Code tab of the Claude app, paste the link of a podcast or a YouTube video.
+</callout>
+🧭 cue writes for you through <mention-page url="<My context URL>"/>: keep it up to date when your work or your goals change.
+```
+The finished page reads, from the top: callout, My context line, Inbox, Library, Next steps, the "How it works" toggle, Behind the scenes.
 
 Never rearrange the home page afterwards with `replace_content`: Notion doesn't move linked views reliably, and they end up in the wrong place.
 
 If a view fails, don't stop the setup: note it and carry on (the episode skill only needs the Inbox view and a Concepts view; any existing view of Concepts works).
 
-**e. Save the configuration** with the Write tool at `${CLAUDE_PLUGIN_DATA}/config.json`:
+**h. Save the configuration** with the Write tool at `${CLAUDE_PLUGIN_DATA}/config.json`:
 ```json
 {
   "version": 1,

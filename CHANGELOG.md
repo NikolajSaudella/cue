@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.2 — a cleaner home page
+
+- **What you use every day comes first.** The cue page in Notion now opens with a short welcome and a link to My context, then the 📥 Inbox, the 📚 Library and a new **✅ Next steps** list (your open actions).
+- **One column, no clutter.** The three side-by-side columns are gone; the guide (how to use cue, what's inside, timing, privacy, updates) sits in a "How it works" toggle, and the databases and My context live in a "Behind the scenes" page.
+- **Updates tip.** If "Update" finds nothing new, the page and the README now say how to refresh cue's catalogue first.
+- Applies to new setups (or "start over"): existing cue pages are never changed.
+
 ## v0.5.1 — cue, in lowercase
 
 - The name is now written **cue**, in lowercase, everywhere: in the Notion pages cue writes ("processed by cue"), in the setup messages, in the docs and in the issue forms.
