@@ -1,6 +1,6 @@
 ---
 name: setup
-description: First-time setup of Cue — a short, personal interview (a few one-tap questions, the user's website, their open question), creation of the Cue space in their Notion, installation of the transcription tools, and a first episode picked for the user. Use it when the user asks to set up, install, configure or reset Cue, or when the episode skill finds no configuration.
+description: First-time setup of cue — a short, personal interview (a few one-tap questions, the user's website, their open question), creation of the cue space in their Notion, installation of the transcription tools, and a first episode picked for the user. Use it when the user asks to set up, install, configure or reset cue, or when the episode skill finds no configuration.
 allowed-tools:
   - Bash(uv --version)
   - Bash(~/.local/bin/uv --version)
@@ -15,7 +15,7 @@ allowed-tools:
   - Edit(~/.claude/plugins/data/cue-*/config.json)
 ---
 
-# Cue: first-time setup
+# cue: first-time setup
 
 The user is probably **not technical**. Talk like a friendly guide, in plain words, one step at a time. Never ask them to open a terminal or edit a file: you run every command, they just approve.
 Speak the user's language (the one they write in). Keep each message short.
@@ -25,9 +25,9 @@ Speak the user's language (the one they write in). Keep each message short.
 Setup takes about 5 minutes. Tell the user that at the start, with the 4 steps: **a few quick questions → your Notion space → install the tools → a first episode picked for you**.
 
 ## 1. Check what's already there
-- Read `${CLAUDE_PLUGIN_DATA}/config.json`. If it exists and its `notion.hub_page` still opens with `notion-fetch`, Cue is already set up: ask whether they want to **update their context** (steps 2-4, then update the "🧭 My context" page instead of creating it, and finally offer to refresh their earlier notes with the `refresh` skill) or **start over** (a new Notion space; the old one stays untouched). Otherwise continue.
+- Read `${CLAUDE_PLUGIN_DATA}/config.json`. If it exists and its `notion.hub_page` still opens with `notion-fetch`, cue is already set up: ask whether they want to **update their context** (steps 2-4, then update the "🧭 My context" page instead of creating it, and finally offer to refresh their earlier notes with the `refresh` skill) or **start over** (a new Notion space; the old one stays untouched). Otherwise continue.
 - **Notion connector:** check that the Notion tools are available (`notion-fetch`, `notion-create-pages`, `notion-create-database`, `notion-create-view`, `notion-query-data-sources`, `notion-update-page`). If they are not, stop and explain:
-  > Cue writes your notes in Notion, so Claude needs access to it. Click **+** next to the message box → **Connectors** → **Notion** → **Connect**, sign in and allow access to your workspace (if Notion is already there, switch it on). Then open a new session and say "set up Cue" again.
+  > cue writes your notes in Notion, so Claude needs access to it. Click **+** next to the message box → **Connectors** → **Notion** → **Connect**, sign in and allow access to your workspace (if Notion is already there, switch it on). Then open a new session and say "set up cue" again.
 
 ## 2. Quick choices (one tap each)
 Explain in one sentence why you ask: every note will be about *their* work, not generic advice.
@@ -52,7 +52,7 @@ Before creating anything, show a short draft, 6 to 8 lines in their language: wh
 Apply their corrections and move on. Another round only if they corrected something important.
 
 ## 5. Create the Notion space
-Tell the user you are creating their Cue space in Notion. Then, in this order:
+Tell the user you are creating their cue space in Notion. Then, in this order:
 
 **a. Home page.** `notion-create-pages` with `creation_mode: "draft"` (a private page at the top of their workspace), title "cue", lowercase like the logo (never put emoji in page titles: use the icon), and the cue brand:
 - `icon`: `https://raw.githubusercontent.com/NikolajSaudella/cue/main/docs/images/notion-icon.png`
@@ -88,7 +88,7 @@ Content, written in the user's language (keep the emoji, the `orange` colors and
 - **Episodes:** one note per episode: in short, key ideas, chapters with timestamps, quotes and what it means for you.
 - **Concepts:** the ideas that come back across episodes, with who agrees and who doesn't.
 - **Actions:** concrete things to read, try and apply to your projects.
-- **My context:** who you are, what you're building and how you like your notes. Cue reads it before every episode.
+- **My context:** who you are, what you're building and how you like your notes. cue reads it before every episode.
 ```
 Every page, database and linked view you create on the home page next is added **at the end of the page**, so the order of the steps below is the order on the page: Episodes, Concepts, Actions and My context right under this list, then the Inbox and the Library at the bottom.
 
@@ -111,7 +111,7 @@ Give the databases icons: Episodes 🎧, Concepts 💡, Actions ✅ (with `notio
 **c. "🧭 My context" page**, child of the home page (`parent: {page_id: <home>}`), icon 🧭, title "My context" translated into the user's language **without the emoji** (the icon already shows it), written in the user's language from steps 2-4. Leave out a section when you have nothing true to put in it: never invent.
 ```
 <callout icon="🧭" color="gray_bg">
-	Cue reads this page before every episode to write "What it means for me". Edit it whenever something changes.
+	cue reads this page before every episode to write "What it means for me". Edit it whenever something changes.
 </callout>
 ## Who I am
 ## What I'm working on
@@ -175,10 +175,10 @@ If a view fails, don't stop the setup: note it and carry on (the episode skill o
 Fill `uv` after step 6 (write the file again).
 
 ## 6. Install the transcription tools
-Cue transcribes episodes **on the user's computer** with free tools. They are installed by **uv**, which also installs the right Python by itself.
+cue transcribes episodes **on the user's computer** with free tools. They are installed by **uv**, which also installs the right Python by itself.
 
 1. Check whether uv is there: run `uv --version`. If that fails, try the default install location: `~/.local/bin/uv --version` in Bash (on Windows too), or `& "$HOME\.local\bin\uv.exe" --version` in PowerShell.
-2. If uv is missing, explain in one sentence ("I need to install **uv**, a free and widely used tool that installs Python for Cue: it takes a few seconds") and run the official installer:
+2. If uv is missing, explain in one sentence ("I need to install **uv**, a free and widely used tool that installs Python for cue: it takes a few seconds") and run the official installer:
    - Windows (PowerShell): `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
    - macOS / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
    Then use the install location (point 1), because the current shell doesn't see the new command yet.

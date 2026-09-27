@@ -9,7 +9,7 @@
 # ]
 # ///
 """
-Cue - one idempotent command to get the transcript of a link.
+cue - one idempotent command to get the transcript of a link.
 
 Run it with uv, which installs Python and the dependencies by itself the first time:
     uv run --script transcribe.py <url> --data <dir> [--notion-page <row>] [--max 150] [--model small] [--force]

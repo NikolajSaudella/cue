@@ -7,7 +7,7 @@
 
 <h3 align="center">Podcasts and videos you actually remember — and what they mean for you.</h3>
 
-<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. When your work or goals change, your past notes update with you. A free, open-source plugin for the Claude app (needs a Claude Pro or Max plan).</p>
+<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. When your work or goals change, your past notes update with you. A free, open-source plugin for the Claude app (needs a Claude Pro or Max plan).</p>
 
 <p align="center"><b><a href="https://github.com/user-attachments/assets/5429053b-0a43-4a0e-994c-097f8c99eab0">▶ Watch the 30-second video</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Explore the live demo</a> · <a href="#install">Install</a> · <a href="README.it.md">🇮🇹 Italiano</a></b></p>
 
@@ -45,12 +45,12 @@ Notes in the language you choose. Audio and transcripts are saved only on your c
 
 ## Install
 
-You need the **[Claude desktop app](https://claude.ai/download)** (Windows or Mac) with a **Pro or Max** plan, and a **Notion** account (the free plan is fine). Cue works in the app's **Code** tab, not in the normal chat: only Code can run the transcription on your computer.
+You need the **[Claude desktop app](https://claude.ai/download)** (Windows or Mac) with a **Pro or Max** plan, and a **Notion** account (the free plan is fine). cue works in the app's **Code** tab, not in the normal chat: only Code can run the transcription on your computer.
 
 1. **Open the Code tab.** In the Claude app, click **Code** at the top. When it asks for a folder, pick any one (your Documents folder is fine: cue doesn't touch it).
 2. **Connect Notion.** Click **+** next to the message box → **Connectors** → **Notion** → **Connect**, sign in and allow access to your workspace. If Notion is already connected, just check that it's switched on there.
 3. **Add cue.** Click **+** → **Plugins** → **Add plugin** → **Add marketplace**, paste `https://github.com/NikolajSaudella/cue`, then select **cue** → **Install for you**.
-4. **Start.** Open a new session in the Code tab and write **Set up Cue**.
+4. **Start.** Open a new session in the Code tab and write **Set up cue**.
 
 Claude asks a few quick questions (most are one tap, and a link to your website is enough), shows you what it understood, creates your space in Notion, installs everything it needs (you just approve) and processes a first episode picked for the question you're working on. About 5 minutes.
 
@@ -115,14 +115,14 @@ Windows and Mac, with the Claude desktop app. Tested on Windows 11 so far: if yo
 - **The episode's own site** (YouTube, the podcast host, Spotify's public page) to download captions or audio, and Apple's public podcast search to find a Spotify episode's feed.
 - **Hugging Face**, once, to download the speech model; **GitHub**, twice a day, to check for a new version of cue. Nothing about you or your episodes is sent.
 
-Cue itself has no server, no account and no analytics.
+cue itself has no server, no account and no analytics.
 
 </details>
 
 <details>
 <summary><b>Is it safe?</b></summary>
 
-The code is open for anyone to read. Cue only runs its own transcription scripts, writes only to its own Notion pages and its own folder, and never asks for passwords or API keys. It installs Python (through the official uv installer) only after asking you.
+The code is open for anyone to read. cue only runs its own transcription scripts, writes only to its own Notion pages and its own folder, and never asks for passwords or API keys. It installs Python (through the official uv installer) only after asking you.
 
 </details>
 

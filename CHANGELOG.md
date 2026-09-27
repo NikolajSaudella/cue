@@ -1,16 +1,20 @@
 # Changelog
 
+## v0.5.1 — cue, in lowercase
+
+- The name is now written **cue**, in lowercase, everywhere: in the Notion pages cue writes ("processed by cue"), in the setup messages, in the docs and in the issue forms.
+
 ## v0.5.0 — quotes you can trust, and a clearer privacy promise
 
 - **Exact minutes for quotes.** Every quote is now looked up in the transcript before it's published: the minute and link come from the moment it was actually said, the wording follows what was said, and quotes that can't be found are dropped. Chapter times are more precise too (blocks of 30 seconds that never start after the words they hold; before, a timestamp could be up to 45 seconds early). Quotes from automatic transcripts carry a small note.
-- **No duplicate pages.** Cue records the Notion page as soon as it creates it, so an interrupted episode is picked up on the same page. Two audio links with the same file name no longer share a folder, and cue's files are written so that a crash never leaves them half written.
+- **No duplicate pages.** cue records the Notion page as soon as it creates it, so an interrupted episode is picked up on the same page. Two audio links with the same file name no longer share a folder, and cue's files are written so that a crash never leaves them half written.
 - **Clear about data.** The README now says exactly where your data goes: audio and transcripts on your computer, the transcript read by Claude to write your notes, only the notes in Notion. Audio downloads accept only public web addresses, stop at ~1.5 GB, check the free disk space, and logs no longer show links' access tokens.
 - **Readings, not facts.** "What it means for me" separates what the guest says, cue's reading for you, and a small **To check** test when it depends on your situation, and it says when data is missing.
 - **More precise links between ideas.** Besides confirms / contradicts / adds, links can be an **analogy** or **depend on context**; each concept notes when it applies and its exceptions; a final check keeps exceptions and reminds that a popular idea isn't a proven one.
 
 ## v0.4.0 — notes that follow you, and honest timing
 
-- **"Refresh my notes."** Changed job, project or goals in "🧭 My context"? Cue rewrites the personal parts of your past episodes ("What it means for me", "Questions to reflect on", the concepts' "For me") for who you are now, for the episodes you choose. What each episode says stays the same, the previous version stays in a toggle, and old actions are never deleted. Cue also notices when your context has changed and offers it.
+- **"Refresh my notes."** Changed job, project or goals in "🧭 My context"? cue rewrites the personal parts of your past episodes ("What it means for me", "Questions to reflect on", the concepts' "For me") for who you are now, for the episodes you choose. What each episode says stays the same, the previous version stays in a toggle, and old actions are never deleted. cue also notices when your context has changed and offers it.
 - **Clearer install.** Four explicit steps in the README, including how to connect Notion from the **+** menu of the Code tab, and why cue lives in the Code tab and not in the normal chat.
 - **Timing corrected.** Transcribing audio takes about 15-25 minutes per hour on a recent laptop (measured: an 84-minute episode in 20 minutes, a 40-minute one in 14), not 30-45: the old figure came from a test run while the computer was busy.
 
@@ -23,12 +27,12 @@
 
 - **Faster, more personal setup.** Most questions are now one tap (who you are, what you want from podcasts and videos, short or detailed notes). Then two open questions: what you're building (a link to your website is enough: Claude reads it) and the question you're trying to answer these months.
 - **"Here's what I understood."** Before creating anything, Claude shows you what it will know about you, and you fix it in one message.
-- **A first episode picked for you.** Cue searches YouTube for short videos with captions about your question, so the first "What it means for me" answers something you actually care about.
+- **A first episode picked for you.** cue searches YouTube for short videos with captions about your question, so the first "What it means for me" answers something you actually care about.
 - **Notes the way you like them.** "🧭 My context" now has "How I like my notes": short or detailed, tactics or big ideas, and topics to skip the basics of. Every episode follows it, and says so when it helps answer your open question.
 
 ## v0.2.0 — safer, sturdier, and it tells you about updates
 
-- **Safer permissions.** Cue now pre-approves only its own transcription script and its own config files, instead of any `uv` command. Episode transcripts and descriptions are treated as content, never as instructions: if a video contains text addressed to Claude, it's ignored and you're told.
+- **Safer permissions.** cue now pre-approves only its own transcription script and its own config files, instead of any `uv` command. Episode transcripts and descriptions are treated as content, never as instructions: if a video contains text addressed to Claude, it's ignored and you're told.
 - **YouTube keeps working when YouTube changes.** When a video can't be read because YouTube changed something, cue updates its YouTube downloader and tries again, by itself.
 - **Clear errors.** Private, age-restricted, members-only and live videos, Spotify exclusives, no connection, full disk: each one now gets a plain explanation and the next step.
 - **Update notice.** At the end of an episode, cue tells you (once) when a new version is available and how to update it.
@@ -36,7 +40,7 @@
 
 ## v0.1.3
 
-- Cue is now presented for **podcasts and videos**: interviews, talks, lectures and webinars on YouTube work exactly like podcast episodes (they always did, now the product says so).
+- cue is now presented for **podcasts and videos**: interviews, talks, lectures and webinars on YouTube work exactly like podcast episodes (they always did, now the product says so).
 - New repository address: github.com/NikolajSaudella/cue (the old one redirects).
 
 ## v0.1.2

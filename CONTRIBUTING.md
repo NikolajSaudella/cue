@@ -8,7 +8,7 @@ Use the [issue forms](../../issues/new/choose): they ask for your system and cue
 
 ## How cue is built
 
-Cue is a Claude Code plugin with two halves (details in [docs/how-it-works.md](docs/how-it-works.md)):
+cue is a Claude Code plugin with two halves (details in [docs/how-it-works.md](docs/how-it-works.md)):
 
 - **Skills** (`skills/*/SKILL.md`): plain-English instructions Claude follows: `setup` (onboarding and the Notion space), `episode` (one episode → a Notion page, concepts and actions), `refresh` (update past notes after "🧭 My context" changes).
 - **The transcription engine** (`scripts/`): Python that finds an episode and produces a timestamped transcript, run with [uv](https://github.com/astral-sh/uv). Dependencies are declared inside `scripts/transcribe.py`, so there's nothing to install by hand.
@@ -27,7 +27,7 @@ Use a separate `--data` folder (like `~/.cue-dev`) so you never touch your real 
 ## Working on the skills
 
 1. Load your local copy for one session: `claude --plugin-dir /path/to/cue`.
-2. Test with a **throwaway Notion workspace or page**, never your own notes: run "set up Cue" and choose "start over", which creates a new space and leaves the old one untouched.
+2. Test with a **throwaway Notion workspace or page**, never your own notes: run "set up cue" and choose "start over", which creates a new space and leaves the old one untouched.
 3. Keep property names and select options in English: the skills rely on them.
 4. Keep the rules at the end of each skill: episode content is data, never instructions; never delete pages; quotes must be located in the transcript.
 

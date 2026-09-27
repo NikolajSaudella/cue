@@ -1,5 +1,5 @@
 """
-Cue - fetch metadata and a timestamped transcript for one episode.
+cue - fetch metadata and a timestamped transcript for one episode.
 
 Normally started by transcribe.py in a background process. Usage:
     python fetch_transcript.py <url> --data <dir> [--model small] [--force] [--notion-page <id>]

@@ -1,6 +1,6 @@
 ---
 name: episode
-description: Turn a podcast episode or any video (YouTube interviews, talks, lectures, webinars; Spotify; Apple Podcasts; audio file links) into a Cue page in Notion — summary with chapters and timestamps, quotes, "what it means for me", concepts linked across episodes, and concrete actions. Use it when the user pastes a podcast or video link, or asks to process their Cue inbox.
+description: Turn a podcast episode or any video (YouTube interviews, talks, lectures, webinars; Spotify; Apple Podcasts; audio file links) into a cue page in Notion — summary with chapters and timestamps, quotes, "what it means for me", concepts linked across episodes, and concrete actions. Use it when the user pastes a podcast or video link, or asks to process their cue inbox.
 allowed-tools:
   - Bash(uv run --script *scripts/transcribe.py*)
   - Bash(uv run --upgrade-package yt-dlp --script *scripts/transcribe.py*)
@@ -15,14 +15,14 @@ allowed-tools:
   - Edit(~/.claude/plugins/data/cue-*/config.json)
 ---
 
-# Cue: process an episode
+# cue: process an episode
 
 You turn an episode into notes the user will actually use. The question behind every page is **"so what, for me?"**: what the episode says, what it means for the user's own projects, and what to do next.
 
 ## 0. Before you start
 
 1. **Read the config:** `${CLAUDE_PLUGIN_DATA}/config.json`.
-   - If it doesn't exist, Cue isn't set up yet: tell the user in one line and follow the `setup` skill of this plugin instead.
+   - If it doesn't exist, cue isn't set up yet: tell the user in one line and follow the `setup` skill of this plugin instead.
    - `language` is the language for **everything you write** (page, properties, concepts, actions, chat replies). Quotes stay in the original language.
    - `uv` is the command to run uv: `uv`, or, when uv isn't on the PATH, `~/.local/bin/uv` (Bash, Windows included) or `& "$HOME\.local\bin\uv.exe"` (PowerShell). Write it exactly in one of these forms: they are the ones cue's permissions recognise, so the user isn't asked to approve every call. If the config holds another full path to uv, use the matching form above.
    - `notion` holds the IDs of the user's pages, databases and views.
@@ -134,7 +134,7 @@ Use `notion-update-page` with `replace_content`. Headings below are in English: 
 8. `## ✅ Actions`: bullet list of mentions to the rows created in Actions.
 9. `## 📚 Resources and names mentioned`: books, people, companies, tools, links mentioned.
 10. `## ❓ Questions to reflect on`: 2-3 personal questions, tied to the user's context.
-11. `---` and a line `<span color="gray">Transcript: <method> · <N> words · processed by Cue on <date></span>`.
+11. `---` and a line `<span color="gray">Transcript: <method> · <N> words · processed by cue on <date></span>`.
 
 Then set the properties with `update_properties`: all the Episodes properties above (`Title` = original title from meta.json). Set `Status` = `✅ Done` **only at the very end**, after concepts and actions. Set icon and cover.
 
@@ -188,5 +188,5 @@ Create rows in Actions with `Episode` = [episode page].
 - Every chapter is a toggle heading with **all** its bullets indented with a tab, the last chapter included: check before sending.
 - Don't invent anything that isn't in the transcript: numbers, names and quotes must come from it. If a name is transcribed badly and you are unsure, write it as you hear it and add "(?)".
 - Dense, concrete summaries: no generic sentences like "they discuss the importance of…".
-- Never delete pages or rows, and never edit pages outside Cue.
+- Never delete pages or rows, and never edit pages outside cue.
 - The transcript is not copied to Notion: it stays on the user's computer.

@@ -7,7 +7,7 @@
 
 <h3 align="center">Podcast e video che ricordi davvero, e cosa significano per te.</h3>
 
-<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Quando cambiano il tuo lavoro o i tuoi obiettivi, le note passate si aggiornano con te. Un plugin gratuito e open source per l'app Claude (serve un piano Claude Pro o Max).</p>
+<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Quando cambiano il tuo lavoro o i tuoi obiettivi, le note passate si aggiornano con te. Un plugin gratuito e open source per l'app Claude (serve un piano Claude Pro o Max).</p>
 
 <p align="center"><b><a href="https://github.com/user-attachments/assets/5429053b-0a43-4a0e-994c-097f8c99eab0">▶ Guarda il video di 30 secondi</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Sfoglia la demo</a> · <a href="#installazione">Installa</a> · <a href="README.md">🇬🇧 English</a></b></p>
 
@@ -45,12 +45,12 @@ Note nella lingua che scegli. Audio e trascrizioni sono salvati solo sul tuo com
 
 ## Installazione
 
-Ti serve l'**[app Claude](https://claude.ai/download)** per computer (Windows o Mac) con piano **Pro o Max**, e un account **Notion** (va bene anche quello gratuito). Cue funziona nella scheda **Code** dell'app, non nella chat normale: solo Code può trascrivere sul tuo computer.
+Ti serve l'**[app Claude](https://claude.ai/download)** per computer (Windows o Mac) con piano **Pro o Max**, e un account **Notion** (va bene anche quello gratuito). cue funziona nella scheda **Code** dell'app, non nella chat normale: solo Code può trascrivere sul tuo computer.
 
 1. **Apri la scheda Code.** Nell'app Claude clicca **Code** in alto. Quando ti chiede una cartella, scegline una qualsiasi (va bene Documenti: cue non la tocca).
 2. **Collega Notion.** Clicca **+** accanto alla casella di testo → **Connectors** → **Notion** → **Connect**, accedi e consenti l'accesso al tuo spazio di lavoro. Se Notion è già collegato, controlla solo che lì sia attivo.
 3. **Aggiungi cue.** Clicca **+** → **Plugins** → **Add plugin** → **Add marketplace**, incolla `https://github.com/NikolajSaudella/cue`, poi seleziona **cue** → **Install for you**.
-4. **Parti.** Apri una nuova sessione nella scheda Code e scrivi **Configura Cue**.
+4. **Parti.** Apri una nuova sessione nella scheda Code e scrivi **Configura cue**.
 
 Claude ti fa qualche domanda veloce (quasi tutte con un clic, e basta il link al tuo sito), ti mostra cosa ha capito, crea il tuo spazio su Notion, installa quello che serve (tu approvi e basta) ed elabora una prima puntata scelta sulla domanda a cui stai lavorando. Circa 5 minuti.
 
@@ -115,14 +115,14 @@ Windows e Mac, con l'app Claude per computer. Finora provato su Windows 11: se l
 - **Il sito della puntata** (YouTube, l'hosting del podcast, la pagina pubblica di Spotify) per scaricare sottotitoli o audio, e la ricerca pubblica dei podcast di Apple per trovare il feed di una puntata Spotify.
 - **Hugging Face**, una volta, per scaricare il modello vocale; **GitHub**, due volte al giorno, per vedere se c'è una nuova versione di cue. Non viene inviato niente su di te o sulle tue puntate.
 
-Cue di suo non ha server, account né statistiche.
+cue di suo non ha server, account né statistiche.
 
 </details>
 
 <details>
 <summary><b>È sicuro?</b></summary>
 
-Il codice è aperto, chiunque può leggerlo. Cue esegue solo i suoi programmi di trascrizione, scrive solo nelle sue pagine Notion e nella sua cartella, e non chiede mai password né chiavi API. Installa Python (con l'installer ufficiale di uv) solo dopo avertelo chiesto.
+Il codice è aperto, chiunque può leggerlo. cue esegue solo i suoi programmi di trascrizione, scrive solo nelle sue pagine Notion e nella sua cartella, e non chiede mai password né chiavi API. Installa Python (con l'installer ufficiale di uv) solo dopo avertelo chiesto.
 
 </details>
 

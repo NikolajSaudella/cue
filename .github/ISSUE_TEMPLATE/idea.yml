@@ -1,11 +1,11 @@
-name: An idea for Cue
-description: A feature, a source you'd like supported, or something that would make Cue more useful.
+name: An idea for cue
+description: A feature, a source you'd like supported, or something that would make cue more useful.
 labels: ["idea"]
 body:
   - type: textarea
     id: idea
     attributes:
-      label: What would you like Cue to do?
+      label: What would you like cue to do?
     validations:
       required: true
   - type: textarea
