@@ -21,9 +21,9 @@
 
 Real pages from the [live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b): five Y Combinator videos, processed for an example founder building restaurant software.
 
-**Not just a summary. Advice for your project.** A talk on getting your first 10 customers becomes next steps for *this* founder. [Open the episode →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
+**Not just a summary. Advice for your project, and it follows you.** A talk on getting your first 10 customers becomes next steps for *this* founder. When the founder's situation changed (6 paying restaurants, a first salesperson to hire), cue rewrote the advice and kept the old version one click away. [Open the episode →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
 
-<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/see-for-me.png" alt="What it means for me, written for the founder's own project"></a>
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/see-refresh.png" alt="What it means for me, rewritten after the founder's context changed, with the previous version in a toggle"></a>
 
 **When two episodes pull in different directions.** One guest says your network is your best source of buyers, another warns it's a weaker source of truth: cue puts them side by side. [Open the idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2)
 

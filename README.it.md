@@ -21,9 +21,9 @@
 
 Pagine vere della [demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) (in inglese): cinque video di Y Combinator, elaborati per un founder di esempio che costruisce software per ristoranti.
 
-**Non solo un riassunto. Consigli per il tuo progetto.** Un talk su come trovare i primi 10 clienti diventa passi concreti per *questo* founder. [Apri la puntata →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
+**Non solo un riassunto. Consigli per il tuo progetto, che ti seguono.** Un talk su come trovare i primi 10 clienti diventa passi concreti per *questo* founder. Quando la sua situazione è cambiata (6 ristoranti paganti, un primo venditore da assumere), cue ha riscritto i consigli e tenuto la versione precedente a un clic. [Apri la puntata →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
 
-<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/see-for-me.png" alt="Cosa significa per me, scritto sul progetto del founder"></a>
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/see-refresh.png" alt="Cosa significa per me, riscritto dopo il cambio di contesto del founder, con la versione precedente in un riquadro"></a>
 
 **Quando due puntate tirano in direzioni diverse.** Un ospite dice che la tua rete di contatti è la fonte migliore di clienti, un altro che è una fonte meno sincera: cue li mette uno accanto all'altro. [Apri l'idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2)
 
