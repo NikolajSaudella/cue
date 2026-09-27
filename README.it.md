@@ -9,11 +9,11 @@
 
 <p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Quando cambiano il tuo lavoro o i tuoi obiettivi, le note passate si aggiornano con te. Un plugin gratuito e open source per l'app Claude (serve un piano Claude Pro o Max).</p>
 
-<p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Guarda il video di 30 secondi</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Sfoglia la demo</a> · <a href="#installazione">Installa</a> · <a href="README.md">🇬🇧 English</a></b></p>
+<p align="center"><b><a href="https://github.com/user-attachments/assets/5429053b-0a43-4a0e-994c-097f8c99eab0">▶ Guarda il video di 30 secondi</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Sfoglia la demo</a> · <a href="#installazione">Installa</a> · <a href="README.md">🇬🇧 English</a></b></p>
 
 <p align="center"><a href="https://code.claude.com/docs/en/plugins"><img src="https://img.shields.io/badge/Claude-plugin-ff5b1f" alt="Claude plugin"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-171614" alt="MIT license"></a> <a href="https://github.com/NikolajSaudella/cue/releases"><img src="https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614" alt="version"></a> <a href="https://github.com/NikolajSaudella/cue/actions/workflows/check.yml"><img src="https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg" alt="check"></a></p>
 
-<a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c"><img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni (clicca per il video di 30 secondi)"></a>
+<a href="https://github.com/user-attachments/assets/5429053b-0a43-4a0e-994c-097f8c99eab0"><img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni (clicca per il video di 30 secondi)"></a>
 
 <p align="center"><sub><i>Perché "cue"? Il cue point è il punto preciso di una traccia da cui ripartire; il retrieval cue è lo spunto che fa tornare in mente un ricordo. Si pronuncia come la lettera Q.</i></sub></p>
 
