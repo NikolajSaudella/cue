@@ -44,11 +44,12 @@ Note nella lingua che scegli. Audio e trascrizioni restano sul tuo computer.
 
 ## Installazione
 
-Ti serve l'**app Claude** per computer (Windows o Mac) con piano **Pro o Max**, e **Notion** collegato a Claude (Impostazioni → Connettori → Notion).
+Ti serve l'**[app Claude](https://claude.ai/download)** per computer (Windows o Mac) con piano **Pro o Max**, e un account **Notion** (va bene anche quello gratuito). Cue funziona nella scheda **Code** dell'app, non nella chat normale: solo Code può trascrivere sul tuo computer.
 
-1. Nell'app Claude apri la scheda **Code** e avvia una sessione in una cartella qualsiasi.
-2. Clicca **+** → **Plugins** → **Add plugin** → **Add marketplace** e incolla `https://github.com/NikolajSaudella/cue`
-3. Seleziona **cue** → **Install for you**. Poi apri una nuova chat e scrivi **Configura Cue**.
+1. **Apri la scheda Code.** Nell'app Claude clicca **Code** in alto. Quando ti chiede una cartella, scegline una qualsiasi (va bene Documenti: cue non la tocca).
+2. **Collega Notion.** Clicca **+** accanto alla casella di testo → **Connectors** → **Notion** → **Connect**, accedi e consenti l'accesso al tuo spazio di lavoro. Se Notion è già collegato, controlla solo che lì sia attivo.
+3. **Aggiungi cue.** Clicca **+** → **Plugins** → **Add plugin** → **Add marketplace**, incolla `https://github.com/NikolajSaudella/cue`, poi seleziona **cue** → **Install for you**.
+4. **Parti.** Apri una nuova sessione nella scheda Code e scrivi **Configura Cue**.
 
 Claude ti fa qualche domanda veloce (quasi tutte con un clic, e basta il link al tuo sito), ti mostra cosa ha capito, crea il tuo spazio su Notion, installa quello che serve (tu approvi e basta) ed elabora una prima puntata scelta sulla domanda a cui stai lavorando. Circa 5 minuti.
 
@@ -59,13 +60,15 @@ Claude ti fa qualche domanda veloce (quasi tutte con un clic, e basta il link al
 /plugin marketplace add NikolajSaudella/cue
 /plugin install cue@cue
 ```
+
+Per Notion usa il connettore del tuo account claude.ai (accedi con lo stesso account), oppure aggiungi il server di Notion con `claude mcp add --transport http notion https://mcp.notion.com/mcp` e accedi con `/mcp`.
 </details>
 
 ## Come si usa
 
 - **Incolla un link** in Claude: Spotify, Apple Podcasts, qualsiasi video YouTube o un file audio.
 - **Dal telefono**: aggiungi il link nell'📥 Inbox di Notion, poi di' a Claude "elabora la mia inbox".
-- **Tieni aggiornata "🧭 My context"**: è quello che rende le note su di te.
+- **Tieni aggiornata "🧭 My context"**: è quello che rende le note su di te. Hai cambiato lavoro o progetto? Scrivi **"aggiorna le mie note"** e cue riscrive "Cosa significa per me" sulle puntate passate (la versione precedente resta in un blocco apribile).
 
 ## Domande frequenti
 
@@ -73,9 +76,11 @@ Claude ti fa qualche domanda veloce (quasi tutte con un clic, e basta il link al
 
 **Dove finiscono i miei dati?** Audio e trascrizioni restano sul tuo computer, le note vanno solo nel tuo Notion. Cue non ha server né statistiche.
 
+**Funziona nella chat normale di Claude?** No: cue funziona nella scheda **Code** dell'app Claude, perché trascrive sul tuo computer. Stessa app e stesso piano, niente da pagare in più.
+
 **È sicuro?** Il codice è aperto, chiunque può leggerlo. Cue esegue solo i suoi programmi di trascrizione, installa Python con l'installer ufficiale di uv dopo avertelo chiesto, e scrive solo nelle sue pagine Notion e nella sua cartella sul tuo computer. Non chiede mai password né chiavi API.
 
-**Quanto ci mette?** Un paio di minuti per i video YouTube con sottotitoli. L'audio da trascrivere richiede circa 30-45 minuti per ogni ora su un portatile normale, in background.
+**Quanto ci mette?** Video YouTube con sottotitoli: pochi minuti in tutto, quasi tutti per scrivere le note. Audio da trascrivere (Spotify, Apple Podcasts, video senza sottotitoli): circa 15-25 minuti per ogni ora di audio su un portatile recente, in background, più qualche minuto per scrivere. Dipende soprattutto dal processore del computer e da quanto è occupato (una videochiamata o l'esportazione di un video lo rallentano). La primissima volta scarica anche un modello vocale di circa 500 MB.
 
 **Come lo aggiorno?** Nell'app Claude: **+** → **Plugins** → **Manage plugins** → **cue** → **Update** (o **Aggiorna**). Per sapere quando esce una nuova versione, clicca **Watch** → **Custom** → **Releases** in cima a questa pagina.
 

@@ -12,6 +12,7 @@ allowed-tools:
   - PowerShell(& "$HOME\.local\bin\uv.exe" run --upgrade-package yt-dlp --script *scripts/transcribe.py*)
   - Read(~/.claude/plugins/data/cue-*/**)
   - Write(~/.claude/plugins/data/cue-*/episodes/*/notion.json)
+  - Edit(~/.claude/plugins/data/cue-*/config.json)
 ---
 
 # Cue: process an episode
@@ -62,7 +63,7 @@ Property **names** and **select options** are fixed and in English: use them exa
   The link is in `Link`; if empty, look for it in the title or page content. If there is no link at all, set `⚠️ Error` and explain in `TL;DR`.
   Before starting, set `Status` = `⏳ Processing` (and `Link`, if you found it elsewhere).
 
-Tell the user roughly how long it takes: a few minutes for YouTube episodes with captions; for audio that needs transcribing, roughly 30-45 minutes per hour of audio on a typical laptop (the first time also downloads a ~500 MB speech model). The transcription runs in the background: the user can keep working, but the computer must stay on. If it was interrupted anyway (computer turned off), running the same command starts it again.
+Tell the user roughly how long it takes: a few minutes for YouTube episodes with captions; for audio that needs transcribing, about 15-25 minutes per hour of audio on a recent laptop, slower on older computers or while the computer is busy with heavy work (the first time also downloads a ~500 MB speech model). The transcription runs in the background: the user can keep working, but the computer must stay on. If it was interrupted anyway (computer turned off), running the same command starts it again.
 
 ## Steps for each episode
 
@@ -88,7 +89,7 @@ Keep **`Progress`** updated in the later steps too, translated into the user's l
 
 ### 2. Read
 - Read `meta.json` and `transcript.txt` **in full**. The Read tool stops at about 25,000 tokens per call: if the result says it is partial, continue with `offset`/`limit` until the last line. Never summarise an episode you have read only in part.
-- Read the "🧭 My context" page (once per run).
+- Read the "🧭 My context" page (once per run) and note its `page_last_edited_at`.
 - Read all existing concepts from the concepts view.
 
 ### 3. Write the episode page
@@ -150,7 +151,8 @@ Create rows in Actions with `Episode` = [episode page].
 - Each action starts with a verb and has a one-sentence `Why` tied to the episode.
 
 ### 6. Wrap up
-- Write `<dir>/notion.json` (`dir` from the transcribe JSON) with `{"page_url": "...", "done_at": "<ISO time>"}`.
+- Write `<dir>/notion.json` (`dir` from the transcribe JSON) with `{"page_url": "...", "done_at": "<ISO time>", "context_edited_at": "<My context's page_last_edited_at>"}`.
+- **Context changed?** Compare My context's `page_last_edited_at` with `context_seen` in the config. If `context_seen` is set and different, and there are earlier episodes, end your reply with one line: they updated their context, and "refresh my notes" rewrites "What it means for me" on their earlier episodes for who they are now (the `refresh` skill). Then set `context_seen` in the config to the new value (also when it wasn't set yet, without saying anything).
 - **Chat:** reply with the page link, the TL;DR, the concepts (which are new and which already existed) and the most interesting action.
 - **Inbox:** end with a 1-3 line summary: episodes processed, errors.
 - **New version:** if a transcribe JSON had `cue_update`, end your reply with one line (once per chat): a new version of cue is available (`latest`), and to update it in the Claude app: **+** → **Plugins** → **Manage plugins** → **cue** → **Update**.

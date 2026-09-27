@@ -25,9 +25,9 @@ Speak the user's language (the one they write in). Keep each message short.
 Setup takes about 5 minutes. Tell the user that at the start, with the 4 steps: **a few quick questions → your Notion space → install the tools → a first episode picked for you**.
 
 ## 1. Check what's already there
-- Read `${CLAUDE_PLUGIN_DATA}/config.json`. If it exists and its `notion.hub_page` still opens with `notion-fetch`, Cue is already set up: ask whether they want to **update their context** (steps 2-4, then update the "🧭 My context" page instead of creating it) or **start over** (a new Notion space; the old one stays untouched). Otherwise continue.
+- Read `${CLAUDE_PLUGIN_DATA}/config.json`. If it exists and its `notion.hub_page` still opens with `notion-fetch`, Cue is already set up: ask whether they want to **update their context** (steps 2-4, then update the "🧭 My context" page instead of creating it, and finally offer to refresh their earlier notes with the `refresh` skill) or **start over** (a new Notion space; the old one stays untouched). Otherwise continue.
 - **Notion connector:** check that the Notion tools are available (`notion-fetch`, `notion-create-pages`, `notion-create-database`, `notion-create-view`, `notion-query-data-sources`, `notion-update-page`). If they are not, stop and explain:
-  > Cue writes your notes in Notion, so Claude needs access to it. In the Claude app open **Settings → Connectors**, find **Notion** and click **Connect**, then allow access to your workspace. When you're done, open a new chat and say "set up Cue" again.
+  > Cue writes your notes in Notion, so Claude needs access to it. Click **+** next to the message box → **Connectors** → **Notion** → **Connect**, sign in and allow access to your workspace (if Notion is already there, switch it on). Then open a new session and say "set up Cue" again.
 
 ## 2. Quick choices (one tap each)
 Explain in one sentence why you ask: every note will be about *their* work, not generic advice.
@@ -79,7 +79,7 @@ Content, written in the user's language (keep the emoji, the `orange` colors and
 </columns>
 <details>
 <summary>**Good to know**</summary>
-	- **Timing:** YouTube videos with captions are ready in about 2 minutes. Without captions (Spotify, most podcasts) it takes 30-45 minutes per hour of audio: it runs in the background, but the computer must stay on.
+	- **Timing:** YouTube videos with captions are ready in a few minutes. Without captions (Spotify, most podcasts) it takes about 15-25 minutes per hour of audio on a recent laptop: it runs in the background, but the computer must stay on.
 	- **Privacy:** transcripts stay on your computer. Only the notes go to Notion.
 	- **Updates:** in the Claude app, **+** → **Plugins** → **Manage plugins** → **cue** → **Update**.
 	- **Open source:** [github.com/NikolajSaudella/cue](https://github.com/NikolajSaudella/cue)
@@ -203,7 +203,7 @@ Cue transcribes episodes **on the user's computer** with free tools. They are in
 When the first page is ready, send a short message with:
 - the link to their **cue** page in Notion, and where finished episodes go: the **📚 Library** on that page (the Inbox only shows links still to process);
 - the 3 ways to use it (paste a link here · Inbox in Notion + "process my inbox" · update "🧭 My context", including how they like their notes);
-- one tip: episodes without captions (Spotify, most podcasts) take roughly 30-45 minutes per hour of audio; it runs in the background, but the computer must stay on meanwhile.
+- one tip: episodes without captions (Spotify, most podcasts) take about 15-25 minutes per hour of audio on a recent laptop, slower while the computer is busy; it runs in the background, but the computer must stay on meanwhile.
 
 ## Rules
 - Never create anything outside the new cue page, and never modify or delete existing Notion pages.

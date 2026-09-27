@@ -44,11 +44,12 @@ Notes in the language you choose. Audio and transcripts stay on your computer.
 
 ## Install
 
-You need the **Claude desktop app** (Windows or Mac) with a **Pro or Max** plan, and **Notion** connected to Claude (Settings → Connectors → Notion).
+You need the **[Claude desktop app](https://claude.ai/download)** (Windows or Mac) with a **Pro or Max** plan, and a **Notion** account (the free plan is fine). Cue works in the app's **Code** tab, not in the normal chat: only Code can run the transcription on your computer.
 
-1. In the Claude app, open the **Code** tab and start a session in any folder.
-2. Click **+** → **Plugins** → **Add plugin** → **Add marketplace**, and paste `https://github.com/NikolajSaudella/cue`
-3. Select **cue** → **Install for you**. Then open a new chat and write **Set up Cue**.
+1. **Open the Code tab.** In the Claude app, click **Code** at the top. When it asks for a folder, pick any one (your Documents folder is fine: cue doesn't touch it).
+2. **Connect Notion.** Click **+** next to the message box → **Connectors** → **Notion** → **Connect**, sign in and allow access to your workspace. If Notion is already connected, just check that it's switched on there.
+3. **Add cue.** Click **+** → **Plugins** → **Add plugin** → **Add marketplace**, paste `https://github.com/NikolajSaudella/cue`, then select **cue** → **Install for you**.
+4. **Start.** Open a new session in the Code tab and write **Set up Cue**.
 
 Claude asks a few quick questions (most are one tap, and a link to your website is enough), shows you what it understood, creates your space in Notion, installs everything it needs (you just approve) and processes a first episode picked for the question you're working on. About 5 minutes.
 
@@ -59,13 +60,15 @@ Claude asks a few quick questions (most are one tap, and a link to your website 
 /plugin marketplace add NikolajSaudella/cue
 /plugin install cue@cue
 ```
+
+For Notion, use the connector of your claude.ai account (sign in with the same account), or add Notion's server with `claude mcp add --transport http notion https://mcp.notion.com/mcp` and sign in with `/mcp`.
 </details>
 
 ## Use it
 
 - **Paste a link** in Claude: Spotify, Apple Podcasts, any YouTube video, or an audio file.
 - **On your phone**: add the link to the 📥 Inbox in Notion, then tell Claude "process my inbox".
-- **Keep "🧭 My context" up to date**: it's what makes the notes about you.
+- **Keep "🧭 My context" up to date**: it's what makes the notes about you. Changed job or project? Say **"refresh my notes"** and cue rewrites "What it means for me" on your past episodes (the old version stays in a toggle).
 
 ## FAQ
 
@@ -73,9 +76,11 @@ Claude asks a few quick questions (most are one tap, and a link to your website 
 
 **Where does my data go?** Audio and transcripts stay on your computer; notes go only to your Notion. Cue has no server and no analytics.
 
+**Does it work in the normal Claude chat?** No: cue runs in the **Code** tab of the Claude app, because it transcribes on your computer. It's the same app and the same plan, nothing extra to pay.
+
 **Is it safe?** The code is open, so anyone can read it. Cue only runs its own transcription scripts, installs Python through the official uv installer after asking you, and writes only to its own Notion pages and its own folder on your computer. It never asks for passwords or API keys.
 
-**How long does it take?** A couple of minutes for YouTube videos with captions. Audio that needs transcribing takes roughly 30-45 minutes per hour on a typical laptop, in the background.
+**How long does it take?** YouTube videos with captions: a few minutes in all, mostly Claude writing your notes. Audio that needs transcribing (Spotify, Apple Podcasts, videos without captions): about 15-25 minutes per hour of audio on a recent laptop, in the background, plus a few minutes of writing. It depends mostly on your computer's processor and on how busy it is (a video call or a video export slows it down). The very first time, it also downloads a ~500 MB speech model.
 
 **How do I update it?** In the Claude app: **+** → **Plugins** → **Manage plugins** → **cue** → **Update**. To hear about new versions, click **Watch** → **Custom** → **Releases** at the top of this page.
 

@@ -29,7 +29,9 @@ Concepts live in their own database, so opening "pricing" or "network effects" s
 
 ## More questions
 
-**How long does it take?** YouTube videos with captions: a couple of minutes. Audio that needs transcribing (Spotify, Apple Podcasts, YouTube without captions): roughly 30-45 minutes per hour of audio on a typical laptop, faster on recent computers. It runs in the background, but the computer must stay on. The first time also downloads a ~500 MB speech model.
+**What happens to my old notes when I change my context?** New episodes use the new context right away. Past episodes keep what was written for your old context until you say **"refresh my notes"**: cue then rewrites only the personal parts ("What it means for me", "Questions to reflect on", the concepts' "For me") for the episodes you choose (the last 10, all, a topic, or one), adds at most 2 new actions per episode, and keeps the previous version in a toggle on each page. What the episode says (summary, key ideas, chapters, quotes, connections) never changes. Each episode's `notion.json` records which version of the context it was written for (`context_edited_at`), and cue mentions it when your context has changed since the last run.
+
+**How long does it take?** YouTube videos with captions: the transcript takes seconds, the whole page a few minutes (Claude reading and writing). Audio that needs transcribing (Spotify, Apple Podcasts, YouTube without captions): about 15-25 minutes per hour of audio on a recent laptop, in the background. Measured on a 2023 mid-range laptop (Intel Core i5-13420H, 16 GB): an 84-minute English episode in 20 minutes, a 40-minute Italian one in 14 minutes plus about a minute to download 96 MB of audio. It depends mostly on the processor and on what else the computer is doing: a video call or a video export can make it two or three times slower. The computer must stay on. The first time also downloads a ~500 MB speech model. While it runs, the Progress column shows the percentage and the minutes left, measured live.
 
 **Which sources work?** Spotify and Apple Podcasts episodes, any YouTube video (interviews, talks, lectures, webinars) and direct links to audio files. Spotify episodes are matched to the same public episode on Apple Podcasts or its RSS feed; Spotify exclusives can't be transcribed, so use the YouTube link if there is one.
 
@@ -51,6 +53,7 @@ Concepts live in their own database, so opening "pricing" or "network effects" s
 | `.claude-plugin/marketplace.json` | Lets people install the plugin straight from this repository |
 | `skills/setup/SKILL.md` | First run: interview, Notion space, tool installation, first episode |
 | `skills/episode/SKILL.md` | Turns one episode (or the Notion inbox) into a page, concepts and actions |
+| `skills/refresh/SKILL.md` | After the user changes "🧭 My context": rewrites the personal parts of past episodes |
 | `scripts/transcribe.py` | Entry point. Idempotent: starts the work in the background and can be re-run until it's done |
 | `scripts/fetch_transcript.py` | Finds the episode and produces a timestamped transcript |
 | `tests/` | Unit tests for the scripts (no network needed): `uv run --with pytest --with requests pytest tests` |

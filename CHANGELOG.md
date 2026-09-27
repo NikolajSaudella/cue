@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.0 — notes that follow you, and honest timing
+
+- **"Refresh my notes."** Changed job, project or goals in "🧭 My context"? Cue rewrites the personal parts of your past episodes ("What it means for me", "Questions to reflect on", the concepts' "For me") for who you are now, for the episodes you choose. What each episode says stays the same, the previous version stays in a toggle, and old actions are never deleted. Cue also notices when your context has changed and offers it.
+- **Clearer install.** Four explicit steps in the README, including how to connect Notion from the **+** menu of the Code tab, and why cue lives in the Code tab and not in the normal chat.
+- **Timing corrected.** Transcribing audio takes about 15-25 minutes per hour on a recent laptop (measured: an 84-minute episode in 20 minutes, a 40-minute one in 14), not 30-45: the old figure came from a test run while the computer was busy.
+
 ## v0.3.1 — a home page that looks like cue
 
 - **Your episodes show up on the home page.** The cue page now has the 📚 Library under the 📥 Inbox. Before, a finished episode left the Inbox (which only shows links still to process) and seemed to disappear. Already set up? Your episodes are in **Episodes → 📚 Library**.
