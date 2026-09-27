@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.2 — faster on Mac, no audio left behind
+
+- **Faster on Mac.** cue noticed a finished transcript only after waiting its full 2.5 minutes, so on macOS every YouTube episode with captions took about 2.5 minutes longer than it should. It now sees the transcript as soon as it's ready. (Windows wasn't affected.)
+- **No audio left behind.** When a download or a transcription failed, the audio file could stay in cue's folder. It's now always deleted, finished or not: only the transcript is kept on your computer.
+
 ## v0.5.1 — cue, in lowercase
 
 - The name is now written **cue**, in lowercase, everywhere: in the Notion pages cue writes ("processed by cue"), in the setup messages, in the docs and in the issue forms.

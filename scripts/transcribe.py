@@ -97,6 +97,14 @@ def pid_alive(pid):
     return code.value == 259  # STILL_ACTIVE
 
 
+def worker_running(proc, pid):
+    """A worker started in this call is asked through its Popen: on macOS and Linux a finished child stays a
+    zombie until it's reaped, and a zombie still answers os.kill(pid, 0) as if it were alive."""
+    if proc is not None:
+        return proc.poll() is None
+    return pid_alive(pid)
+
+
 def read_json(path):
     try:
         text = path.read_text(encoding="utf-8").strip()
@@ -119,18 +127,19 @@ def start_worker(url, workdir, model, force, notion_page):
     args = [PYTHON, str(WORKER), url, "--data", str(ft.DATA_DIR), "--model", model] + (["--force"] if force else [])
     if notion_page:
         args += ["--notion-page", notion_page]
-    if sys.platform == "win32":
-        # detached process: it survives even if the shell that started it is closed
-        flags = 0x00000008 | 0x00000200 | 0x08000000  # DETACHED | NEW_PROCESS_GROUP | NO_WINDOW
-        try:
-            proc = subprocess.Popen(args, stdout=out, stderr=err, stdin=subprocess.DEVNULL,
-                                    creationflags=flags | 0x01000000)  # + BREAKAWAY_FROM_JOB
-        except OSError:
-            proc = subprocess.Popen(args, stdout=out, stderr=err, stdin=subprocess.DEVNULL, creationflags=flags)
-    else:
-        proc = subprocess.Popen(args, stdout=out, stderr=err, stdin=subprocess.DEVNULL, start_new_session=True)
+    with out, err:  # the worker has its own copies of these files
+        if sys.platform == "win32":
+            # detached process: it survives even if the shell that started it is closed
+            flags = 0x00000008 | 0x00000200 | 0x08000000  # DETACHED | NEW_PROCESS_GROUP | NO_WINDOW
+            try:
+                proc = subprocess.Popen(args, stdout=out, stderr=err, stdin=subprocess.DEVNULL,
+                                        creationflags=flags | 0x01000000)  # + BREAKAWAY_FROM_JOB
+            except OSError:
+                proc = subprocess.Popen(args, stdout=out, stderr=err, stdin=subprocess.DEVNULL, creationflags=flags)
+        else:
+            proc = subprocess.Popen(args, stdout=out, stderr=err, stdin=subprocess.DEVNULL, start_new_session=True)
     (workdir / "worker.pid").write_text(str(proc.pid))
-    return proc.pid
+    return proc
 
 
 def check():
@@ -227,16 +236,17 @@ def main():
     running = pid is not None and pid_alive(pid)
     result = read_json(result_path)
 
+    proc = None
     if args.force and not running:
         result = None
     if not running and not (result and result.get("ok")):
-        pid = start_worker(url, workdir, args.model, args.force or bool(result), args.notion_page)
-        running = True
+        proc = start_worker(url, workdir, args.model, args.force or bool(result), args.notion_page)
+        pid, running = proc.pid, True
 
     deadline = time.time() + args.max
     while running and time.time() < deadline:
         time.sleep(5)
-        running = pid_alive(pid)
+        running = worker_running(proc, pid)
 
     result = read_json(result_path)
     if running:

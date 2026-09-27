@@ -211,3 +211,41 @@ def test_update_info_never_fails_offline(tmp_path, monkeypatch):
 
     monkeypatch.setattr(ft.HTTP, "get", offline)
     assert tr.update_info() is None
+
+
+def test_worker_running_sees_a_finished_worker(tmp_path):
+    # On macOS and Linux a finished child stays a zombie that os.kill(pid, 0) still reports as alive
+    import subprocess
+    import time
+
+    proc = subprocess.Popen([sys.executable, "-c", "pass"])
+    deadline = time.time() + 10
+    while tr.worker_running(proc, proc.pid) and time.time() < deadline:
+        time.sleep(0.1)
+    assert not tr.worker_running(proc, proc.pid)
+
+
+def test_audio_is_deleted_when_transcription_fails(tmp_path, monkeypatch):
+    def fake_download(url, dest, max_bytes=0):
+        dest.write_bytes(b"audio")
+        return dest
+
+    def broken_whisper(path, model_name):
+        raise RuntimeError("whisper crashed")
+
+    monkeypatch.setattr(ft, "download", fake_download)
+    monkeypatch.setattr(ft, "transcribe_audio", broken_whisper)
+    with pytest.raises(RuntimeError):
+        ft.finish_audio({"duration_sec": 0}, "https://example.com/ep.mp3", tmp_path, "small")
+    assert not list(tmp_path.glob("audio.*"))
+
+
+def test_partial_audio_is_deleted_when_the_download_fails(tmp_path, monkeypatch):
+    def too_big(url, dest, max_bytes=0):
+        dest.write_bytes(b"half an episode")
+        raise ft.FetchError("The audio file is too big")
+
+    monkeypatch.setattr(ft, "download", too_big)
+    with pytest.raises(ft.FetchError):
+        ft.finish_audio({"duration_sec": 0}, "https://example.com/ep.m4a", tmp_path, "small")
+    assert not list(tmp_path.glob("audio.*"))

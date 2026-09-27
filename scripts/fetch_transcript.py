@@ -368,6 +368,15 @@ def check_url(url):
         raise FetchError("Unsupported source: this link points to a local or private network address")
 
 
+def remove_audio(workdir):
+    """Delete the episode's audio, finished or partial: only the transcript is kept on the computer."""
+    for f in workdir.glob("audio.*"):
+        try:
+            f.unlink()
+        except OSError:
+            pass
+
+
 def download(url, dest, max_bytes=MAX_AUDIO_BYTES):
     """Download an audio file: public web addresses only (every redirect is checked), with a size cap and a disk check."""
     log(f"Downloading audio: {safe_url(url)}")
@@ -567,13 +576,15 @@ def fetch_youtube(url, workdir, model_name):
             "format": "bestaudio[ext=m4a]/bestaudio",
             "outtmpl": str(workdir / "audio.%(ext)s"),
         })
-        with yt_dlp.YoutubeDL(opts) as ydl:
-            info2 = ydl.extract_info(canonical, download=True)
-            audio = Path(ydl.prepare_filename(info2))
-        segments, lang, dur = transcribe_audio(audio, model_name)
+        try:
+            with yt_dlp.YoutubeDL(opts) as ydl:
+                info2 = ydl.extract_info(canonical, download=True)
+                audio = Path(ydl.prepare_filename(info2))
+            segments, lang, dur = transcribe_audio(audio, model_name)
+        finally:
+            remove_audio(workdir)
         method = f"Whisper {model_name} (local)"
         meta["duration_sec"] = meta["duration_sec"] or int(dur)
-        audio.unlink(missing_ok=True)
 
     meta["language"] = lang
     meta["transcript_method"] = method
@@ -868,12 +879,14 @@ def fetch_direct_audio(url, workdir, model_name):
 
 def finish_audio(meta, audio_url, workdir, model_name):
     ext = Path(urlparse(audio_url).path).suffix.lower()
-    audio = download(audio_url, workdir / f"audio{ext if ext in AUDIO_EXTS else '.mp3'}")
-    segments, lang, dur = transcribe_audio(audio, model_name)
+    try:
+        audio = download(audio_url, workdir / f"audio{ext if ext in AUDIO_EXTS else '.mp3'}")
+        segments, lang, dur = transcribe_audio(audio, model_name)
+    finally:
+        remove_audio(workdir)
     meta["duration_sec"] = meta["duration_sec"] or int(dur)
     meta["language"] = lang
     meta["transcript_method"] = f"Whisper {model_name} (local)"
-    audio.unlink(missing_ok=True)
     return meta, segments
 
 
