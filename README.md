@@ -1,46 +1,37 @@
-<p>
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/cue-logo-reversed.svg">
-    <img src="docs/images/cue-logo.svg" alt="cue" width="160">
+    <img src="docs/images/cue-logo.svg" alt="cue" width="180">
   </picture>
 </p>
 
-# cue
+<h3 align="center">Podcasts and videos you actually remember — and what they mean for you.</h3>
 
-[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases) [![Check](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg)](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml)
+<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. A free plugin for the Claude app.</p>
 
-**Podcasts and videos you actually remember — and what they mean for you.**
+<p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Watch the 30-second video</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Explore the live demo</a> · <a href="#install">Install</a> · <a href="README.it.md">🇮🇹 Italiano</a></b></p>
 
-Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for *you*, and what to do next, and connects it to everything you've heard before. A free plugin for the Claude app.
-
-*Why "cue"? A cue point is the exact spot in a track you jump back to; a retrieval cue is the hint that brings a memory back. Pronounced like the letter Q.*
-
-**[▶ Watch the 30-second video](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c) · [Explore the live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) · [Install](#install)**
-
-[🇮🇹 Leggi in italiano](README.it.md)
+<p align="center"><a href="https://code.claude.com/docs/en/plugins"><img src="https://img.shields.io/badge/Claude-plugin-ff5b1f" alt="Claude plugin"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-171614" alt="MIT license"></a> <a href="https://github.com/NikolajSaudella/cue/releases"><img src="https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614" alt="version"></a> <a href="https://github.com/NikolajSaudella/cue/actions/workflows/check.yml"><img src="https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg" alt="check"></a></p>
 
 <a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c"><img src="docs/images/video-unfold.jpg" alt="One link in, everything that matters out: in short, quotes, chapters, what it means for me, actions (click to watch the 30-second video)"></a>
 
+<p align="center"><sub><i>Why "cue"? A cue point is the exact spot in a track you jump back to; a retrieval cue is the hint that brings a memory back. Pronounced like the letter Q.</i></sub></p>
+
 ## See the difference
 
-Real pages from the live demo: five Y Combinator videos, processed for an example founder building restaurant software. No install needed to browse them.
+Real pages from the [live demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b): five Y Combinator videos, processed for an example founder building restaurant software.
 
-<table>
-  <tr>
-    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/episode-for-me.png" alt="What it means for me, written for the founder's own project"></a></td>
-    <td><b>Not just a summary. Advice for your project.</b><br><br>A talk on getting your first 10 customers becomes next steps for <i>this</i> founder: visit restaurants between lunch and dinner, host a dinner for owners, skip the sales tools for now.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d">Open the episode →</a></td>
-  </tr>
-  <tr>
-    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/concept-disagreement.png" alt="Two guests pull in different directions on the warm network"></a></td>
-    <td><b>When two episodes pull in different directions.</b><br><br>One guest says your network is your best source of buyers, another warns it's a weaker source of truth. Cue puts them side by side and tells you what to do with both.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2">Open the idea →</a></td>
-  </tr>
-  <tr>
-    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/concept-four-episodes.png" alt="One idea linked to four episodes"></a></td>
-    <td><b>One idea. Four episodes.</b><br><br>"Do things that don't scale" comes back in four different videos, each with its own angle. Every idea you meet keeps everything each guest said about it.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d">Open the idea →</a></td>
-  </tr>
-</table>
+**Not just a summary. Advice for your project.** A talk on getting your first 10 customers becomes next steps for *this* founder. [Open the episode →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
 
-**[Explore the full Notion demo →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)**
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/see-for-me.png" alt="What it means for me, written for the founder's own project"></a>
+
+**When two episodes pull in different directions.** One guest says your network is your best source of buyers, another warns it's a weaker source of truth: cue puts them side by side. [Open the idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2)
+
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/see-disagreement.png" alt="Two guests pull in different directions on the warm network"></a>
+
+**One idea. Four episodes.** "Do things that don't scale" comes back in four different videos, and the idea keeps what each guest said. [Open the idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d)
+
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/see-four-episodes.png" alt="One idea linked to four episodes"></a>
 
 ## What you get
 

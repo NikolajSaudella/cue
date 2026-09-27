@@ -1,46 +1,37 @@
-<p>
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/cue-logo-reversed.svg">
-    <img src="docs/images/cue-logo.svg" alt="cue" width="160">
+    <img src="docs/images/cue-logo.svg" alt="cue" width="180">
   </picture>
 </p>
 
-# cue
+<h3 align="center">Podcast e video che ricordi davvero, e cosa significano per te.</h3>
 
-[![Claude plugin](https://img.shields.io/badge/Claude-plugin-ff5b1f)](https://code.claude.com/docs/en/plugins) [![License: MIT](https://img.shields.io/badge/license-MIT-171614)](LICENSE) [![Release](https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614)](https://github.com/NikolajSaudella/cue/releases) [![Check](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg)](https://github.com/NikolajSaudella/cue/actions/workflows/check.yml)
+<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Un plugin gratuito per l'app Claude.</p>
 
-**Podcast e video che ricordi davvero, e cosa significano per te.**
+<p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Guarda il video di 30 secondi</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Sfoglia la demo</a> · <a href="#installazione">Installa</a> · <a href="README.md">🇬🇧 English</a></b></p>
 
-Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa *per te* e cosa fare, e la collega a tutto quello che hai già ascoltato. Un plugin gratuito per l'app Claude.
-
-*Perché "cue"? Il cue point è il punto preciso di una traccia da cui ripartire; il retrieval cue è lo spunto che fa tornare in mente un ricordo. Si pronuncia come la lettera Q.*
-
-**[▶ Guarda il video di 30 secondi](https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c) · [Sfoglia la demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) · [Installa](#installazione)**
-
-[🇬🇧 Read in English](README.md)
+<p align="center"><a href="https://code.claude.com/docs/en/plugins"><img src="https://img.shields.io/badge/Claude-plugin-ff5b1f" alt="Claude plugin"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-171614" alt="MIT license"></a> <a href="https://github.com/NikolajSaudella/cue/releases"><img src="https://img.shields.io/github/v/release/NikolajSaudella/cue?label=version&color=171614" alt="version"></a> <a href="https://github.com/NikolajSaudella/cue/actions/workflows/check.yml"><img src="https://github.com/NikolajSaudella/cue/actions/workflows/check.yml/badge.svg" alt="check"></a></p>
 
 <a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c"><img src="docs/images/video-unfold.jpg" alt="Un link dentro, tutto quello che conta fuori: in breve, citazioni, capitoli, cosa significa per me, azioni (clicca per il video di 30 secondi)"></a>
 
+<p align="center"><sub><i>Perché "cue"? Il cue point è il punto preciso di una traccia da cui ripartire; il retrieval cue è lo spunto che fa tornare in mente un ricordo. Si pronuncia come la lettera Q.</i></sub></p>
+
 ## Guarda la differenza
 
-Pagine vere della demo: cinque video di Y Combinator, elaborati per un founder di esempio che costruisce software per ristoranti (demo in inglese). Per sfogliarle non serve installare niente.
+Pagine vere della [demo](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b) (in inglese): cinque video di Y Combinator, elaborati per un founder di esempio che costruisce software per ristoranti.
 
-<table>
-  <tr>
-    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/episode-for-me.png" alt="Cosa significa per me, scritto sul progetto del founder"></a></td>
-    <td><b>Non solo un riassunto. Consigli per il tuo progetto.</b><br><br>Un talk su come trovare i primi 10 clienti diventa passi concreti per <i>questo</i> founder: visitare i ristoranti tra pranzo e cena, organizzare una cena con i titolari, rimandare gli strumenti di vendita.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d">Apri la puntata →</a></td>
-  </tr>
-  <tr>
-    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/concept-disagreement.png" alt="Due ospiti tirano in direzioni diverse sulla rete di contatti"></a></td>
-    <td><b>Quando due puntate tirano in direzioni diverse.</b><br><br>Un ospite dice che la tua rete di contatti è la fonte migliore di clienti, un altro avverte che è una fonte meno sincera. Cue li mette uno accanto all'altro e ti dice cosa farne.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2">Apri l'idea →</a></td>
-  </tr>
-  <tr>
-    <td width="55%"><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/concept-four-episodes.png" alt="Un'idea collegata a quattro puntate"></a></td>
-    <td><b>Un'idea. Quattro puntate.</b><br><br>"Do things that don't scale" torna in quattro video diversi, ognuno con il suo punto di vista. Ogni idea tiene tutto quello che ogni ospite ne ha detto.<br><br><a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d">Apri l'idea →</a></td>
-  </tr>
-</table>
+**Non solo un riassunto. Consigli per il tuo progetto.** Un talk su come trovare i primi 10 clienti diventa passi concreti per *questo* founder. [Apri la puntata →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d)
 
-**[Sfoglia tutta la demo su Notion →](https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b)**
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab81778145e4edf8d00a5d"><img src="docs/images/see-for-me.png" alt="Cosa significa per me, scritto sul progetto del founder"></a>
+
+**Quando due puntate tirano in direzioni diverse.** Un ospite dice che la tua rete di contatti è la fonte migliore di clienti, un altro che è una fonte meno sincera: cue li mette uno accanto all'altro. [Apri l'idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2)
+
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab8191a943ddd104cd34a2"><img src="docs/images/see-disagreement.png" alt="Due ospiti tirano in direzioni diverse sulla rete di contatti"></a>
+
+**Un'idea. Quattro puntate.** "Do things that don't scale" torna in quattro video diversi, e l'idea tiene quello che ha detto ogni ospite. [Apri l'idea →](https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d)
+
+<a href="https://app.notion.com/p/nikolaj1205/3e74ef8c88ab811583d1d54e1713e67d"><img src="docs/images/see-four-episodes.png" alt="Un'idea collegata a quattro puntate"></a>
 
 ## Cosa ottieni
 
