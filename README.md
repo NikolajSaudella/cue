@@ -7,7 +7,7 @@
 
 <h3 align="center">Podcasts and videos you actually remember — and what they mean for you.</h3>
 
-<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. A free, open-source plugin for the Claude app (needs a Claude Pro or Max plan).</p>
+<p align="center">Paste a link to a podcast, a YouTube talk or a lecture. Cue writes a page in your Notion with what it says, what it means for <i>you</i> and what to do next, connected to everything you've heard before. When your work or goals change, your past notes update with you. A free, open-source plugin for the Claude app (needs a Claude Pro or Max plan).</p>
 
 <p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Watch the 30-second video</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Explore the live demo</a> · <a href="#install">Install</a> · <a href="README.it.md">🇮🇹 Italiano</a></b></p>
 

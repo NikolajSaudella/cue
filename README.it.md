@@ -7,7 +7,7 @@
 
 <h3 align="center">Podcast e video che ricordi davvero, e cosa significano per te.</h3>
 
-<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Un plugin gratuito e open source per l'app Claude (serve un piano Claude Pro o Max).</p>
+<p align="center">Incolli il link di un podcast, di un talk su YouTube o di una lezione. Cue scrive una pagina nel tuo Notion con cosa dice, cosa significa <i>per te</i> e cosa fare, collegata a tutto quello che hai già ascoltato. Quando cambiano il tuo lavoro o i tuoi obiettivi, le note passate si aggiornano con te. Un plugin gratuito e open source per l'app Claude (serve un piano Claude Pro o Max).</p>
 
 <p align="center"><b><a href="https://github.com/user-attachments/assets/0a614909-6b1b-490a-965a-43da737f889c">▶ Guarda il video di 30 secondi</a> · <a href="https://app.notion.com/p/nikolaj1205/cue-demo-3e74ef8c88ab81df84e6fb5c93256e8b">Sfoglia la demo</a> · <a href="#installazione">Installa</a> · <a href="README.md">🇬🇧 English</a></b></p>
 
